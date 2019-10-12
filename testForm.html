@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Test Form for Pravega Registration</title>
+</head>
+
+<body style="text-align: center">
+    <form id="helo" onsubmit="send();">
+        <input type="text" name="name" id="test" value="chinmay"><br><br>
+        <input type="text" name="noi" id="" value="chinmay"><br><br>
+        <input type="text" name="aoi" id="" aria-multiline="true" value="chinmay"><br><br>
+        <input type="text" name="name" id="" value="chinmay"><br><br>
+        <input type="text" name="name" id="" value="chinmay"><br><br>
+
+    </form>
+    <button onclick="send();">submit</button>
+</body>
+<script type="text/javascript">
+    function send() {
+
+        var body = {
+            "members": [{
+                "name": "Chinmay",
+                "noa": "987654321",
+                "yos": 1,
+                "course": "BSc",
+                "email": "john@doe.com"
+            }],
+            "noi": "IISC",
+            "aoi": "CV Raman avenue"
+        }
+        console.log(body);
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", 'http://localhost:1909/api/register', true);
+
+        //Send the proper header information along with the request
+        xhr.setRequestHeader("Content-Type", "application/json");
+
+        xhr.onreadystatechange = function () { // Call a function when the state changes.
+            if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+                // Request finished. Do processing here.
+                console.log(this.response);
+            }
+        }
+        xhr.send(JSON.stringify(body));
+        // xhr.send(new Int8Array()); 
+        // xhr.send(document);        
+
+    }
+</script>
+
+</html>
