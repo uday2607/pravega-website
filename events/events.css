@@ -1,0 +1,102 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Lato';
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+  background: #1a1a1a;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.project {
+  height: 100vh;
+  min-width: 100vw;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.project__list {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  font-size: 36px;
+  color: white;
+}
+.project__link {
+  will-change: opacity;
+  display: block;
+  margin: 24px 0;
+}
+.project__bg-list {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.project__bg-item {
+  will-change: transform, opacity;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0;
+  -webkit-transform: scale(0.7);
+          transform: scale(0.7);
+  transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.project__bg-item--active {
+  opacity: 1;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+.project__bg-item:nth-child(1) {
+  background: url("1.jpg") center/cover;
+}
+.project__bg-item:nth-child(2) {
+  background: url("2.jpg") center/cover;
+}
+.project__bg-item:nth-child(3) {
+  background: url("3.jpg") center/cover;
+}
+.project__bg-item:nth-child(4) {
+  background: url("") center/cover;
+}
+.project__bg-item:nth-child(5) {
+  background: url("") center/cover;
+}
+.project__bg-item:nth-child(6) {
+  background: url("") center/cover;
+}
+
+/* demo */
+main {
+  position: absolute;
+  bottom: 0;
+  color: white;
+  padding: 24px;
+  opacity: 0.9;
+}
+main h1 {
+  font-weight: 300;
+  margin: 0 0 12px;
+}
+main p {
+  margin: 0;
+}
+main p a {
+  font-weight: bold;
+}
