@@ -19,7 +19,11 @@ app.get('/', (req, res) => {
 })
 
 // Initialize mongoose
-mongoose.connect('mongodb://localhost/pravega', { useNewUrlParser: true });
+
+var url = 'mongodb://localhost/pravega';
+var uri = 'mongodb+srv://pravega_developer:vmt@pravega-qebux.mongodb.net/test?retryWrites=true&w=majority'
+
+mongoose.connect(uri, { useNewUrlParser: true });
 var db = mongoose.connection;
 
 // Check if connection was successful
@@ -134,9 +138,8 @@ db.once('open', (e) => {
         })
     });
 
-    // Any iiscian will know this why I chose that number
-    var port = 1909;
-    app.listen(port);
-    console.log('Server running on PORT : ' + port);
+    app.listen(process.env.PORT || 5000, (e) => {
+		console.log("The Server is running on port number " + 5000)
+	})
 
 });
