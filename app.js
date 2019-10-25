@@ -7,6 +7,7 @@ const cors = require('cors');
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
+app.use(express.static(__dirname));
 
 // Base route
 app.get('/', (req, res) => {
@@ -23,7 +24,7 @@ db.on('error', (e) => { console.log('Mongoose connection error: No Mongo Instanc
 // Run the rest of the program only if db connection is succesful
 db.once('open', (e) => {
 
-    /* 
+    /*
     Initializing models
         Registered poeple will be alloted a team id,
         MAny people with the same id are the part of the team
@@ -90,8 +91,8 @@ db.once('open', (e) => {
             // Defining new team as from data
             var temp = new team(data);
 
-            // Find all data, count and add the next one after that // 
-            /* This required some extra thought as this is an async process and 
+            // Find all data, count and add the next one after that //
+            /* This required some extra thought as this is an async process and
             and return statement was getting called before it finished.
             Alsoo, mongoose right now doesn't have promises so
             */
@@ -103,7 +104,7 @@ db.once('open', (e) => {
                 });
             })
 
-        //FIXME: Should I send error to front end ?     
+        //FIXME: Should I send error to front end ?
         } catch (e) {
             console.log(e);
             res.send(e);
