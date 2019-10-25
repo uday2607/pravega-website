@@ -12,6 +12,7 @@ const { Parser } = require('json2csv');
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
+app.use(express.static(_dirname));
 
 // Base route
 app.get('/', (req, res) => {
