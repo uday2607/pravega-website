@@ -1,2 +1,2 @@
-# pavega_website
- Pravega website
+# pravega-website
+ Pravega website and Server

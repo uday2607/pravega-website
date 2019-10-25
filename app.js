@@ -1,8 +1,13 @@
+// Server for Pravega Website 2020
+// Author : Chinmay K Haritas
+// All rights reserved
+
 const express = require('express');
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const { Parser } = require('json2csv');
 
 const app = express();
 app.use(bodyParser.json());
@@ -15,7 +20,11 @@ app.get('/', (req, res) => {
 })
 
 // Initialize mongoose
-mongoose.connect('mongodb://localhost/pravega', { useNewUrlParser: true });
+
+var url = 'mongodb://localhost/pravega';
+var uri = 'mongodb+srv://pravega_developer:vmt@pravega-qebux.mongodb.net/test?retryWrites=true&w=majority'
+
+mongoose.connect(uri, { useNewUrlParser: true });
 var db = mongoose.connection;
 
 // Check if connection was successful
@@ -31,38 +40,24 @@ db.once('open', (e) => {
         Front end verification needs to be present ! Backend can't verify  ( I'm too lazy to put validation)
     */
 
+    // Schema for team object
     var teamSchema = new mongoose.Schema({
-        "members": [{
-            "name": String,
-            "noa": String,
-            "yos": String,
-            "course": String,
-            "email": String,
-            "teamID": Number
-        }],
+        "members": [String],
         "noi": String,
-        "aoi": String,
         "teamName": String,
-        "event": String
+        "event": String,
+        "phone":Number,
+        "email":String,
+        "meta": mongoose.Schema.Types.Mixed
     })
 
+    // Construct team as mongoose object
+    var team = mongoose.model('teams', teamSchema);
 
-    var team = mongoose.model('team', teamSchema);
 
-    // Find all registrations
-    app.get('/registrations', (req, res) => {
-
-        team.find((err, data) => {
-            if (err) throw err;
-            res.send(data);
-        })
-
-    });
-
+    // Get all registrations
     app.get('/api/registrations/', (req, res) => {
-
         // To prevent server crashing when someone (eyeroll) sends wrong request
-
         try {
             team.find({}, (err, data) => {
                 if (err) throw err;
@@ -73,7 +68,7 @@ db.once('open', (e) => {
         }
     })
 
-
+    // Register
     app.post('/api/register', (req, res) => {
 
         // To prevent server crash when invalid request sent
@@ -81,6 +76,7 @@ db.once('open', (e) => {
 
             // Defining a data object to make it easy to refer to.
             var data = req.body;
+            console.log(data);
 
             // Setting a teamName if not provided
             // FIXME: Remove after frontEnd validation
@@ -97,10 +93,9 @@ db.once('open', (e) => {
             Alsoo, mongoose right now doesn't have promises so
             */
             team.find((err, data) => {
-                console.log(data.length);
-                temp._id = mongoose.Types.ObjectId(data.length);
                 temp.save((err, data) => {
-                    res.send(parseInt(data._id, 16) + "");
+                    if(err) throw err;
+                    res.send(data);
                 });
             })
 
@@ -111,9 +106,41 @@ db.once('open', (e) => {
         }
     });
 
-    // Any iiscian will know this why I chose that number
-    var port = 1909;
-    app.listen(port);
-    console.log('Server running on PORT : ' + port);
+    // Update the team
+    app.post('/api/team/update', (req, res) => {
+        try {
+            var _id = req.body._id;
+            var update = req.body.update;
+            team.findOneAndUpdate({ _id: _id }, update, (err, data) => {
+                if (err) { throw err; }
+                res.send('OK');
+            });
+        } catch (e) {
+            res.send('Oops!');
+        }
+    })
+
+    // Route to get csv
+    app.get('/api/csv/reg', (req, res) => {
+        const { Parser } = require('json2csv');
+
+        const fields = ['_id', 'noi', 'aoi', 'members'];
+        const opts = { fields };
+
+        team.find((err, myData) => {
+            try {
+                const parser = new Parser(opts);
+                const csv = parser.parse(myData);
+                res.send(csv)
+            } catch (err) {
+                console.error(err);
+                res.send(err);
+            }
+        })
+    });
+
+    app.listen(process.env.PORT || 5000, (e) => {
+		console.log("The Server is running on port number " + 5000)
+	})
 
 });
