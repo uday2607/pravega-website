@@ -1,0 +1,215 @@
+@import url(https://fonts.googleapis.com/css?family=Quicksand:400,300,700);
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+html,
+body {
+  width: 100%;
+  margin: 0 auto;
+  background-color: #1c1c1c;
+  font-family: "Quicksand", sans-serif;
+  overflow: hidden;
+}
+html #background,
+body #background {
+  position: fixed;
+  top: 50%;
+  left: 50%;	
+  min-width: 100%;
+  min-height: 100%;
+  width: 100%;
+  height:auto;
+  z-index: -1;	
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  overflow: hidden; 	
+  -webkit-filter: blur(10px);
+  -moz-filter: blur(10px);
+  -o-filter: blur(10px);
+  -ms-filter: blur(10px);
+  filter: blur(10px);
+}
+
+html .main,
+body .main {
+  position: absolute;
+  width: 100%;
+  height: 200%;
+  top: 85%;
+  left: 50%;
+  margin: 0 auto;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.5);
+}
+html .main #logo,
+body .main #logo {
+  position: absolute;
+  top: 26%;
+  left: 50%;
+  width: 12%;
+  height:auto;
+  min-width: 150px;
+  z-index: 0;
+  -webkit-transform: translateX(-55%) translateY(-55%);
+  transform: translateX(-55%) translateY(-55%);
+  background-size:cover;
+  overflow: hidden;
+}
+html .main #content,
+body .main #content {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  min-height: 24px;
+  height: 100%;
+  position: relative;
+  text-align: center;
+  top: 35%;
+}
+
+html .main #content .title,
+body .main #content .title {
+  color: white;
+  font-family: "Quicksand", sans-serif;
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  padding-bottom: 0px;
+  margin-bottom: 10px;
+}
+html .main #content .title span,
+body .main #content .title span {
+  font-size: 3.5rem;
+  cursor: pointer;
+}
+html .main #content .title:hover,
+body .main #content .title:hover {
+  -webkit-animation: MISSION-HOVER 2s infinite;
+  animation: MISSION-HOVER 2s infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+  -webkit-animation-timing-function: ease;
+          animation-timing-function: ease;
+}
+html .main #content .title2,
+body .main #content .title2 {
+  color: white;
+  font-family: "Quicksand", sans-serif;
+  font-size: 1.5rem;
+  padding-bottom: 0px;
+  margin-bottom: 10px;
+}
+html .main #content .title2 span,
+body .main #content .title2 span {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+html .main #content .title2:hover,
+body .main #content .title2:hover {
+  -webkit-animation: MISSION-HOVER2 1.5s infinite;
+  animation: MISSION-HOVER2 1.5s infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+  -webkit-animation-timing-function: ease;
+          animation-timing-function: ease;
+}
+@-webkit-keyframes MISSION-HOVER {
+  0%,
+                    100% {
+    font-size: 3.5rem;
+    color: white;
+  }
+  50% {
+    color: #bffcff;
+    letter-spacing: 2px;
+    text-shadow: 0px 0px 9px #bffcff;
+  }
+}
+@-webkit-keyframes MISSION-HOVER2 {
+  0%,
+                    100% {
+    font-size: 1.5rem;
+    color: white;
+  }
+  50% {
+    color: #FFFFFF;
+    letter-spacing: 2px;
+    text-shadow: 0px 0px 9px #FF0A33;
+  }
+}
+
+
+html .main #content p,
+body .main #content p {
+  color: #e6dbae;
+  font-family: "Quicksand", sans-serif;
+  font-size: 1.5rem;
+  margin: 0 auto;
+  padding: 0;
+  letter-spacing: 0.5rem;
+  text-transform: uppercase;
+}
+html .main #content p:last-child,
+body .main #content p:last-child {
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin: 3em auto;
+  padding: 0;
+  letter-spacing: 0.1rem;
+}
+html .main #content p:last-child > a,
+body .main #content p:last-child > a {
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s ease-in;
+}
+html .main #content p:last-child > a:hover,
+body .main #content p:last-child > a:hover {
+  color: #fff;
+}
+html .main #content section,
+body .main #content section {
+  color: #fff;
+  margin: 0 auto;
+  line-height: 24px;
+  font-size: 1rem;
+  font-weight: 700;
+}
+html .main #content section ul,
+body .main #content section ul {
+  list-style-type: none;
+  margin-bottom: -20px;
+  margin-left: 0;
+}
+html .main #content section ul li,
+body .main #content section ul li {
+  display: inline-block;
+  margin-right: 2rem;
+  width: 6rem;
+}
+html .main #content section .timenumbers,
+body .main #content section .timenumbers {
+  display: block;
+  font-size: 1.3rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  margin: 0 auto;
+  text-align: center;
+}
+html .main #content section p.timedescription,
+body .main #content section p.timedescription {
+  font-size: 0.5rem;
+  font-variant: small-caps;
+  line-height: 1.5rem;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  top: 0px;
+}

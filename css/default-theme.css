@@ -4,19 +4,19 @@ Default theme  Stylesheet
 
 
 ::selection {
-    background: #d6b161;
+    background: #ffd11a;
     color: #FFF;
     text-shadow: none;
 }
 
 ::-moz-selection {
-    background: #d6b161; /* Firefox */
+    background: #ffd11a; /* Firefox */
     color: #FFF;
     text-shadow: none;
 }
 
 ::-webkit-selection {
-    background: #d6b161; /* Safari */
+    background: #ffd11a; /* Safari */
     color: #FFF;
     text-shadow: none;
 }
@@ -58,14 +58,14 @@ a,
 .cd-nav .cd-primary-nav li.selected a,
 .no-touch .cd-nav .cd-primary-nav a:hover,
 .intro-portfolio a:hover{
-    color: #d6b161 ;
+    color: #FAF0DF ;
 }
 
 .theme-color,
 .massive-progress.progress-theme-color .progress-bar,
 .massive-progress.progress-theme-color .progress-bar > span
 {
-    color: #d6b161 !important;
+    color: #faf0df !important;
 }
 
 .theme-bg,
@@ -73,13 +73,13 @@ a,
 .massive-progress-alt.progress-theme-color .progress-bar,
 .ei-slider-thumbs li.ei-slider-element
 {
-    background: #d6b161 !important;
+    background: #faf0df !important;
 }
 
 .btn-theme-border-color,
 .widget-social-link a:hover,
 .widget-tags a:hover {
-    border:1px solid #d6b161 ;
+    border:1px solid #ffd11a ;
 }
 
 .nav-border-bottom .menuzord .menuzord-menu>li.active>a,
@@ -88,7 +88,7 @@ a,
 .icon-tabs .nav-pills>li.active>a,
 .icon-tabs .nav-pills>li.active>a:focus,
 .icon-tabs .nav-pills>li.active>a:hover {
-    border-bottom:1px solid #d6b161;
+    border-bottom:1px solid #ffd11a;
 }
 
 .nav-border-box .menuzord-menu > li.active > a,
@@ -96,7 +96,7 @@ a,
 .btn-theme-border-color:hover,
 .price-col.feature .p-btn:hover,
 .side-social-link a:hover{
-    border:1px solid #d6b161;
+    border:1px solid #ffd11a;
 }
 
 .nav-boxed-color .menuzord-menu > li.active > a,
@@ -120,7 +120,7 @@ a,
 .sale-label,
 .stock .status,
 #tb-scroll-to-top:hover{
-    background: #d6b161 ;
+    background: #ffd11a ;
 }
 
 
