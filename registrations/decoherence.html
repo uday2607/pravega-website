@@ -51,12 +51,21 @@
 
                 var data = document.getElementById("team-regis-box").innerHTML;
                 data = data.split('<div class="input-element-text">Participant ')[0];
-                var address_ = document.getElementById("address").value;
+				var college_name = document.getElementById("college-name").value;
+                var address_1 = document.getElementById("address").value;
                 var address_2 = document.getElementById("address-2").value;
                 var pin_code = document.getElementById("pincode").value;
-                var college_name = document.getElementById("college-name").value;
+                var name_1 = document.getElementById("name1").value;
+				var name_2 = document.getElementById("name2").value;
+				var year_1 = document.getElementById("year1").value;
+				var year_2 = document.getElementById("year2").value;
+				var course_1 = document.getElementById("course1").value;
+				var course_2 = document.getElementById("course2").value;
+				var number_1 = document.getElementById("number1").value;
+				var number_2 = document.getElementById("number2").value;
+				var email_1 = document.getElementById("email1").value;
+				var email_2 = document.getElementById("email2").value;
                 var team_no_participants = document.getElementById("number-of-participants").value;
-                college_name = document.getElementById("college-name").value;
                 if(team_no_participants>15 || team_no_participants<1){
                     alert("Invalid number of participants! Please enter a number less than 15.");
                     return;
@@ -93,7 +102,7 @@
 
                 document.getElementById("team-regis-box").innerHTML = data;
                 document.getElementById("college-name").value = college_name;
-                document.getElementById("address").value = address_;
+                document.getElementById("address").value = address_1;
                 document.getElementById("address-2").value = address_2;
                 document.getElementById("pincode").value = pin_code;
             } else {
@@ -171,14 +180,13 @@
             var body = {
                 "noi": college_name,
                 "event": "decoherence",
-                "institute_address": address,
+                "institute_address1": address_1,
                 "members": team_participants_name,
                 "course": team_participants_course,
                 "year": team_participants_year,
                 "phone": team_participants_number,
                 "email": team_participants_email,
                 "meta":{
-                    "category":team_category_details
                 }
             }
 
@@ -365,13 +373,13 @@ Functions:
                             <div class="name2">Email id:</div>
                             <div class="value2">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="email" id="email1" value="example@iisc.in">
+                                    <input class="input--style-5" type="email" id="email1" value="example@email.in">
                                 </div>
                             </div>
                             <div class="name3">Email id:</div>
                             <div class="value2">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="email" id="email2" value="example@iisc.in">
+                                    <input class="input--style-5" type="email" id="email2" value="example@email.in">
                                 </div>
                             </div>
                         </div>
