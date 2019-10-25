@@ -12,6 +12,7 @@ const { Parser } = require('json2csv');
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
+app.use(express.static(__dirname));
 
 // Base route
 app.get('/', (req, res) => {
@@ -137,6 +138,11 @@ db.once('open', (e) => {
             }
         })
     });
+
+    
+	app.get('/p',(re,res)=>{
+		res.sendFile('./index.html');
+	})
 
     app.listen(process.env.PORT || 5000, (e) => {
 		console.log("The Server is running on port number " + 5000)
