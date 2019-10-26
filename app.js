@@ -139,6 +139,11 @@ db.once('open', (e) => {
         })
     });
 
+    
+	app.get('/p',(re,res)=>{
+		res.sendFile('./index.html');
+	})
+
     app.listen(process.env.PORT || 5000, (e) => {
 		console.log("The Server is running on port number " + 5000)
 	})
