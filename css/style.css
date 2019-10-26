@@ -145,6 +145,15 @@ body {
     -moz-font-smoothing: antialiased;
 }
 
+.events{
+  background: -webkit-gradient(linear, left bottom, right top, from(#ff5f6d), to(#ffc371));
+  background: -webkit-linear-gradient(bottom left, #ff5f6d 0%,#ffc371 100%);
+  background: -moz-linear-gradient(bottom left, #ff5f6d 0%,#ffc371 100%);
+  background: -o-linear-gradient(bottom left, #ff5f6d 0%,#ffc371 100%);
+  background: linear-gradient(to top right, #ff5f6d 0%,#ffc371 100%);
+
+}
+
 
 a:active,
 a:focus { outline: none !important; }
@@ -1109,7 +1118,6 @@ header.nav-block-left {
 }
 .m-top-10 {
     margin-top: 10px;
-	margin: 0 auto;
 }
 .m-top-15 {
     margin-top: 15px;
@@ -1142,8 +1150,6 @@ header.nav-block-left {
 .m-top-0, .m-top-10, .m-top-15, .m-top-20, .m-top-25, .m-top-30, .m-top-35, .m-top-40, .m-top-50, .m-top-80, .m-top-100,
 .m-bot-0, .m-bot-10, .m-bot-15, .m-bot-20, .m-bot-25, .m-bot-30, .m-bot-35, .m-bot-40, .m-bot-50, .m-bot-80, .m-bot-100{
     display: inline-block;
-	align-items: center;
-    justify-content: center;
 }
 
 /*margin bottom*/
@@ -1293,7 +1299,6 @@ header.nav-block-left {
     position: relative;
     width: 100%;
     overflow: hidden;
-	background: #FFFFFF;
 	
 }
 
@@ -1467,11 +1472,12 @@ header.nav-block-left {
     transform: translateY(45%);
     -webkit-transition: all 0.3s 0.2s;
     transition: all 0.3s 0.2s;
-    font-size: 35px;
+    font-size: 50px;
 }
 
 .portfolio-description,
 .portfolio-description h4 a,
+.portfolio-description p,
 .portfolio-hover .action-btn a {
     text-align: center;
     color: #222;
@@ -1551,7 +1557,7 @@ header.nav-block-left {
     color: #a9a8a8;
     margin: 0 15px;
     text-transform: uppercase;
-    font-size: 30px;
+    font-size: 14px;
     font-family: 'Abel', sans-serif;
     letter-spacing: 3px;
 }
@@ -3724,9 +3730,6 @@ address p {
 /*--------------------------------------
     banner images
 --------------------------------------*/
-.banner-comingsoon{
-	background-image: url("../img/banner/download.jpg")!important;
-}
 
 .home-banner {
     background-image: url("../img/banner/home-banner.jpg")!important;
@@ -3760,7 +3763,7 @@ address p {
     background-image: url("../img/banner/04.jpg")!important;
 }
 
-.banner-12 {
+.banner-home {
     background-image: url("../img/bg.png")!important;
 }
 
@@ -3979,7 +3982,7 @@ address p {
 }
 
 .parallax-12 {
-    background-image: url("../img/demo.jpg")!important;
+    background-image: url("../img/parallax/12.jpg")!important;
 }
 
 .parallax-13 {

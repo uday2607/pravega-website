@@ -75,8 +75,8 @@ body .main #content {
   top: 35%;
 }
 
-html .main #content .title,
-body .main #content .title {
+html .main #content .title3,
+body .main #content .title3 {
   color: white;
   font-family: "Quicksand", sans-serif;
   font-size: 3.5rem;
@@ -84,13 +84,13 @@ body .main #content .title {
   padding-bottom: 0px;
   margin-bottom: 10px;
 }
-html .main #content .title span,
-body .main #content .title span {
+html .main #content .title3 span,
+body .main #content .title3 span {
   font-size: 3.5rem;
   cursor: pointer;
 }
-html .main #content .title:hover,
-body .main #content .title:hover {
+html .main #content .title3:hover,
+body .main #content .title3:hover {
   -webkit-animation: MISSION-HOVER 2s infinite;
   animation: MISSION-HOVER 2s infinite;
   -webkit-animation-direction: alternate;
@@ -98,21 +98,21 @@ body .main #content .title:hover {
   -webkit-animation-timing-function: ease;
           animation-timing-function: ease;
 }
-html .main #content .title2,
-body .main #content .title2 {
+html .main #content .title32,
+body .main #content .title32 {
   color: white;
   font-family: "Quicksand", sans-serif;
   font-size: 1.5rem;
   padding-bottom: 0px;
   margin-bottom: 10px;
 }
-html .main #content .title2 span,
-body .main #content .title2 span {
-  font-size: 1.5rem;
+html .main #content .title32 span,
+body .main #content .title32 span {
+  font-size: 2rem;
   cursor: pointer;
 }
-html .main #content .title2:hover,
-body .main #content .title2:hover {
+html .main #content .title32:hover,
+body .main #content .title32:hover {
   -webkit-animation: MISSION-HOVER2 1.5s infinite;
   animation: MISSION-HOVER2 1.5s infinite;
   -webkit-animation-direction: alternate;
@@ -135,12 +135,12 @@ body .main #content .title2:hover {
 @-webkit-keyframes MISSION-HOVER2 {
   0%,
                     100% {
-    font-size: 1.5rem;
+    font-size: 2rem;
     color: white;
   }
   50% {
     color: #FFFFFF;
-    letter-spacing: 2px;
+    letter-spacing: 2.5px;
     text-shadow: 0px 0px 9px #FF0A33;
   }
 }
@@ -150,7 +150,7 @@ html .main #content p,
 body .main #content p {
   color: #e6dbae;
   font-family: "Quicksand", sans-serif;
-  font-size: 1.5rem;
+  font-size: 2rem;
   margin: 0 auto;
   padding: 0;
   letter-spacing: 0.5rem;
@@ -158,7 +158,7 @@ body .main #content p {
 }
 html .main #content p:last-child,
 body .main #content p:last-child {
-  font-size: 0.75rem;
+  font-size: 1.3rem;
   font-weight: 700;
   margin: 3em auto;
   padding: 0;
@@ -178,7 +178,7 @@ html .main #content section,
 body .main #content section {
   color: #fff;
   margin: 0 auto;
-  line-height: 24px;
+  line-height: 23px;
   font-size: 1rem;
   font-weight: 700;
 }
@@ -197,15 +197,15 @@ body .main #content section ul li {
 html .main #content section .timenumbers,
 body .main #content section .timenumbers {
   display: block;
-  font-size: 1.3rem;
+  font-size: 2rem;
   font-weight: 400;
-  line-height: 1.5rem;
+  line-height: 1.rem;
   margin: 0 auto;
   text-align: center;
 }
 html .main #content section p.timedescription,
 body .main #content section p.timedescription {
-  font-size: 0.5rem;
+  font-size: 0.8rem;
   font-variant: small-caps;
   line-height: 1.5rem;
   margin: 0 auto;

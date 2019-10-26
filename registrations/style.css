@@ -1,0 +1,136 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+body{
+	margin: 0;
+	background-color: black;
+}
+h1 {
+  margin: 0;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+  margin: 0;
+  padding: 0;
+}
+.container {
+  height: 70vh;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.links {
+  text-align: center;
+  height: 39vh;
+}
+
+.event-link{
+  font-family: 'Work Sans', sans-serif;
+  font-size: 50px;
+  color: black;
+  -webkit-text-stroke: 2px white;
+  margin: 0;
+  height: 120px;
+} 
+.event-link:hover {
+  color: white;
+  cursor: pointer;
+}
+
+.event-link {
+  animation: fadeInWork 0.5s ease both;
+  animation-delay: 1s;
+}
+
+@keyframes pageLoad {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeOut {
+  0% { 
+    opacity: 1;
+  } 
+  75% {
+    opacity: 1;
+  }
+  90% {
+    transform: scale(1);
+  }
+100% {
+    transform: scale(0);
+    display: none;
+} 
+}
+
+@keyframes fadeInHome {
+  0% {
+    opacity: 0;
+    display: none;
+    transform: scale(0)
+} 
+  40% {
+    opacity: 0;
+    transform: translate(0, 200%); 
+  }
+100% {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+}
+
+@keyframes fadeInWork {
+  0% {
+    opacity: 0;
+    display: none;
+    transform: scale(0)
+} 
+  40% {
+    opacity: 0;
+    transform: translate(0, 150%); 
+  }
+100% {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+}
+@keyframes fadeInBlog {
+  0% {
+    opacity: 0;
+    display: none; 
+    transform: scale(0)
+} 
+  40% {
+    opacity: 0;
+    transform: translate(0, -150%); 
+  }
+100% {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+}
+@keyframes fadeInContact {
+  0% {
+    opacity: 0;
+    display: none;
+    transform: scale(0)
+} 
+  40% {
+    opacity: 0;
+    transform: translate(0, -200%); 
+  }
+100% {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+}

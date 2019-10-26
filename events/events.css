@@ -64,22 +64,22 @@ ul {
           transform: scale(1);
 }
 .project__bg-item:nth-child(1) {
-  background: url("1.jpg") center/cover;
+  background: url("../img/science_background.jpg") center/cover;
 }
 .project__bg-item:nth-child(2) {
-  background: url("2.jpg") center/cover;
+  background: url("../img/cultural_background.jpg") center/cover;
 }
 .project__bg-item:nth-child(3) {
-  background: url("3.jpg") center/cover;
+  background: url("../img/technical_background.jpg") center/cover;
 }
 .project__bg-item:nth-child(4) {
-  background: url("") center/cover;
+  background: url("../img/workshop_background.jpg") center/cover;
 }
 .project__bg-item:nth-child(5) {
-  background: url("") center/cover;
+  background: url("../img/bands_background.jpg") center/cover;
 }
 .project__bg-item:nth-child(6) {
-  background: url("") center/cover;
+  background: url("../img/pis_background.jpg") center/cover;
 }
 
 /* demo */
