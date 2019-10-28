@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>
+        ChemEnigma Registration Page
+    </title>
+    <link rel="stylesheet" href="main.css">
+    <script type="text/javascript">
+
+        //details to be sent to server START
+        var college_name_details;
+        var team_name_details;
+        var team_category_details;
+        var team_email_details;
+        var team_phone_no_details;
+        var team_participants_details;
+        var get_to_know;
+        //details to be sent to server END
+
+
+        function create_name_fields(){
+            var data = document.getElementById("team-regis-box").innerHTML;
+            data= data.split('<div class="input-element-text">Participant ')[0];
+            var team_name = document.getElementById("team-name").value;
+            var team_category = document.getElementById("team-category").value;
+            var team_no_participants = document.getElementById("number-of-participants").value;
+            var get_to_know = document.getElementById("get-to-know").value;
+            if(team_no_participants>3  || team_no_participants<1){
+                alert("Invalid number of participants! Please enter a number less than 3.");
+                return;
+            }
+            if(!(team_name && team_category && get_to_know)){
+                alert("Invalid input. Please enter valid input.");
+                return;
+            }
+
+            team_name_details = team_name;
+            team_category_details=team_category;
+            team_no_participants_details=team_no_participants;
+            var input_section_code_1 = '<div class="form-row"><div class="name">Participant ';
+            var input_section_code_2 = ' name </div> <div class="value"><div class="input-group"><input class="input--style-5" type="text" id="participant-';
+            var input_section_code_3 = ' "></div></div></div>';
+            var input_section_code_4 = '<div class="form-row"><div class="name">Mobile Number ';
+            var input_section_code_5 = '  </div> <div class="value"><div class="input-group"><input class="input--style-5" type="number" id="phone_number-';
+            var input_section_code_6 = ' "></div></div></div>';
+            var input_section_code_7 = '<div class="form-row"><div class="name">Email Id ';
+            var input_section_code_8 = ' </div> <div class="value"><div class="input-group"><input class="input--style-5" type="email" id="email-';
+            var input_section_code_9 = ' "></div></div></div>';
+            var input_section_code_10 = '<div class="form-row"><div class="name">School/College Name ';
+            var input_section_code_11 = ' </div> <div class="value"><div class="input-group"><input class="input--style-5" type="text" id="college-name';
+            var input_section_code_12 = ' "></div></div></div>';
+
+            for(var i = 0; i<team_no_participants;i++){
+                var x = (i+1).toString(10);
+                data += input_section_code_1 + x + input_section_code_2+x+input_section_code_3+input_section_code_4 +  input_section_code_5+x+input_section_code_6+input_section_code_7 + input_section_code_8+x+input_section_code_9+input_section_code_10 + input_section_code_11+x+input_section_code_12;
+            }
+
+            document.getElementById("team-regis-box").innerHTML = "";
+            document.getElementById("team-regis-box").innerHTML = data;
+            document.getElementById("team-name").value = team_name;
+            document.getElementById("team-category").value = team_category;
+            document.getElementById("email").value = team_email;
+            document.getElementById("phone-number").value = team_phone_no;
+            document.getElementById("number-of-participants").value = team_no_participants;
+            document.getElementById("footer").style.display = "hidden";
+            collect_name_data(team_no_participants);
+        }
+
+        function collect_name_data(no_participants){
+
+            var name_list=[];
+            for(var i=0;i<no_participants;i++){
+                var temp = document.getElementById("participant-" + (i+1).toString(10)).value;
+                var temp_phone = document.getElementById("phone_number-" + (i+1).toString(10)).value;
+                var temp_email = document.getElementById("email-" + (i+1).toString(10)).value;
+
+                if(!(temp && i)){ //BUG BUG BUG: checking if temp is empty and killing the code if it is. problem is that it's killing the code even if its non empty. problem possibly lies with the initiating statement. Please fix it.
+                    return;
+                }
+                name_list.push(temp);
+            }
+            team_participants_details=name_list;
+            submit_all_info();
+        }
+
+        function submit_all_info(){
+            alert("working");
+            //submit team name, email, phone numbers, participant count, whatever
+            //the global vars team_..._details.
+            //End of registration page.
+        }
+    </script>
+    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+        <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+
+        <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
+        <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+
+</head>
+
+<!--
+Classes:
+    input-element: any element that is related to input
+    input-element-text: text describing input
+    input-element-box: input text box
+    input-element-bu*-tton: button for submitting and recording data
+    Team details section:
+        email: for email input
+        phone-number: for phone number input
+        team-name: for team name input
+        number-of-participants: number of participants
+
+IDs:
+    number-of-teams: id for input for number of teams
+    regis-box-container: container for holding code that has team details.
+    Team details section:
+        team-regis-box: team's registration input div container
+
+
+Functions:
+    create_boxes: makes individual team registration boxes
+    create_name_fields: creates name field entry points for each team section, also adds name, email, phone_number to respective arrays
+-->
+
+
+<body>
+    <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
+        <div class="wrapper wrapper--w790">
+            <div class="card card-5">
+                <div class="card-heading">
+                    <h2 class="title">Event Registration Form</h2>
+                </div>
+				<div class="card-body">
+                    <form method="POST" id="team-regis-box">
+						<div class="form-row">
+                            <div class="name">Team Name</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-5" type="text" id="team-name">
+                                </div>
+                            </div>
+                        </div>
+
+            <div class="form-row">
+                                        <div class="name">Category of entry</div>
+                                              <div class="value">
+                                                  <div class="input-group">
+                                                    <div class="rs-select2 js-select-simple select--no-search">
+                                                        <select name="category" size="1" id="team-category">
+                                                            <option disabled="disabled" selected="selected">Choose option</option>
+                                                            <option>Class 8-10</option>
+                                                            <option>Class 11-12</option>
+                                                            <option>UG</option>
+                                                        </select>
+                                                        <div class="select-dropdown"></div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                        </div>
+              <div class="form-row"> <!--Make text box appear if Other is selected-->
+                                        <div class="label label--block">How did you find out about this event?</div>
+                                              <div class="value">
+                                                  <div class="input-group">
+                                                      <div class="rs-select2 js-select-simple select--no-search">
+                                                          <select name="category"  id="get-to-know">
+                                                              <option disabled="disabled" selected="selected">Choose option</option>
+                                                              <option>Friends/TeachersParents</option>
+                                                              <option>Online(Social media, advertisements etc.)</option>
+                                                              <option>Other(If applicable)</option>
+                                                          </select>
+                                                        <div class="select-dropdown"></div>
+                                                      </div>
+                                                  </div>
+                                                                      </div>
+                                                                    </div>
+            <div class="form-row">
+                            <div class="name">Number of Participants</div>
+                                  <div class="value">
+                                      <div class="input-group">
+                                          <input class="input--style-5" type="text" id="number-of-participants">
+                                      </div>
+                                  </div>
+                              </div>
+
+					</form>
+				</div>
+						<div>
+							<input type="button" class="btn btn--radius-2 btn--red" id="submit-button" onclick="create_name_fields()" value="Go"> <!--The submit button is not submitting the fields. Instead it requires you to enter the number of participants for a second time. -->
+                        </div>
+			</div>
+            </div>
+
+    <footer id="footer">&nbsp;</footer>
+<!--    footer is for extra space at the bottom. weird glitch occurs with the background gradient if removed-->
+
+    </div>
+
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <!-- Vendor JS-->
+    <script src="vendor/select2/select2.min.js"></script>
+    <script src="vendor/datepicker/moment.min.js"></script>
+    <script src="vendor/datepicker/daterangepicker.js"></script>
+
+    <script src="js/global.js"></script>
+</body>
+
+</html>

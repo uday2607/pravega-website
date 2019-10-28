@@ -1320,6 +1320,15 @@ header.nav-block-left {
     background-position: 50% 50%;
 }
 
+.parallax-bob {
+    background-image: url("../img/bob-portfolio.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    padding: 150px 0;
+    background-position: 50% 50%;
+}
+
 .banner-state {
     background-image: url("../img/banner/menu_banner.jpg");
     background-size: cover;
@@ -3749,6 +3758,10 @@ address p {
 
 .banner-ban2 {
     background-image: url("../img/banner/ban2.jpg")!important;
+}
+
+.banner-bob {
+    background-image: url("../img/bob-background.jpg")!important;
 }
 
 .banner-01 {
