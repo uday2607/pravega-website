@@ -37,7 +37,6 @@ ul {
   color: white;
 }
 .project__link {
-  will-change: opacity;
   display: block;
   margin: 24px 0;
 }
@@ -54,9 +53,9 @@ ul {
   width: 100vw;
   height: 100vh;
   opacity: 0;
-  -webkit-transform: scale(0.7);
-          transform: scale(0.7);
-  transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
+  -webkit-transform: scale(0.1);
+          transform: scale(0.1);
+  transition: all 1s cubic-bezier(0.23, 1, 0.33, 1);
 }
 .project__bg-item--active {
   opacity: 1;

@@ -1517,7 +1517,7 @@ header.nav-block-left {
 /*gutter*/
 
 .portfolio.gutter .portfolio-item {
-    padding: 10px;
+    padding: 40px;
 }
 
 
@@ -1531,7 +1531,7 @@ header.nav-block-left {
 /*portfolio 3 grid*/
 
 .portfolio.col-3 .portfolio-item {
-    width: 33.3333333%;
+    width: 33.33333%;
 }
 
 /*portfolio 4 grid*/

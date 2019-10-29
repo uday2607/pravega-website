@@ -37,8 +37,8 @@
             }
 
             team_name_details = team_name;
-            team_category_details=team_category;
-            team_no_participants_details=team_no_participants;
+            team_category_details = team_category;
+            team_no_participants_details = team_no_participants;
             var input_section_code_1 = '<div class="form-row"><div class="name">Participant ';
             var input_section_code_2 = ' name </div> <div class="value"><div class="input-group"><input class="input--style-5" type="text" id="participant-';
             var input_section_code_3 = ' "></div></div></div>';
@@ -59,11 +59,9 @@
 
             document.getElementById("team-regis-box").innerHTML = "";
             document.getElementById("team-regis-box").innerHTML = data;
-            document.getElementById("team-name").value = team_name;
-            document.getElementById("team-category").value = team_category;
-            document.getElementById("email").value = team_email;
-            document.getElementById("phone-number").value = team_phone_no;
-            document.getElementById("number-of-participants").value = team_no_participants;
+            document.getElementById("team-name").value = team_name_details;
+            document.getElementById("team-category").value = team_category_details;
+            document.getElementById("number-of-participants").value = team_no_participants_details;
             document.getElementById("footer").style.display = "hidden";
             collect_name_data(team_no_participants);
         }
