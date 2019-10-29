@@ -1299,7 +1299,7 @@ header.nav-block-left {
     position: relative;
     width: 100%;
     overflow: hidden;
-	
+
 }
 
 .parallax {
@@ -1433,7 +1433,7 @@ header.nav-block-left {
     right: 0;
     margin: 0;
     border: 20px solid rgba(0, 0, 0, 0.1);
-    background-color: rgba(255, 255, 255, 0.90);
+    background-color: rgba(255, 200, 100, 0.60);
     opacity: 0;
     -webkit-transition: all 0.3s;
     transition: all 0.3s;
