@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>
+        Lasya Registration Page
+    </title>
+    <link rel="stylesheet" href="main.css">
+    <script type="text/javascript">
+
+        var clicks = 0;
+
+        //details to be sent to server START
+        var college_name;
+        var team_name_details;
+        var team_category_details;
+        var team_email_details;
+        var team_phone_no_details;
+        var team_participants_details = [];
+        //details to be sent to server END
+
+
+        function create_name_fields() {
+
+            clicks = clicks + 1;
+
+            if (clicks == 1) {
+
+                var data = document.getElementById("team-regis-box").innerHTML;
+                data = data.split('<div class="input-element-text">Participant ')[0];
+                var team_name = document.getElementById("team-name").value;
+                var team_category = document.getElementById("team-category").value;
+                var team_email = document.getElementById("email").value;
+                var team_phone_no = document.getElementById("phone-number").value;
+                var team_no_participants = document.getElementById("number-of-participants").value;
+                college_name = document.getElementById("college-name").value;
+                if (team_no_participants > 15 || team_no_participants < 1) {
+                    alert("Invalid number of participants! Please enter a number less than 15.");
+                    return;
+                }
+                if (!(team_name && team_email && team_phone_no && college_name)) {
+                    alert("Invalid input. Please enter valid input.");
+                    return;
+                }
+
+                team_name_details = team_name;
+                team_category_details = team_category;
+                team_email_details = team_email;
+                team_phone_no_details = team_phone_no;
+                team_no_participants_details = team_no_participants;
+                var input_section_code_1 = '<div class="form-row"><div class="name">Participant ';
+                var input_section_code_2 = '\'s Name </div> <div class="value"><div class="input-group"><input class="input--style-5" type="text" id="participant-';
+                var input_section_code_3 = '"></div></div></div>';
+
+                for (var i = 0; i < team_no_participants; i++) {
+                    var x = (i + 1).toString(10);
+                    data += input_section_code_1 + x + input_section_code_2 + x + input_section_code_3;
+                }
+
+                document.getElementById("team-regis-box").innerHTML = data;
+                document.getElementById("team-name").value = team_name;
+                document.getElementById("team-category").value = team_category;
+                document.getElementById("email").value = team_email;
+                document.getElementById("phone-number").value = team_phone_no;
+                document.getElementById("number-of-participants").value = team_no_participants;
+                document.getElementById("college-name").value = college_name;
+                document.getElementById("footer").style.display = "hidden";
+            } else {
+                collect_name_data(team_no_participants_details);
+            }
+
+        }
+
+        function collect_name_data(no_participants) {
+
+            var name_list = [];
+            for (var i = 0; i < no_participants; i++) {
+                var temp = document.getElementById("participant-" + (i + 1)).value;
+                console.log(temp);
+                if (!(temp && (i + 1))) {
+                    return;
+                }
+                name_list.push(temp);
+            }
+            console.log(name_list);
+            team_participants_details = name_list;
+            submit_all_info();
+        }
+
+        function submit_all_info() {
+            var body = {
+                "noi": college_name,
+                "event": "lasya",
+                "teamName": team_name_details,
+                "members": team_participants_details,
+                "phone": team_phone_no_details,
+                "email": team_email_details,
+                "meta":{
+                    "category":team_category_details
+                }
+            }
+
+            postData(body);
+
+        }
+
+        function postData(bod) {
+            var xhr = new XMLHttpRequest();
+            var theUrl = "http://localhost:1909/api/register";
+            xhr.open("POST", theUrl);
+            xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+            console.log(bod);
+            xhr.send(JSON.stringify(bod));
+        }
+    </script>
+
+
+</head>
+
+<!--
+Classes:
+    input-element: any element that is related to input
+    input-element-text: text describing input
+    input-element-box: input text box
+    input-element-button: button for submitting and recording data
+    Team details section: 
+        email: for email input
+        phone-number: for phone number input
+        team-name: for team name input
+        number-of-participants: number of participants
+
+IDs:
+    number-of-teams: id for input for number of teams
+    regis-box-container: container for holding code that has team details.
+    Team details section:
+        team-regis-box: team's registration input div container
+
+
+Functions:
+    create_boxes: makes individual team registration boxes
+    create_name_fields: creates name field entry points for each team section, also adds name, email, phone_number to respective arrays
+-->
+
+
+<body>
+    <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
+        <div class="wrapper wrapper--w790">
+            <div class="card card-5">
+                <div class="card-heading">
+                    <h2 class="title">Event Registration Form</h2>
+                </div>
+                <div class="card-body">
+                    <form method="POST" id="team-regis-box">
+                        <div class="form-row">
+                            <div class="name">Dance Academy/College Name:</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-5" type="text" id="college-name">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Team Name</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-5" type="text" id="team-name" value="Test">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Category</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <div class="rs-select2 js-select-simple select--no-search">
+                                        <select name="category" size="1" id="team-category">
+                                            <!-- <option disabled="disabled" selected="selected">Choose option</option> -->
+                                            <option>Aurum</option>
+                                            <option>Novare</option>
+                                        </select>
+                                        <div class="select-dropdown"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Email</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-5" type="email" id="email" value="j@s.com">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Phone-number</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-5" type="number" id="phone-number" value="66">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Number of Participants</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-5" type="text" id="number-of-participants" value="2">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 						
+						
+						<div class="form-row"><div class="name">Participant-name </div> <div class="value"><div class="input-group"><input class="input--style-5" type="text" id="participant-1"></div></div></div>
+						 -->
+
+
+                    </form>
+                </div>
+                <div>
+                    <input type="button" class="btn btn--radius-2 btn--red" id="submit-button"
+                        onclick="create_name_fields()" value="Submit">
+                </div>
+            </div>
+        </div>
+
+        <footer id="footer">&nbsp;</footer>
+        <!--    footer is for extra space at the bottom. weird glitch occurs with the background gradient if removed-->
+
+    </div>
+</body>
+
+</html>
