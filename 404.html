@@ -4,18 +4,26 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <meta name="description" content="">
+    <meta name="author" content="Mosaddek">
 
     <!--favicon icon-->
-    <link rel="icon" type="image/png" href="img/blue_dark_trans-01.png">
+    <link rel="icon" type="image/png" href="img/favicon.png">
 
-    <title>Pravega - 404 Error</title>
+    <title>themelock.com - 404 Error</title>
 
     <!--common style-->
 
     
 <link href='http://fonts.googleapis.com/css?family=Abel|Source+Sans+Pro:400,300,300italic,400italic,600,600italic,700,700italic,900,900italic,200italic,200' rel='stylesheet' type='text/css'>
-<link href="css/all.css" rel="stylesheet">
-
+<link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/magnific-popup.css" rel="stylesheet">
+    <link href="css/shortcodes/shortcodes.css" rel="stylesheet">
+    <link href="css/owl.carousel.css" rel="stylesheet">
+    <link href="css/owl.theme.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style-responsive.css" rel="stylesheet">
+    <link href="css/default-theme.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -36,43 +44,6 @@
 <div class="wrapper">
 
         <!--header start-->
-	    
-    <a href="#cd-nav" class="cd-nav-trigger">Menu
-              <span class="cd-nav-icon"></span>
-              <svg x="0px" y="0px" width="54px" height="54px" viewBox="0 0 54 54">
-                  <circle r="50" fill="transparent"></circle>
-              </svg>
-          </a>
-
-          <div id="cd-nav" class="cd-nav">
-              <div class="cd-navigation-wrapper">
-                  <div class="cd-half-block">
-                      <h2>Navigation</h2>
-                      <nav>
-                          <ul class="cd-primary-nav">
-                              <li class="active"><a href="index.html">Home</a>
-                          </li>
-  						<li class="active"><a href="#">Registrations</a>
-                          </li>
-  						<li class="active"><a href="#">Events</a>
-                          </li>
-  						<li class="active"><a href="#">Updates</a>
-                          </li>
-  						<li class="active"><a href="#">Originals</a>
-                          </li>
-  						<li class="active"><a href="#">Archive</a>
-                          </li>
-  						<li class="active"><a href="#">Sponsors</a>
-                          </li>
-  						<li class="active"><a href="#">Help</a>
-                          </li>
-  						<li class="active"><a href="#">Contact us</a>
-                          </li>
-                          </ul>
-                      </nav>
-                  </div>
-              </div>
-          </div>
         <!--header end-->
 
         <!--page title start-->
@@ -158,26 +129,6 @@
 <script src="js/imagesloaded.js"></script>
     <!--common scripts-->
 <script src="js/scripts.js?6"></script>
-<script>
-        jQuery(document).ready(function($){
-            var isLateralNavAnimating = false;
-
-            //open/close lateral navigation
-            $('.cd-nav-trigger').on('click', function(event){
-                event.preventDefault();
-                //stop if nav animation is running
-                if( !isLateralNavAnimating ) {
-                    if($(this).parents('.csstransitions').length > 0 ) isLateralNavAnimating = true;
-
-                    $('body').toggleClass('navigation-is-open');
-                    $('.cd-navigation-wrapper').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(){
-                        //animation is over
-                        isLateralNavAnimating = false;
-                    });
-                }
-            });
-        });
-    </script>	
 
 </body>
 </html>
