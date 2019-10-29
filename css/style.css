@@ -145,7 +145,16 @@ body {
     -moz-font-smoothing: antialiased;
 }
 
-.events{
+.science_events{
+  background: -webkit-gradient(linear, left bottom, right top, from(#55F3FF), to(#55FF86));
+  background: -webkit-linear-gradient(bottom left, #55F3FF 0%,#55FF86 100%);
+  background: -moz-linear-gradient(bottom left, #55F3FF 0%,#55FF86 100%);
+  background: -o-linear-gradient(bottom left, #55F3FF 0%,#55FF86 100%);
+  background: linear-gradient(to top right, #55F3FF 0%,#55FF86 100%);
+
+}
+
+.cultural_events{
   background: -webkit-gradient(linear, left bottom, right top, from(#ff5f6d), to(#ffc371));
   background: -webkit-linear-gradient(bottom left, #ff5f6d 0%,#ffc371 100%);
   background: -moz-linear-gradient(bottom left, #ff5f6d 0%,#ffc371 100%);
@@ -154,6 +163,14 @@ body {
 
 }
 
+.events{
+  background: -webkit-gradient(linear, left bottom, right top, from(#ff5f6d), to(#ffc371));
+  background: -webkit-linear-gradient(bottom left, #ff5f6d 0%,#ffc371 100%);
+  background: -moz-linear-gradient(bottom left, #ff5f6d 0%,#ffc371 100%);
+  background: -o-linear-gradient(bottom left, #ff5f6d 0%,#ffc371 100%);
+  background: linear-gradient(to top right, #ff5f6d 0%,#ffc371 100%);
+
+}
 
 a:active,
 a:focus { outline: none !important; }
