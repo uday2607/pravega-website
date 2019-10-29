@@ -16,7 +16,7 @@
 }
 
 .portfolio .portfolio-item .thumb img{
-    width: 100%;
+    width: 60%;
     height: auto;
     display: block;
 }
@@ -193,7 +193,7 @@
 .portfolio-with-title .portfolio-title h4,
 .portfolio-with-title .portfolio-title h4 a {
     margin: 0;
-    font-size: 14px;
+    font-size: 26px;
     text-transform: uppercase;
     letter-spacing: 2px;
     color:#222
