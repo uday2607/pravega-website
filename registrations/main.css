@@ -575,7 +575,7 @@ input {
   display: none;
 }
 
-.input--style-4 {
+.input--style-5 {
   background: #e5e5e5;
   line-height: 50px;
   -webkit-border-radius: 5px;
@@ -587,7 +587,7 @@ input {
 }
 
 
-.input--style-5 {
+.input--style-4 {
   background: #e5e5e5;
   line-height: 50px;
   -webkit-border-radius: 5px;

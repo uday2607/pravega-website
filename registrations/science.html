@@ -1,8 +1,23 @@
 <!DOCTYPE html>
 <html lang="en" >
 <head>
-  <meta charset="UTF-8">
-  <title>Intro → Menu</title>
+     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="pravega, pravega 2020,iisc, iisc bangalore, iisc fest, fest, fests in bangalore,bangalore,iisc">
+    <meta name="Pravega" content="Pravega">
+
+    <!--favicon icon-->
+     <link rel="icon" type="image/png" href="../img/blue_dark_trans-01.png"> <!-- take a favicon.img for favicon -->
+
+    <title>Registrations | Pravega 2020, IISc Bangalore</title>
+
+
+    <!--common style-->
+
+
+	<link href="fonts/Organic-Slab.ttf" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Abel|Source+Sans+Pro:400,300,300italic,400italic,600,600italic,700,700italic,900,900italic,200italic,200' rel='stylesheet' type='text/css'>
+    <link href="../css/all.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Rammetto+One|Work+Sans:900" rel="stylesheet"><link rel="stylesheet" href="./style.css">
 
 </head>
@@ -11,12 +26,49 @@
 <div class="container">
       <div class="links">
         <a href="decoherence.html"><h1 class="event-link">Decoherence<h1></a>
-		<a href="whodunnit.html"><h1 class="event-link">Whodunnit<h1></a>
-		<a href="chemenigma.html"><h1 class="event-link">Chemenigma<h1></a>
-		<a href="enummeration.html"><h1 class="event-link">Enumeration<h1></a>	
+		    <a href="whodunnit.html"><h1 class="event-link">Whodunnit<h1></a>
+		    <a href="chemenigma.html"><h1 class="event-link">Chemenigma<h1></a>
+		    <a href="enummeration.html"><h1 class="event-link">Enumeration<h1></a>
       </div>
 	</div>
 <!-- partial -->
-  
+<!-- partial -->
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/menuzord.js"></script>
+<script src="../js/jquery.flexslider-min.js"></script>
+<script src="../js/owl.carousel.min.js"></script>
+<script src="../js/jquery.isotope.js"></script>
+<script src="../js/jquery.magnific-popup.min.js"></script>
+<script src="../js/jquery.countTo.js"></script>
+<script src="../js/visible.js"></script>
+<script src="../js/smooth.js"></script>
+<script src="../js/wow.min.js"></script>
+<script src="../js/imagesloaded.js"></script>
+    <!--common scripts-->
+	<script src="../js/scripts.js?6"></script>
+	 <script src="../js/modernizr.js"></script>
+  <script>
+        jQuery(document).ready(function($){
+            var isLateralNavAnimating = false;
+
+            //open/close lateral navigation
+            $('.cd-nav-trigger').on('click', function(event){
+                event.preventDefault();
+                //stop if nav animation is running
+                if( !isLateralNavAnimating ) {
+                    if($(this).parents('.csstransitions').length > 0 ) isLateralNavAnimating = true;
+
+                    $('body').toggleClass('navigation-is-open');
+                    $('.cd-navigation-wrapper').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(){
+                        //animation is over
+                        isLateralNavAnimating = false;
+                    });
+                }
+            });
+        });
+    </script>
+
+
 </body>
 </html>
