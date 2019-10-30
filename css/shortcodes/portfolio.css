@@ -121,7 +121,13 @@
 /*portfolio 2 grid*/
 
 .portfolio.col-2 .portfolio-item {
-    width: 49.99%;
+    width: 50%;
+}
+
+@media screen and (max-width:860px){
+	.portfolio.col-2 .portfolio-item {
+    	width: 100%;
+	}
 }
 
 
