@@ -54,14 +54,18 @@
         function create_name_fields(){
            var data = document.getElementById("team-regis-box").innerHTML;
             data= data.split('<div class="input-element-text">Participant ')[0];
-			var college_name = document.getElementById("college-name").value;
+			      var college_name = document.getElementById("college-name").value;
             var team_name = document.getElementById("team-name").value;
             var team_email = document.getElementById("email").value;
             var team_phone_no = document.getElementById("phone-number").value;
-			var team_phone_no1 = document.getElementById("phone-number-1").value;
-			var team_phone_no2 = document.getElementById("phone-number-2").value;
+			      var team_phone_no1 = document.getElementById("phone-number-1").value;
+			      var team_phone_no2 = document.getElementById("phone-number-2").value;
             var team_no_participants = document.getElementById("number-of-participants").value;
 
+            if (team_no_participants > 20 || team_no_participants < 1){
+              alert("Number of participants must be between 1 and 20.");
+              return;
+            }
 
 
             var input_section_code_1 = '<div class="form-row"><div class="name">Participant ';
@@ -74,26 +78,21 @@
 
             document.getElementById("team-regis-box").innerHTML = "";
             document.getElementById("team-regis-box").innerHTML = data;
-			 document.getElementById("college-name").value = college_name
+			      document.getElementById("college-name").value = college_name
             document.getElementById("team-name").value = team_name;
             document.getElementById("email").value = team_email;
             document.getElementById("phone-number").value = team_phone_no;
-			document.getElementById("phone-number-1").value = team_phone_no1;
-			document.getElementById("phone-number-2").value = team_phone_no2;
+			      document.getElementById("phone-number-1").value = team_phone_no1;
+			      document.getElementById("phone-number-2").value = team_phone_no2;
             document.getElementById("number-of-participants").value = team_no_participants;
 
 
             document.getElementById("footer").style.display = "hidden";
 
-			 elem.parentNode.removeChild(buttonA);
+			      document.getElementById("buttonA").disabled = true;
 
         }
 
-
-			function disableButton(btn){
-				document.getElementById(btn.id).disabled = true;
-				alert("Button has been disabled.");
-			}
 
 
         function collect_name_data(no_participants){
@@ -223,7 +222,7 @@ Functions:
                             <div class="name">Phone No.</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="text" id="phone-number">
+                                    <input class="input--style-5" type="number" id="phone-number">
                                 </div>
                             </div>
                         </div>
@@ -231,7 +230,7 @@ Functions:
                             <div class="name">Alternate Phone No. 1</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="text" id="phone-number-1">
+                                    <input class="input--style-5" type="number" id="phone-number-1">
                                 </div>
                             </div>
                         </div>
@@ -239,7 +238,7 @@ Functions:
                             <div class="name">Alternate Phone No. 2</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="text" id="phone-number-2">
+                                    <input class="input--style-5" type="number" id="phone-number-2">
                                 </div>
                             </div>
                         </div>
@@ -332,7 +331,7 @@ Functions:
         <script src="vendor/datepicker/daterangepicker.js"></script>
 
         <!-- Main JS-->
-    	<script src="js/global.js"></script>	
+    	<script src="js/global.js"></script>
 </body>
 
 </html>
