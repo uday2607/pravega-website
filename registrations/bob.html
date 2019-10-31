@@ -18,7 +18,9 @@
     <!--common style-->
 
 
-    <link href="http://fonts.googleapis.com/css?family=Abel|Source+Sans+Pro:400,300,300italic,400italic,600,600italic,700,700italic,900,900italic,200italic,200" rel="stylesheet" type="text/css">
+    <link
+        href="http://fonts.googleapis.com/css?family=Abel|Source+Sans+Pro:400,300,300italic,400italic,600,600italic,700,700italic,900,900italic,200italic,200"
+        rel="stylesheet" type="text/css">
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/magnific-popup.css" rel="stylesheet">
@@ -28,11 +30,11 @@
     <link href="../css/default-theme.css" rel="stylesheet">
     <link href="../css/push-nav.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-     <link href="main.css" rel="stylesheet" media="all">
-   <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
-      <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+    <link href="main.css" rel="stylesheet" media="all">
+    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
-      <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
 </head>
 
 <!--
@@ -59,45 +61,6 @@ Functions:
     create_name_fields: creates name field entry points for each team section, also adds name, email, phone_number to respective arrays
 -->
 
-
-<script type="text/javascript">
-
-    //details to be sent to server START
-    var band_name;
-    var genre_of_music;
-    var city_name;
-    var city_category;
-    var team_email_details;
-    var team_phone_no_details;
-    var team_participants_details;
-    var no_of_members;
-    var team_fb;
-    var team_youtube;
-    //details to be sent to server END
-
-    function submitAllInfo() {
-        band_name = document.getElementById('band-name');
-        city_name = document.getElementById('city-name');
-        city_category = document.getElementById('city-category');
-        genre_of_music = document.getElementById('genre');
-        team_email_details  = document.getElementById('email');
-        team_phone_no_details = document.getElementById('phone');
-        no_of_members = document.getElementById('no-of-members');
-        team_participants_details = document.getElementById('names');
-        team_fb = document.getElementById('fb');
-        team_youtube = document.getElementById('youtube');
-
-        // Similar variable list to be present for youtube page and fb also ( all that is metadata, not primary content)
-        // I just want to have all those variables ( listed above as i have shown )
-        // NOTE: Data validation needs to be done as well !!!
-        // Check for invalid phone numbers and don't allow blank spaces etc.
-
-        // After all that i want the above list .
-
-    }
-
-
-</script>
 
 
 <body>
@@ -248,10 +211,82 @@ Functions:
                 </div>
                 <div>
                     <input type="button" class="btn btn--radius-2 btn--red" id="submit-button"
-                        onclick="submitAllInfo()" value="submit">
+                        onclick="submitAllInfo();" value="submit">
                 </div>
             </div>
         </div>
+
+
+        <script type="text/javascript">
+
+            //details to be sent to server START
+            var band_name;
+            var genre_of_music;
+            var city_name;
+            var city_category;
+            var team_email_details;
+            var team_phone_no_details;
+            var team_participants_details;
+            var no_of_members;
+            var team_fb;
+            var team_youtube;
+            //details to be sent to server END
+
+            function submitAllInfo() {
+                band_name = document.getElementById('band-name').value; //
+                city_name = document.getElementById('city-name').value; // 
+                city_category = document.getElementById('city-category').value; // 
+                genre_of_music = document.getElementById('genre').value; //
+                team_email_details = document.getElementById('email').value;//
+                team_phone_no_details = document.getElementById('phone').value;//
+                no_of_members = document.getElementById('no-of-members').value; //
+                team_participants_details = document.getElementById('names').value.split(',');
+                team_fb = document.getElementById('fb').value;
+                team_youtube = document.getElementById('youtube').value;
+
+                var body = {
+                    "noi": band_name,
+                    "event": "bob",
+                    "members": team_participants_details,
+                    "phone": team_phone_no_details,
+                    "email": team_email_details,
+                    "meta": {
+                        'city': city_name,
+                        'venue': city_category,
+                        'genre': genre_of_music,
+                        'team_fb': team_fb,
+                        'team_youtube': team_youtube
+                    }
+                }
+
+
+
+                // Similar variable list to be present for youtube page and fb also ( all that is metadata, not primary content)
+                // I just want to have all those variables ( listed above as i have shown )
+                // NOTE: Data validation needs to be done as well !!!
+                // Check for invalid phone numbers and don't allow blank spaces etc.
+
+                // After all that i want the above list .
+                console.log(body);
+                postData(body);
+
+            }
+
+
+            function postData(bod) {
+                var xhr = new XMLHttpRequest();
+                var theUrl = "http://localhost:5000/api/register";
+                xhr.open("POST", theUrl);
+                xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                console.log(bod);
+                xhr.send(JSON.stringify(bod));
+            }
+
+
+
+        </script>
+
+
 
         <footer id="footer">&nbsp;</footer>
         <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
@@ -291,36 +326,37 @@ Functions:
             });
         </script>
         <!-- partial -->
-        <script src="events.js"></script>
+        <!-- <script src="events.js"></script> -->
         <!--    footer is for extra space at the bottom. weird glitch occurs with the background gradient if removed-->
 
     </div>
 
-        <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-        <script src="../js/bootstrap.min.js"></script>
-        <script src="../js/menuzord.js"></script>
-        <script src="../js/jquery.flexslider-min.js"></script>
-        <script src="../js/owl.carousel.min.js"></script>
-        <script src="../js/jquery.isotope.js"></script>
-        <script src="../js/jquery.magnific-popup.min.js"></script>
-        <script src="../js/jquery.countTo.js"></script>
-        <script src="../js/visible.js"></script>
-        <script src="../js/smooth.js"></script>
-        <script src="../js/wow.min.js"></script>
-        <script src="../js/imagesloaded.js"></script>
-            <!--common scripts-->
-        <script src="../js/scripts.js"></script>
-        <script src="../js/modernizr.js"></script>
 
-            <!-- Jquery JS-->
-            <script src="vendor/jquery/jquery.min.js"></script>
-            <!-- Vendor JS-->
-            <script src="vendor/select2/select2.min.js"></script>
-            <script src="vendor/datepicker/moment.min.js"></script>
-            <script src="vendor/datepicker/daterangepicker.js"></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/menuzord.js"></script>
+    <script src="../js/jquery.flexslider-min.js"></script>
+    <script src="../js/owl.carousel.min.js"></script>
+    <script src="../js/jquery.isotope.js"></script>
+    <script src="../js/jquery.magnific-popup.min.js"></script>
+    <script src="../js/jquery.countTo.js"></script>
+    <script src="../js/visible.js"></script>
+    <script src="../js/smooth.js"></script>
+    <script src="../js/wow.min.js"></script>
+    <script src="../js/imagesloaded.js"></script>
+    <!--common scripts-->
+    <script src="../js/scripts.js"></script>
+    <script src="../js/modernizr.js"></script>
 
-            <!-- Main JS-->
-        	<script src="js/global.js"></script>
+    <!-- Jquery JS-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <!-- Vendor JS-->
+    <script src="vendor/select2/select2.min.js"></script>
+    <script src="vendor/datepicker/moment.min.js"></script>
+    <script src="vendor/datepicker/daterangepicker.js"></script>
+
+    <!-- Main JS-->
+    <script src="js/global.js"></script>
 </body>
 
 </html>
