@@ -234,8 +234,8 @@ Functions:
 
             function submitAllInfo() {
                 band_name = document.getElementById('band-name').value; //
-                city_name = document.getElementById('city-name').value; // 
-                city_category = document.getElementById('city-category').value; // 
+                city_name = document.getElementById('city-name').value; //
+                city_category = document.getElementById('city-category').value; //
                 genre_of_music = document.getElementById('genre').value; //
                 team_email_details = document.getElementById('email').value;//
                 team_phone_no_details = document.getElementById('phone').value;//
@@ -275,7 +275,7 @@ Functions:
 
             function postData(bod) {
                 var xhr = new XMLHttpRequest();
-                var theUrl = "http://localhost:5000/api/register";
+                var theUrl = "https://www.pravega.org/api/register";
                 xhr.open("POST", theUrl);
                 xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
                 console.log(bod);
