@@ -44,22 +44,24 @@
 
         //details to be sent to server START
         var college_name;
-        var team_name_details;
-        var team_email_details;
-        var team_phone_no_details;
-        var team_participants_details;
+        var team_name;
+        var team_email;
+        var team_phone_no;
+        var team_phone_no1;
+        var team_phone_no2;
+        var team_no_participants;
         //details to be sent to server END
 
 
         function create_name_fields(){
-           var data = document.getElementById("team-regis-box").innerHTML;
-            data= data.split('<div class="input-element-text">Participant ')[0];
-			var college_name = document.getElementById("college-name").value;
+            var data = document.getElementById("team-regis-box").innerHTML;
+            data = data.split('<div class="input-element-text">Participant ')[0];
+			      var college_name = document.getElementById("college-name").value;
             var team_name = document.getElementById("team-name").value;
             var team_email = document.getElementById("email").value;
             var team_phone_no = document.getElementById("phone-number").value;
-			var team_phone_no1 = document.getElementById("phone-number-1").value;
-			var team_phone_no2 = document.getElementById("phone-number-2").value;
+			      var team_phone_no1 = document.getElementById("phone-number-1").value;
+			      var team_phone_no2 = document.getElementById("phone-number-2").value;
             var team_no_participants = document.getElementById("number-of-participants").value;
 
 
@@ -332,7 +334,7 @@ Functions:
         <script src="vendor/datepicker/daterangepicker.js"></script>
 
         <!-- Main JS-->
-    	<script src="js/global.js"></script>	
+    	<script src="js/global.js"></script>
 </body>
 
 </html>
