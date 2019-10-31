@@ -46,12 +46,11 @@
         var clicks = 0;
 
         //details to be sent to server START
+        var name_1,name_2;
+        var type_1,type_2;
+        var email_1, email_2;
+        var number_1,number_2;
         var college_name;
-        var team_name_detail;
-        var team_category_details;
-        var team_email_details;
-        var team_phone_no_details;
-        var team_participants_details = [];
         //details to be sent to server END
 
 
@@ -62,55 +61,40 @@
             if (clicks == 1) {
 
                 var data = document.getElementById("team-regis-box").innerHTML;
-                data = data.split('<div class="input-element-text">Participant ')[0];
-                var pin_code = document.getElementById("pincode").value;
+                var name_1 = document.getElementById("name1").value;
+                var name_2 = document.getElementById("name2").value;
+                var email_1 = document.getElementById("email1").value;
+                var email_2 = document.getElementById("email2").value;
+                var number_1 = document.getElementById("number1").value;
+                var number_2 = document.getElementById("number2").value;
+                var type_1 = document.getElementById("type1").value;
+                var type_2 = document.getElementById("type2").value;
                 var college_name = document.getElementById("college-name").value;
-                var team_no_participants = document.getElementById("number-of-participants").value;
-                college_name = document.getElementById("college-name").value;
-                if(team_no_participants>15 || team_no_participants<1){
-                    alert("Invalid number of participants! Please enter a number less than 15.");
+
+                if(!(college_name)){
+                    alert("Fill the Institute name please");
                     return;
                 }
-                if(1000000000>=team_phone_no || team_phone_no>=10000000000){
-                    alert("Enter a valid mobile number");
-                    return;
-                }
-                if(!(team_name && college_name)){
-                    alert("Fill the name please");
-                    return;
-                }
-                if(!(000000<pin_code<1000000 )){
-                    alert("Please fill your pincode");
-                    return;
-                }
-                if(!(team_email )){
-                    alert("Please fill your email");
-                    return;
-                }
-                if(!(team_phone_no )){
+                if(!(number_1&&number_2 )){
                     alert("Please fill your mobile number");
                     return;
                 }
+                if(!(email_1&&email_2 )){
+                    alert("Please fill your email");
+                    return;
+                }
 
-                team_name_details = team_name;
-                team_category_details = team_category;
-                team_email_details = team_email;
-                team_phone_no_details = team_phone_no;
-                team_no_participants_details = team_no_participants;
-                var input_section_code_1 = '<div class="form-row"><div class="name">Participant ';
-                var input_section_code_2 = '\'s Name </div> <div class="value"><div class="input-group"><input class="input--style-5" type="text" id="participant-';
-                var input_section_code_3 = '"></div></div></div>';
 
                 document.getElementById("team-regis-box").innerHTML = data;
                 document.getElementById("college-name").value = college_name;
-                document.getElementById("pincode").value = pin_code;
+                submit_all_info();
             } else {
                 collect_name_data(team_no_participants_details);
             }
 
         }
 
-        function collect_name_data(2) {
+        function collect_name_data() {
 
             var name_list = [];
             for (var i = 0; i < 2; i++) {
@@ -164,6 +148,7 @@
         }
 
         function submit_all_info() {
+            alert('working');
             var body = {
                 "noi": college_name,
                 "event": "ennumeration",

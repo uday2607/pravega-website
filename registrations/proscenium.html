@@ -64,6 +64,23 @@
 			      var team_phone_no2 = document.getElementById("phone-number-2").value;
             var team_no_participants = document.getElementById("number-of-participants").value;
 
+            if(!(team_name && college_name)){
+                    alert("Fill the name please");
+                    return;
+                }
+
+            if(!(team_email )){
+                    alert("Please fill your email");
+                    return;
+                }
+             if(!(team_phone_no )){
+                    alert("Please fill your mobile number");
+                    return;
+                }
+            if(1000000000>=team_phone_no || team_phone_no>=10000000000){
+                    alert("Enter a Valid mobile number ");
+                    return;
+                }
             if (team_no_participants > 20 || team_no_participants < 1){
               alert("Number of participants must be between 1 and 20.");
               return;
@@ -92,6 +109,7 @@
             document.getElementById("footer").style.display = "hidden";
 
 			      document.getElementById("buttonA").disabled = true;
+
 
         }
 

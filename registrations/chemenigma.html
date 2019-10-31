@@ -75,7 +75,7 @@
             var input_section_code_8 = ' </div> <div class="value"><div class="input-group"><input class="input--style-5" type="email" id="email-';
             var input_section_code_9 = ' "></div></div></div>';
             var input_section_code_10 = '<div class="form-row"><div class="name">School/College Name ';
-            var input_section_code_11 = ' </div> <div class="value"><div class="input-group"><input class="input--style-5" type="text" id="college-name';
+            var input_section_code_11 = ' </div> <div class="value"><div class="input-group"><input class="input--style-5" type="text" id="college_name-';
             var input_section_code_12 = ' "></div></div></div>';
 
             for(var i = 0; i<team_no_participants;i++){
@@ -89,7 +89,7 @@
             document.getElementById("team-category").value = team_category_details;
             document.getElementById("number-of-participants").value = team_no_participants_details;
             document.getElementById("footer").style.display = "hidden";
-            collect_name_data(team_no_participants);
+            document.getElementById("buttonA").disabled = true;
         }
 
         function collect_name_data(no_participants){
@@ -99,13 +99,14 @@
                 var temp = document.getElementById("participant-" + (i+1).toString(10)).value;
                 var temp_phone = document.getElementById("phone_number-" + (i+1).toString(10)).value;
                 var temp_email = document.getElementById("email-" + (i+1).toString(10)).value;
+                var temp_college = document.getElementById("college_name-" + (i+1).toString(10)).value;
 
                 if(!(temp && i)){ //BUG BUG BUG: checking if temp is empty and killing the code if it is. problem is that it's killing the code even if its non empty. problem possibly lies with the initiating statement. Please fix it.
                     return;
                 }
                 name_list.push(temp);
             }
-            team_participants_details=name_list;
+            var team_participants_details=name_list;
             submit_all_info();
         }
 
@@ -237,20 +238,23 @@ Functions:
                                                   </div>
                                                                       </div>
                                                                     </div>
-            <div class="form-row">
+             <div class="form-row">
                             <div class="name">Number of Participants</div>
                                   <div class="value">
                                       <div class="input-group">
                                           <input class="input--style-5" type="text" id="number-of-participants">
                                       </div>
                                   </div>
-                              </div>
-
+                            </div>
+                            <div>
+                                <button id="buttonA" onclick="create_name_fields()" class="btn btn--radius-2 btn--red" value="Add">Add</button>
+                            </div>
 					</form>
-				</div>
-						<div>
-							<input type="button" class="btn btn--radius-2 btn--red" id="submit-button" onclick="create_name_fields()" value="Go"> <!--The submit button is not submitting the fields. Instead it requires you to enter the number of participants for a second time. -->
-                        </div>
+                </div>
+                  
+                <div>
+                    <input type="button" class="btn btn--radius-2 btn--red" id="submit-button" onclick="collect_name_data(team_no_participants)" value="Submit">
+                </div>
 			</div>
             </div>
 
