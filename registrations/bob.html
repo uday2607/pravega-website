@@ -41,7 +41,7 @@ Classes:
     input-element-text: text describing input
     input-element-box: input text box
     input-element-button: button for submitting and recording data
-    Team details section: 
+    Team details section:
         email: for email input
         phone-number: for phone number input
         team-name: for team name input
@@ -63,30 +63,37 @@ Functions:
 <script type="text/javascript">
 
     //details to be sent to server START
-    var college_name;
-    var team_name_details;
-    var team_category_details;
+    var band_name;
+    var genre_of_music;
+    var city_name;
+    var city_category;
     var team_email_details;
     var team_phone_no_details;
     var team_participants_details;
-    var meta;
+    var no_of_members;
+    var team_fb;
+    var team_youtube;
     //details to be sent to server END
 
     function submitAllInfo() {
-        college_name = document.getElementById('band-name');
-        team_name_details = document.getElementById('band-name');
-        cityname = document.getElementById('city-name');
-        genre = document.getElementById('genre');
+        band_name = document.getElementById('band-name');
+        city_name = document.getElementById('city-name');
+        city_category = document.getElementById('city-category');
+        genre_of_music = document.getElementById('genre');
         team_email_details  = document.getElementById('email');
-        team_phone_no_details = document.getElementById('phno');
+        team_phone_no_details = document.getElementById('phone');
+        no_of_members = document.getElementById('no-of-members');
+        team_participants_details = document.getElementById('names');
+        team_fb = document.getElementById('fb');
+        team_youtube = document.getElementById('youtube');
 
         // Similar variable list to be present for youtube page and fb also ( all that is metadata, not primary content)
         // I just want to have all those variables ( listed above as i have shown )
-        // NOTE: Data validation needs to be done as well !!! 
+        // NOTE: Data validation needs to be done as well !!!
         // Check for invalid phone numbers and don't allow blank spaces etc.
 
-        // After all that i want the above list . 
-        
+        // After all that i want the above list .
+
     }
 
 
@@ -189,7 +196,7 @@ Functions:
                             <div class="name">Number of members</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="text" id="no_of_members">
+                                    <input class="input--style-5" type="text" id="no-of-members">
                                 </div>
                             </div>
                         </div>
@@ -213,7 +220,7 @@ Functions:
                             <div class="name">Phone (at least 3, separated by ',')</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="text" id="number-of-participants">
+                                    <input class="input--style-5" type="text" id="phone">
                                 </div>
                             </div>
                         </div>
