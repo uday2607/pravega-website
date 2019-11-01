@@ -1338,7 +1338,7 @@ header.nav-block-left {
 }
 
 .parallax-bob {
-    background-image: url("../img/bob-portfolio.jpg");
+    background-image: url("../img/bob-portfolio-min.jpg");
     background-size: cover;
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -3778,7 +3778,7 @@ address p {
 }
 
 .banner-bob {
-    background-image: url("../img/bob-background.jpg")!important;
+    background-image: url("../img/bob-background-min.jpg")!important;
 }
 
 .banner-01 {
