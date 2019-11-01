@@ -50,18 +50,21 @@
         var team_phone_no1;
         var team_phone_no2;
         var team_no_participants;
+        var prelim_details;
+        var team_participants_details;
         //details to be sent to server END
 
 
         function create_name_fields(){
            var data = document.getElementById("team-regis-box").innerHTML;
             data= data.split('<div class="input-element-text">Participant ')[0];
-			      var college_name = document.getElementById("college-name").value;
+			var college_name = document.getElementById("college-name").value;
             var team_name = document.getElementById("team-name").value;
             var team_email = document.getElementById("email").value;
             var team_phone_no = document.getElementById("phone-number").value;
 			      var team_phone_no1 = document.getElementById("phone-number-1").value;
 			      var team_phone_no2 = document.getElementById("phone-number-2").value;
+                  var prelim_details = document.getElementById("prelims").value;
             var team_no_participants = document.getElementById("number-of-participants").value;
 
             if(!(team_name && college_name)){
@@ -81,6 +84,10 @@
                     alert("Enter a Valid mobile number ");
                     return;
                 }
+         if(!prelim_details){
+                alert("Please put up the prelims video link");
+                return;
+         }
             if (team_no_participants > 20 || team_no_participants < 1){
               alert("Number of participants must be between 1 and 20.");
               return;
@@ -97,18 +104,19 @@
 
             document.getElementById("team-regis-box").innerHTML = "";
             document.getElementById("team-regis-box").innerHTML = data;
-			      document.getElementById("college-name").value = college_name
+			      document.getElementById("college-name").value = college_name;
             document.getElementById("team-name").value = team_name;
             document.getElementById("email").value = team_email;
             document.getElementById("phone-number").value = team_phone_no;
 			      document.getElementById("phone-number-1").value = team_phone_no1;
 			      document.getElementById("phone-number-2").value = team_phone_no2;
+           document.getElementById("prelims").value=prelim_details;
             document.getElementById("number-of-participants").value = team_no_participants;
+            document.getElementById("buttonA").disabled = true;
 
 
             document.getElementById("footer").style.display = "hidden";
 
-			      document.getElementById("buttonA").disabled = true;
 
 
         }
@@ -131,11 +139,32 @@
         }
 
         function submit_all_info(){
-            alert("working");
+            var body = {
+                "noi": college_name,
+                "event": "proscenium",
+                "teamName": team_name,
+                "members": team_participants_details,
+                "phone": team_phone_no,
+                "phone1": team_phone_no1,
+                "phone2": team_phone_no2,
+                "email_id": team_email,
+                "prelim": prelim_details,
+            }
             //submit team name, email, phone numbers, participant count, whatever
             //the global vars team_..._details.
             //End of registration page.
+            console.log(body);
+            postData(body);
         }
+        function postData(bod) {
+                window.location.replace('success.html');
+                var xhr = new XMLHttpRequest();
+                var theUrl = "https://www.pravega.org/api/register";
+                xhr.open("POST", theUrl);
+                xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                console.log(bod);
+                xhr.send(JSON.stringify(bod));
+            }
     </script>
 
 
@@ -260,6 +289,14 @@ Functions:
                                 </div>
                             </div>
                         </div>
+                 <div class="form-row">
+                            <div class="name">Link to Prelims Video</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-5" type="text" id="prelims">
+                                </div>
+                            </div>
+                </div>
                 	<div class="form-row">
                             <div class="name">Number of Participants</div>
                             <div class="value">
