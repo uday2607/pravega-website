@@ -43,177 +43,96 @@
     <script type="text/javascript">
 
 
-        var clicks = 0;
-
         //details to be sent to server START
         var college_name;
-        var team_name_detail;
-        var team_category_details;
-        var team_email_details;
-        var team_phone_no_details;
-        var team_participants_details = [];
+        var address_1;
+        var address_2;
+        var pincode;
+        var name_1,name_2;
+        var year_1,year_2;
+        var course_1,course_2;
+        var number_1, number_2;
+        var email_1,email_2;
         //details to be sent to server END
 
-
-        function create_name_fields() {
-
-            clicks = clicks + 1;
-
-            if (clicks == 1) {
-
-                var data = document.getElementById("team-regis-box").innerHTML;
-                data = data.split('<div class="input-element-text">Participant ')[0];
-				var college_name = document.getElementById("college-name").value;
-                var address_1 = document.getElementById("address").value;
-                var address_2 = document.getElementById("address-2").value;
-                var pin_code = document.getElementById("pincode").value;
-                var name_1 = document.getElementById("name1").value;
-				var name_2 = document.getElementById("name2").value;
-				var year_1 = document.getElementById("year1").value;
-				var year_2 = document.getElementById("year2").value;
-				var course_1 = document.getElementById("course1").value;
-				var course_2 = document.getElementById("course2").value;
-				var number_1 = document.getElementById("number1").value;
-				var number_2 = document.getElementById("number2").value;
-				var email_1 = document.getElementById("email1").value;
-				var email_2 = document.getElementById("email2").value;
-                var team_no_participants = document.getElementById("number-of-participants").value;
-                if(team_no_participants>15 || team_no_participants<1){
-                    alert("Invalid number of participants! Please enter a number less than 15.");
+        function submitAllInfo() {
+            college_name = document.getElementById("college-name").value;
+            address_1 = document.getElementById("address-1").value;
+            address_2 = document.getElementById("address-2").value;
+            pincode = document.getElementById("pincode").value;
+            name_1 = document.getElementById("name1").value;
+			name_2 = document.getElementById("name2").value;
+			year_1 = document.getElementById("year1").value;
+			year_2 = document.getElementById("year2").value;
+			course_1 = document.getElementById("course1").value;
+			course_2 = document.getElementById("course2").value;
+			number_1 = document.getElementById("number1").value;
+			number_2 = document.getElementById("number2").value;
+			email_1 = document.getElementById("email1").value;
+			email_2 = document.getElementById("email2").value;
+            if(!(college_name )){
+                    alert("PLease fill Institute Name");
                     return;
                 }
-                if(1000000000>=team_phone_no || team_phone_no>=10000000000){
-                    alert("Enter a Valid mobile number ");
+            if(!(name_1&&name_2 )){
+                    alert("PLease fill the Name");
                     return;
                 }
-                if(!(team_name && college_name)){
-                    alert("Fill the name please");
-                    return;
-                }
-                if(!(000000<pin_code<1000000 )){
-                    alert("Please fill your pincode");
-                    return;
-                }
-                if(!(team_email )){
-                    alert("Please fill your email");
-                    return;
-                }
-                if(!(team_phone_no )){
+            
+            if(!(number_1&&number_2 )){
                     alert("PLease fill your mobile number");
                     return;
                 }
-
-                team_name_details = team_name;
-                team_category_details = team_category;
-                team_email_details = team_email;
-                team_phone_no_details = team_phone_no;
-                team_no_participants_details = team_no_participants;
-                var input_section_code_1 = '<div class="form-row"><div class="name">Participant ';
-                var input_section_code_2 = '\'s Name </div> <div class="value"><div class="input-group"><input class="input--style-5" type="text" id="participant-';
-                var input_section_code_3 = '"></div></div></div>';
-
-                document.getElementById("team-regis-box").innerHTML = data;
-                document.getElementById("college-name").value = college_name;
-                document.getElementById("address").value = address_1;
-                document.getElementById("address-2").value = address_2;
-                document.getElementById("pincode").value = pin_code;
-            } else {
-                collect_name_data(team_no_participants_details);
-            }
-
-        }
-
-        function collect_name_data() {
-
-            var name_list = [];
-            for (var i = 0; i < 2; i++) {
-                var temp = document.getElementById("name" + (i + 1)).value;
-                console.log(temp);
-                if (!(temp && (i + 1))) {
+            if(1000000000>=number_1 || number_1>=10000000000){
+                    alert("Enter a Valid mobile number ");
                     return;
                 }
-                name_list.push(temp);
+            if(1000000000>=number_2 || number_2>=10000000000){
+                    alert("Enter a Valid mobile number ");
+                    return;
             }
-            console.log(name_list);
-            team_participants_name = name_list;
-
-            var year_list = [];
-            for (var i = 0; i < 2; i++) {
-                var temp = document.getElementById("year" + (i + 1)).value;
-                console.log(temp);
-                if (!(temp && (i + 1))) {
+                if(!(000000<pincode<1000000 )){
+                    alert("Please fill your pincode");
                     return;
                 }
-                year_list.push(temp);
-            }
-            console.log(year_list);
-            team_participants_year = year_list;
-
-            var course_list = [];
-            for (var i = 0; i < 2; i++) {
-                var temp = document.getElementById("course" + (i + 1)).value;
-                console.log(temp);
-                if (!(temp && (i + 1))) {
+                if(!(email_1&&email_2 )){
+                    alert("Please fill your email");
                     return;
                 }
-                course_list.push(temp);
-            }
-            console.log(course_list);
-            team_participants_course = course_list;
-
-            var number_list = [];
-            for (var i = 0; i < 2; i++) {
-                var temp = document.getElementById("number" + (i + 1)).value;
-                console.log(temp);
-                if (!(temp && (i + 1))) {
-                    return;
-                }
-                number_list.push(temp);
-            }
-            console.log(number_list);
-            team_participants_number = number_list;
-
-            var email_list = [];
-            for (var i = 0; i < 2; i++) {
-                var temp = document.getElementById("email" + (i + 1)).value;
-                console.log(temp);
-                if (!(temp && (i + 1))) {
-                    return;
-                }
-                email_list.push(temp);
-            }
-            console.log(email_list);
-            team_participants_email = email_list;
-            submit_all_info();
-
-        }
-
-        function submit_all_info() {
             var body = {
                 "noi": college_name,
                 "event": "decoherence",
                 "institute_address1": address_1,
-                "members": team_participants_name,
-                "course": team_participants_course,
-                "year": team_participants_year,
-                "phone": team_participants_number,
-                "email": team_participants_email,
+                "institute_address2": address_2,
+                "pincode": pincode,
+                "member_1": name_1,
+                "course_1": course_1,
+                "year_1": year_1,
+                "number_1": number_1,
+                "email_1": email_1,
+                "member 2": name_2,
+                "course_2": course_2,
+                "year_2": year_2,
+                "number_2": number_2,
+                "email_2": email_2,
                 "meta":{
                 }
             }
 
+            console.log(body);
             postData(body);
 
         }
 
         function postData(bod) {
-            var xhr = new XMLHttpRequest();
-            var theUrl = "http://localhost:1909/api/register";
-            xhr.open("POST", theUrl);
-            xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-            console.log(bod);
-            xhr.send(JSON.stringify(bod));
-        }
+                window.location.replace('success.html');
+                var xhr = new XMLHttpRequest();
+                var theUrl = "https://www.pravega.org/api/register";
+                xhr.open("POST", theUrl);
+                xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                console.log(bod);
+                xhr.send(JSON.stringify(bod));
+         }
     </script>
 
 
@@ -303,7 +222,7 @@ Functions:
                             <div class="name">Institute Address : </div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="text" id="address" placeholder="Address line 1">
+                                    <input class="input--style-5" type="text" id="address-1" placeholder="Address line 1">
                                 </div>
                             </div>
                         </div>
@@ -319,87 +238,96 @@ Functions:
                             <div class="name">Pincode: </div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-4" type="number" id="pincode" placeholder="000000">
+                                    <input class="input--style-5" type="number" id="pincode" placeholder="000000">
                                 </div>
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="name2">Name of Participant 1</div>
-                            <div class="value2">
+                            <div class="name">Name of Participant 1 </div>
+                            <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-4" type="text" id="name1" placeholder="Name">
-                                </div>
-                            </div>
-                            <div class="name3">Name of Participant 2</div>
-                            <div class="value2">
-                                <div class="input-group">
-                                    <input class="input--style-4" type="text" id="name2" placeholder="Name">
+                                    <input class="input--style-5" type="text" id="name1" placeholder="Name">
                                 </div>
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="name2">Which year?</div>
-                            <div class="value2">
+                            <div class="name">Which Year? </div>
+                            <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-4" type="number" id="year1" placeholder="If 1st year, write 1">
-                                </div>
-                            </div>
-                            <div class="name3">Which year?</div>
-                            <div class="value2">
-                                <div class="input-group">
-                                    <input class="input--style-4" type="number" id="year2" placeholder="If 1st year, write 1">
+                                    <input class="input--style-5" type="number" id="year1" placeholder="If 1st year, write 1">
                                 </div>
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="name2">Whats your Course?</div>
-                            <div class="value2">
+                            <div class="name">What's your course? </div>
+                            <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-4" type="text" id="course1">
-                                </div>
-                            </div>
-                            <div class="name3">Whats your Course?</div>
-                            <div class="value2">
-                                <div class="input-group">
-                                    <input class="input--style-4" type="text" id="course2">
+                                    <input class="input--style-5" type="text" id="course1">
                                 </div>
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="name2">Contact Number: </div>
-                            <div class="value2">
+                            <div class="name">Contact No:</div>
+                            <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-4" type="number" id="number1" >
-                                </div>
-                            </div>
-                            <div class="name3">Contact Number: </div>
-                            <div class="value2">
-                                <div class="input-group">
-                                    <input class="input--style-4" type="number" id="number2" >
+                                    <input class="input--style-5" type="number" id="number1">
                                 </div>
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="name2">Email id:</div>
-                            <div class="value2">
+                            <div class="name">Email Id: </div>
+                            <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-4" type="email" id="email1" placeholder="example@email.in">
-                                </div>
-                            </div>
-                            <div class="name3">Email id:</div>
-                            <div class="value2">
-                                <div class="input-group">
-                                    <input class="input--style-4" type="email" id="email2" placeholder="example@email.in">
+                                    <input class="input--style-5" type="email" id="email1">
                                 </div>
                             </div>
                         </div>
-
+                        <div class="form-row">
+                            <div class="name">Name of Participant 2 </div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-5" type="name" id="name2" placeholder="Name">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Which Year? </div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-5" type="number" id="year2" placeholder="If 1st year, write 1">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">What's your course? </div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-5" type="text" id="course2">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Contact No:</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-5" type="number" id="number2">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Email Id: </div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-5" type="email" id="email2">
+                                </div>
+                            </div>
+                        </div>
 
                     </form>
                 </div>
                 <div>
                     <input type="button" class="btn btn--radius-2 btn--red" id="submit-button"
-                        onclick="create_name_fields()" value="Submit">
+                        onclick="submitAllInfo();"value="submit">
                 </div>
             </div>
         </div>

@@ -46,97 +46,102 @@
 
         //details to be sent to server START
         var college_name;
-        var team_name_details;
-        var team_category_details;
-        var team_email_details;
-        var team_phone_no_details;
-        var team_participants_details = [];
+        var team_name;
+        var team_category;
+        var team_email;
+        var team_phone_no;
+        var prelim_details;
+        var team_no_participants;
+        var team_participants_details;
         //details to be sent to server END
 
 
         function create_name_fields() {
+            var data = document.getElementById("team-regis-box").innerHTML;
+            data= data.split('<div class="input-element-text">Participant ')[0];
+			college_name = document.getElementById("college-name").value;
+            team_name = document.getElementById("team-name").value;
+            team_email = document.getElementById("email").value;
+            team_phone_no = document.getElementById("phone-number").value;
+            team_no_participants = document.getElementById("number-of-participants").value;
+            team_category = document.getElementById("team-category").value;
+            prelim_details = document.getElementById("prelims").value;
+            if(!(team_name && college_name)){
+                    alert("Fill the name please");
+                    return;
+                }
 
-            clicks = clicks + 1;
-
-            if (clicks == 1) {
-
-                var data = document.getElementById("team-regis-box").innerHTML;
-                data = data.split('<div class="input-element-text">Participant ')[0];
-                var team_name = document.getElementById("team-name").value;
-                var team_category = document.getElementById("team-category").value;
-                var team_email = document.getElementById("email").value;
-                var team_phone_no = document.getElementById("phone-number").value;
-                var team_no_participants = document.getElementById("number-of-participants").value;
-                college_name = document.getElementById("college-name").value;
-                if (team_no_participants > 15 || team_no_participants < 1) {
-                    alert("Invalid number of participants! Please enter a number less than 15.");
+            if(!(team_email )){
+                    alert("Please fill your email");
                     return;
                     clicks--;
                 }
-                if (!(team_name && team_email && team_phone_no && college_name)) {
-                    alert("Invalid input. Please enter valid input.");
+             if(!(team_phone_no )){
+                    alert("Please fill your mobile number");
                     return;
                     clicks--;
                 }
-
-                team_name_details = team_name;
-                team_category_details = team_category;
-                team_email_details = team_email;
-                team_phone_no_details = team_phone_no;
-                team_no_participants_details = team_no_participants;
-                var input_section_code_1 = '<div class="form-row"><div class="name">Participant ';
-                var input_section_code_2 = '\'s Name </div> <div class="value"><div class="input-group"><input class="input--style-5" type="text" id="participant-';
-                var input_section_code_3 = '"></div></div></div>';
-
-                for (var i = 0; i < team_no_participants; i++) {
-                    var x = (i + 1).toString(10);
-                    data += input_section_code_1 + x + input_section_code_2 + x + input_section_code_3;
+            if(1000000000>=team_phone_no || team_phone_no>=10000000000){
+                    alert("Enter a Valid mobile number ");
+                    return;
                 }
-
-                document.getElementById("team-regis-box").innerHTML = data;
-                document.getElementById("team-name").value = team_name;
-                document.getElementById("team-category").value = team_category;
-                document.getElementById("email").value = team_email;
-                document.getElementById("phone-number").value = team_phone_no;
-                document.getElementById("number-of-participants").value = team_no_participants;
-                document.getElementById("college-name").value = college_name;
-                document.getElementById("footer").style.display = "hidden";
-            } else {
-                var team_no_participants = document.getElementById("number-of-participants").value;
-                collect_name_data(team_no_participants_details);
+            if(!prelim_details){
+                alert("Please put up the prelims video link");
+                return;
+            }
+            if (team_no_participants > 15 || team_no_participants < 1){
+              alert("Number of participants must be between 1 and 15.");
+              return;
             }
 
+
+            var input_section_code_1 = '<div class="form-row"><div class="name">Participant ';
+            var input_section_code_2 = ' name </div> <div class="value"><div class="input-group"><input class="input--style-5" type="text" id="participant-';
+            var input_section_code_3 = ' "></div></div></div>';
+            for(var i = 0; i<team_no_participants;i++){
+                var x = (i+1).toString(10);
+                data += input_section_code_1 + x+ input_section_code_2+x+input_section_code_3;
+            }
+            document.getElementById("team-regis-box").innerHTML = "";
+            document.getElementById("team-regis-box").innerHTML = data;
+            document.getElementById("college-name").value=college_name;
+            document.getElementById("team-name").value=team_name;
+            document.getElementById("email").value=team_email;
+            document.getElementById("phone-number").value=team_phone_no;
+            document.getElementById("team-category").value=team_category;
+            document.getElementById("number-of-participants").value = team_no_participants;
+            document.getElementById("prelims").value=prelim_details;
+            document.getElementById("footer").style.display = "hidden";
+            document.getElementById("buttonA").disabled = true;
         }
 
-        function collect_name_data(no_participants) {
+        function collect_name_data(no_participants){
 
-            var name_list = [];
-            for (var i = 0; i < no_participants; i++) {
-                var temp = document.getElementById("participant-" + (i + 1)).value;
-                console.log(temp);
-                if (!(temp && (i + 1))) {
-                    return;
+                var name_list=[];
+                for(var i=0;i<no_participants;i++){
+                    var temp = document.getElementById("participant-" + (i+1).toString(10)).value; //This line is killing the code
+                    if(!(temp && i)){ //BUG BUG BUG: checking if temp is empty and killing the code if it is. problem is that it's killing the code even if its non empty. problem possibly lies with the initiating statement. Please fix it.
+                        return;
+                    }
+                    name_list.push(temp);
                 }
-                name_list.push(temp);
-            }
-            console.log(name_list);
-            team_participants_details = name_list;
-            submit_all_info();
+                team_participants_details=name_list;
+                submit_all_info();
         }
 
         function submit_all_info() {
             var body = {
                 "noi": college_name,
                 "event": "lasya",
-                "teamName": team_name_details,
+                "teamName": team_name,
                 "members": team_participants_details,
-                "phone": team_phone_no_details,
-                "email": team_email_details,
+                "phone": team_phone_no,
+                "email": team_email,
+                "prelims": prelim_details,
                 "meta":{
-                    "category":team_category_details
+                    "category":team_category
                 }
             }
-
             postData(body);
 
         }
@@ -271,6 +276,16 @@ Functions:
                                 </div>
                             </div>
                         </div>
+
+                        <div class="form-row">
+                            <div class="name">Link to Prelims Video</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-5" type="text" id="prelims">
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="form-row">
                             <div class="name">Number of Participants</div>
                             <div class="value">
@@ -278,10 +293,11 @@ Functions:
                                     <input class="input--style-5" type="text" id="number-of-participants" value="">
                                 </div>
                             </div>
-							 <div>
-                             <input type="button" class="btn btn--radius-2 btn--red" id="submit-button"
-                               onclick="create_name_fields()" value="Add">
-                            </div>
+                        </div>
+
+
+						<div>
+							<button id="buttonA" onclick="create_name_fields()" class="btn btn--radius-2 btn--red" value="Add">Add</button>
                         </div>
 
                         <!--
@@ -294,7 +310,7 @@ Functions:
                 </div>
                 <div>
                     <input type="button" class="btn btn--radius-2 btn--red" id="submit-button"
-                        onclick="create_name_fields()" value="Submit">
+                        onclick="collect_name_data(team_no_participants)" value="Submit">
                 </div>
             </div>
         </div>
