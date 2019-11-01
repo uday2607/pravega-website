@@ -45,23 +45,27 @@
         var clicks = 0;
 
         //details to be sent to server START
+        var represent;
         var college_name;
-        var team_name;
+        var format;
         var team_category;
         var team_email;
         var team_phone_no;
         var prelim_details;
         var team_no_participants;
         var team_participants_details;
+
         //details to be sent to server END
 
 
         function create_name_fields() {
             var data = document.getElementById("team-regis-box").innerHTML;
             data= data.split('<div class="input-element-text">Participant ')[0];
-			college_name = document.getElementById("college-name").value;
-            team_name = document.getElementById("team-name").value;
+            represent = document.getElementById("represent").value;
+			      college_name = document.getElementById("college-name").value;
+            format = document.getElementById("format").value;
             team_email = document.getElementById("email").value;
+            number_of_groups = document.getElementById("number-of-groups").value;
             team_phone_no = document.getElementById("phone-number").value;
             team_no_participants = document.getElementById("number-of-participants").value;
             team_category = document.getElementById("team-category").value;
@@ -75,7 +79,7 @@
             if(!(team_email )){
                     alert("Please fill your email");
                     clicks--;
-                    
+
                     return;
                 }
              if(!(team_phone_no )){
@@ -94,8 +98,8 @@
                 clicks--;
                 return;
             }
-            if (team_no_participants > 15 || team_no_participants < 1){
-              alert("Number of participants must be between 1 and 15.");
+            if (team_no_participants > 14 || team_no_participants < 0){
+              alert("Number of other participants must be between 0 and 14.");
               clicks--
               return;
             }
@@ -110,11 +114,13 @@
             }
             document.getElementById("team-regis-box").innerHTML = "";
             document.getElementById("team-regis-box").innerHTML = data;
+            document.getElementById("represent").value = represent;
             document.getElementById("college-name").value=college_name;
-            document.getElementById("team-name").value=team_name;
+            document.getElementById("format").value=format;
             document.getElementById("email").value=team_email;
             document.getElementById("phone-number").value=team_phone_no;
             document.getElementById("team-category").value=team_category;
+            document.getElementById("number-of-groups").value; = number_of_groups;
             document.getElementById("number-of-participants").value = team_no_participants;
             document.getElementById("prelims").value=prelim_details;
             document.getElementById("footer").style.display = "hidden";
@@ -145,7 +151,10 @@
                 "email": team_email,
                 "prelims": prelim_details,
                 "meta":{
-                    "category":team_category
+                    "category":team_category,
+                    "represent":represent,
+                    "format":format,
+                    "number-of-groups":number_of_groups
                 }
             }
             postData(body);
@@ -236,19 +245,24 @@ Functions:
                 </div>
                 <div class="card-body">
                     <form  id="team-regis-box">
+                      <div class="form-row p-t-20">
+                          <label class="label label--block">Representing an institution?</label>
+                          <div class="p-t-15">
+                              <label class="radio-container m-r-55">Yes
+                                  <input type="radio" checked="checked" value="yes" name="exist">
+                                  <span class="checkmark"></span>
+                              </label>
+                              <label class="radio-container">No
+                                  <input type="radio" value="no" name="exist">
+                                  <span class="checkmark"></span>
+                              </label>
+                          </div>
+                      </div>
                         <div class="form-row">
                             <div class="name">Dance Academy/College Name:</div>
                             <div class="value">
                                 <div class="input-group">
                                     <input class="input--style-5" type="text" id="college-name">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="name">Team Name</div>
-                            <div class="value">
-                                <div class="input-group">
-                                    <input class="input--style-5" type="text" id="team-name" value="">
                                 </div>
                             </div>
                         </div>
@@ -267,6 +281,20 @@ Functions:
                                 </div>
                             </div>
                         </div>
+                        <div class="form-row p-t-20">
+                            <label class="label label--block">Participation format?</label>
+                            <div class="p-t-15">
+                                <label class="radio-container m-r-55">Solo
+                                    <input type="radio" value="solo" name="format">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="radio-container">Team
+                                    <input type="radio" value="team" name="format">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+
                         <div class="form-row">
                             <div class="name">Email</div>
                             <div class="value">
@@ -294,10 +322,19 @@ Functions:
                         </div>
 
                         <div class="form-row">
+                            <div class="name">Number of groups expected to participate from your institution</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-5" type="number" id="number-of-groups" placeholder=""Keep 0 for solo"">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
                             <div class="name">Number of Participants</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="text" id="number-of-participants" value="">
+                                    <input class="input--style-5" type="number" id="number-of-participants" placeholder=""Keep 0 for solo"">
                                 </div>
                             </div>
                         </div>
