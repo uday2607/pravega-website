@@ -45,6 +45,7 @@
         //details to be sent to server START
         //details to be sent to server END
 
+        var 
 
         function create_name_fields(){
             var data = document.getElementById("team-regis-box").innerHTML;
@@ -66,7 +67,7 @@
             team_category_details = team_category;
             team_no_participants_details = team_no_participants;
             var input_section_code_1 = '<div class="form-row"><div class="name">Participant ';
-            var input_section_code_2 = ' name </div> <div class="value"><div class="input-group"><input class="input--style-5" type="text" id="participant-';
+            var input_section_code_2 = 'name </div> <div class="value"><div class="input-group"><input class="input--style-5" type="text" id="participant-';
             var input_section_code_3 = ' "></div></div></div>';
             var input_section_code_4 = '<div class="form-row"><div class="name">Mobile Number ';
             var input_section_code_5 = '  </div> <div class="value"><div class="input-group"><input class="input--style-5" type="number" id="phone_number-';
@@ -101,7 +102,7 @@
                 var temp_email = document.getElementById("email-" + (i+1).toString(10)).value;
                 var temp_college = document.getElementById("college_name-" + (i+1).toString(10)).value;
 
-                if(!(temp && i)){ //BUG BUG BUG: checking if temp is empty and killing the code if it is. problem is that it's killing the code even if its non empty. problem possibly lies with the initiating statement. Please fix it.
+                if(!(temp && (i+1))){ //BUG BUG BUG: checking if temp is empty and killing the code if it is. problem is that it's killing the code even if its non empty. problem possibly lies with the initiating statement. Please fix it.
                     return;
                 }
                 name_list.push(temp);
@@ -112,10 +113,34 @@
 
         function submit_all_info(){
             alert("working");
+
+            var body = {
+                    "noi": team_name_details,
+                    "event": "chemenigma",
+                    "members": team_participants_details,
+                    "phone": team_phone_no_details,
+                    "email": team_email_details
+                }
+
             //submit team name, email, phone numbers, participant count, whatever
             //the global vars team_..._details.
             //End of registration page.
-        }
+            console.log(body);
+                postData(body);
+
+            }
+
+
+            function postData(bod) {
+                var xhr = new XMLHttpRequest();
+                var theUrl = "http://localhost:5000/api/register";
+                xhr.open("POST", theUrl);
+                xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                console.log(bod);
+                // xhr.send(JSON.stringify(bod));
+                // window.location.replace('success.html');
+            }
+
     </script>
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
         <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">

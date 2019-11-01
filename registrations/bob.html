@@ -271,13 +271,13 @@ Functions:
 
 
             function postData(bod) {
-                window.location.replace('success.html');
                 var xhr = new XMLHttpRequest();
-                var theUrl = "https://www.pravega.org/api/register";
+                var theUrl = "http://www.pravega.org/api/register";
                 xhr.open("POST", theUrl);
                 xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
                 console.log(bod);
                 xhr.send(JSON.stringify(bod));
+                window.location.replace('success.html');
             }
 
 

@@ -58,42 +58,42 @@
         //details to be sent to server END
 
 
-        function create_name_fields(){
-           var data = document.getElementById("team-regis-box").innerHTML;
-            data= data.split('<div class="input-element-text">Participant ')[0];
-			var college_name = document.getElementById("college-name").value;
-            var team_name = document.getElementById("team-name").value;
-            var team_email = document.getElementById("email").value;
-            var team_phone_no = document.getElementById("phone-number").value;
-			      var team_phone_no1 = document.getElementById("phone-number-1").value;
-			      var team_phone_no2 = document.getElementById("phone-number-2").value;
-                  var prelim_details = document.getElementById("prelims").value;
-            var team_no_participants = document.getElementById("number-of-participants").value;
+        function create_name_fields() {
+            var data = document.getElementById("team-regis-box").innerHTML;
+            data = data.split('<div class="input-element-text">Participant ')[0];
+            college_name = document.getElementById("college-name").value;
+            team_name = document.getElementById("team-name").value;
+            team_email = document.getElementById("email").value;
+            team_phone_no = document.getElementById("phone-number").value;
+            team_phone_no1 = document.getElementById("phone-number-1").value;
+            team_phone_no2 = document.getElementById("phone-number-2").value;
+            prelim_details = document.getElementById("prelims").value;
+            team_no_participants = document.getElementById("number-of-participants").value;
 
-            if(!(team_name && college_name)){
-                    alert("Fill the name please");
-                    return;
-                }
+            if (!(team_name && college_name)) {
+                alert("Fill the name please");
+                return;
+            }
 
-            if(!(team_email )){
-                    alert("Please fill your email");
-                    return;
-                }
-             if(!(team_phone_no )){
-                    alert("Please fill your mobile number");
-                    return;
-                }
-            if(1000000000>=team_phone_no || team_phone_no>=10000000000){
-                    alert("Enter a Valid mobile number ");
-                    return;
-                }
-         if(!prelim_details){
+            if (!(team_email)) {
+                alert("Please fill your email");
+                return;
+            }
+            if (!(team_phone_no)) {
+                alert("Please fill your mobile number");
+                return;
+            }
+            if (1000000000 >= team_phone_no || team_phone_no >= 10000000000) {
+                alert("Enter a Valid mobile number ");
+                return;
+            }
+            if (!prelim_details) {
                 alert("Please put up the prelims video link");
                 return;
-         }
-            if (team_no_participants > 20 || team_no_participants < 1){
-              alert("Number of participants must be between 1 and 20.");
-              return;
+            }
+            if (team_no_participants > 20 || team_no_participants < 1) {
+                alert("Number of participants must be between 1 and 20.");
+                return;
             }
 
 
@@ -131,7 +131,7 @@
             for (var i = 0; i < no_participants; i++) {
                 var temp = document.getElementById("participant-" + (i + 1)).value;
 
-                if (!(temp && (i+1))) { //BUG BUG BUG: checking if temp is empty and killing the code if it is. problem is that it's killing the code even if its non empty. problem possibly lies with the initiating statement. Please fix it.
+                if (!(temp && (i + 1))) { //BUG BUG BUG: checking if temp is empty and killing the code if it is. problem is that it's killing the code even if its non empty. problem possibly lies with the initiating statement. Please fix it.
                     return;
                 }
                 name_list.push(temp);
@@ -147,9 +147,10 @@
                 "members": team_participants_details,
                 "phone": team_phone_no,
                 "email": team_email,
+                "teamName":team_name,
                 "meta": {
-                    "teamSize":team_no_participants,
-                    "altPhone":[team_phone_no1,team_phone_no2],
+                    "teamSize": team_no_participants,
+                    "altPhone": [team_phone_no1, team_phone_no2],
                 }
             }
 
@@ -157,6 +158,7 @@
 
         }
 
+        
         function postData(bod) {
             var xhr = new XMLHttpRequest();
             var theUrl = "http://localhost:5000/api/register";
@@ -164,17 +166,8 @@
             xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
             console.log(bod);
             xhr.send(JSON.stringify(bod));
-            window.location.replace('https://www.pravega.org/')
+            window.location.replace('success.html');
         }
-        function postData(bod) {
-                window.location.replace('success.html');
-                var xhr = new XMLHttpRequest();
-                var theUrl = "https://www.pravega.org/api/register";
-                xhr.open("POST", theUrl);
-                xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-                console.log(bod);
-                xhr.send(JSON.stringify(bod));
-            }
     </script>
 
 
@@ -299,27 +292,28 @@ Functions:
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                 <div class="form-row">
-                            <div class="name">Link to Prelims Video</div>
-                            <div class="value">
-                                <div class="input-group">
-                                    <input class="input--style-5" type="text" id="prelims">
+                            <div class="form-row">
+                                    <div class="name">Link to Prelims Video</div>
+                                    <div class="value">
+                                        <div class="input-group">
+                                            <input class="input--style-5" type="text" id="prelims">
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                </div>
-                	<div class="form-row">
-                            <div class="name">Number of Participants</div>
-                            <div class="value">
-                                <div class="input-group">
-                                    <input class="input--style-5" type="text" id="number-of-participants">
-                                </div>
-                            </div>
+                                <div class="form-row">
+                                    <div class="name">Number of Participants</div>
+                                    <div class="value">
+                                        <div class="input-group">
+                                            <input class="input--style-5" type="text" id="number-of-participants">
+                                        </div>
+                                    </div>
+            
+                    </div>
 
-                            <div>
-                                <button id="buttonA" onclick="create_name_fields()" class="btn btn--radius-2 btn--red"
-                                    value="Add">Add</button>
-                            </div>
+                        <div>
+                            <button id="buttonA" onclick="create_name_fields()" class="btn btn--radius-2 btn--red"
+                                value="Add">Add</button>
+                        </div>
 
 
                         </form>

@@ -46,7 +46,7 @@ db.once('open', (e) => {
         "noi": String,
         "teamName": String,
         "event": String,
-        "phone":Number,
+        "phone":mongoose.Schema.Types.Mixed,
         "email":String,
         "meta": mongoose.Schema.Types.Mixed
     })
