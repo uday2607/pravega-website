@@ -1,0 +1,34 @@
+Page list - 
+
+bob.html
+chemenigma.html
+decoherence.html
+enummeration.html
+footprints.html
+lasya.html
+pis.html
+proscenium.html
+
+staring work on bob.html
+
+TODO: 
+Jquery errs
+Check for validation ( add required statements etc.)
+
+finished work on bob.html
+
+staring work on chemenigma.html
+
+TODO: 
+
+FIXME: Put on hold because it's insane !
+
+staring work on decoherence.html
+
+finished !!! turns it out was easy..
+
+finished enummeration.
+
+lasya done !!!!
+
+pis done TODO: Check that team/alone thing , wht\atsit ?????

@@ -253,7 +253,7 @@ Functions:
 
             if (document.getElementById('team-category').value == 'Alone') {
                 document.getElementById('edu').value = 'NA'
-                meems = [document.getElementById('leader')];
+                meems = [document.getElementById('leader').value];
             } else {
                 console.log(document.getElementById('name').value.split(","));
                 meems = document.getElementById('name').value.split(",");
@@ -267,7 +267,7 @@ Functions:
                 "email": document.getElementById('email').value,
                 "meta": {
                     "edu": document.getElementById('edu').value,
-                    "teamSize": document.getElementById('members').value,
+                    "teamSize": meems.value,
                     'address': document.getElementById('address').value,
                     'category': document.getElementById('team-category').value
                 }
@@ -279,12 +279,12 @@ Functions:
 
         function postData(bod) {
             var xhr = new XMLHttpRequest();
-            var theUrl = "http://localhost:5000/api/register";
+            var theUrl = "https://www.pravega.org/api/register";
             xhr.open("POST", theUrl);
             xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
             console.log(bod);
             xhr.send(JSON.stringify(bod));
-            window.location.replace('https://www.pravega.com/')
+            window.location.replace('success.html')
         }
     </script>
 

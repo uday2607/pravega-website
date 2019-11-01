@@ -68,36 +68,42 @@
             prelim_details = document.getElementById("prelims").value;
             if(!(team_name && college_name)){
                     alert("Fill the name please");
+                    clicks--
                     return;
                 }
 
             if(!(team_email )){
                     alert("Please fill your email");
-                    return;
                     clicks--;
+                    
+                    return;
                 }
              if(!(team_phone_no )){
                     alert("Please fill your mobile number");
-                    return;
                     clicks--;
-                }
-            if(1000000000>=team_phone_no || team_phone_no>=10000000000){
-                    alert("Enter a Valid mobile number ");
                     return;
-                }
+             }
+            //     }
+            // if(1000000000>=team_phone_no || team_phone_no>=10000000000){
+            //         alert("Enter a Valid mobile number ");
+            //         clicks--;
+            //         return;
+            //     }
             if(!prelim_details){
                 alert("Please put up the prelims video link");
+                clicks--;
                 return;
             }
             if (team_no_participants > 15 || team_no_participants < 1){
               alert("Number of participants must be between 1 and 15.");
+              clicks--
               return;
             }
 
 
             var input_section_code_1 = '<div class="form-row"><div class="name">Participant ';
             var input_section_code_2 = ' name </div> <div class="value"><div class="input-group"><input class="input--style-5" type="text" id="participant-';
-            var input_section_code_3 = ' "></div></div></div>';
+            var input_section_code_3 = '"></div></div></div>';
             for(var i = 0; i<team_no_participants;i++){
                 var x = (i+1).toString(10);
                 data += input_section_code_1 + x+ input_section_code_2+x+input_section_code_3;
@@ -120,7 +126,7 @@
                 var name_list=[];
                 for(var i=0;i<no_participants;i++){
                     var temp = document.getElementById("participant-" + (i+1).toString(10)).value; //This line is killing the code
-                    if(!(temp && i)){ //BUG BUG BUG: checking if temp is empty and killing the code if it is. problem is that it's killing the code even if its non empty. problem possibly lies with the initiating statement. Please fix it.
+                    if(!(temp && i+1)){ //BUG BUG BUG: checking if temp is empty and killing the code if it is. problem is that it's killing the code even if its non empty. problem possibly lies with the initiating statement. Please fix it.
                         return;
                     }
                     name_list.push(temp);
@@ -148,11 +154,12 @@
 
         function postData(bod) {
             var xhr = new XMLHttpRequest();
-            var theUrl = "http://localhost:5000/api/register";
+            var theUrl = "https://pravega.org/api/register";
             xhr.open("POST", theUrl);
             xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
             console.log(bod);
             xhr.send(JSON.stringify(bod));
+            window.location.replace('success.html')
         }
     </script>
 
@@ -228,7 +235,7 @@ Functions:
                     <h2 class="title">Event Registration Form</h2>
                 </div>
                 <div class="card-body">
-                    <form method="POST" id="team-regis-box">
+                    <form  id="team-regis-box">
                         <div class="form-row">
                             <div class="name">Dance Academy/College Name:</div>
                             <div class="value">
