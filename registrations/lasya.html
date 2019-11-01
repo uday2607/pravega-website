@@ -51,6 +51,7 @@
         var team_category;
         var team_email;
         var team_phone_no;
+		var number_of_groups;
         var prelim_details;
         var team_no_participants;
         var team_participants_details;
@@ -62,7 +63,7 @@
             var data = document.getElementById("team-regis-box").innerHTML;
             data= data.split('<div class="input-element-text">Participant ')[0];
             represent = document.getElementById("represent").value;
-			      college_name = document.getElementById("college-name").value;
+			college_name = document.getElementById("college-name").value;
             format = document.getElementById("format").value;
             team_email = document.getElementById("email").value;
             number_of_groups = document.getElementById("number-of-groups").value;
@@ -150,11 +151,11 @@
                 "phone": team_phone_no,
                 "email": team_email,
                 "prelims": prelim_details,
+				"represent": represent,
+                "format": format,
+                "number-of-groups": number_of_groups,
                 "meta":{
-                    "category":team_category,
-                    "represent":represent,
-                    "format":format,
-                    "number-of-groups":number_of_groups
+                    "category": team_category
                 }
             }
             postData(body);
@@ -245,19 +246,21 @@ Functions:
                 </div>
                 <div class="card-body">
                     <form  id="team-regis-box">
-                      <div class="form-row p-t-20">
-                          <div class="name">Representing an institution?</div>
-                          <div class="p-t-15">
-                              <label class="radio-container m-r-55">Yes
-                                  <input type="radio" checked="checked" value="yes" name="exist">
-                                  <span class="checkmark"></span>
-                              </label>
-                              <label class="radio-container">No
-                                  <input type="radio" value="no" name="exist">
-                                  <span class="checkmark"></span>
-                              </label>
-                          </div>
-                      </div>
+                            <div class="form-row">
+                            <div class="name">Representing an institution?</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <div class="rs-select2 js-select-simple select--no-search">
+                                        <select name="represent" size="1" id="represent">
+                                            <!-- <option disabled="disabled" selected="selected">Choose option</option> -->
+                                            <option>Yes</option>
+                                            <option>No</option>
+                                        </select>
+                                        <div class="select-dropdown"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="form-row">
                             <div class="name">Dance Academy/College Name:</div>
                             <div class="value">
@@ -281,17 +284,20 @@ Functions:
                                 </div>
                             </div>
                         </div>
-                        <div class="form-row p-t-20">
-                            <div class="name">Participation format?</div>
-                            <div class="p-t-15">
-                                <label class="radio-container m-r-55">Solo
-                                    <input type="radio" value="solo" name="format">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="radio-container">Team
-                                    <input type="radio" value="team" name="format">
-                                    <span class="checkmark"></span>
-                                </label>
+                        
+						    <div class="form-row">
+                            <div class="name">Participation Format</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <div class="rs-select2 js-select-simple select--no-search">
+                                        <select name="format" size="1" id="format">
+                                            <!-- <option disabled="disabled" selected="selected">Choose option</option> -->
+                                            <option>Solo</option>
+                                            <option>Team</option>
+                                        </select>
+                                        <div class="select-dropdown"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -325,7 +331,7 @@ Functions:
                             <div class="name">Number of groups expected to participate from your institution</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="number" id="number-of-groups" placeholder=""Keep 0 for solo"">
+                                    <input class="input--style-5" type="number" id="number-of-groups" placeholder="Keep 0 for solo">
                                 </div>
                             </div>
                         </div>
@@ -334,7 +340,7 @@ Functions:
                             <div class="name">Number of Participants</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="number" id="number-of-participants" placeholder=""Keep 0 for solo"">
+                                    <input class="input--style-5" type="number" id="number-of-participants" placeholder="Keep 0 for solo">
                                 </div>
                             </div>
                         </div>
