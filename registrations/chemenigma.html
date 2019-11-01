@@ -43,6 +43,11 @@
     <script type="text/javascript">
 
         //details to be sent to server START
+        var team_name_details;
+        var team_category_details;
+        var get_to_know;
+        var team_no_participants_details;
+        var team_participants_details;
         //details to be sent to server END
 
         var 
@@ -53,7 +58,7 @@
             var team_name = document.getElementById("team-name").value;
             var team_category = document.getElementById("team-category").value;
             var team_no_participants = document.getElementById("number-of-participants").value;
-            var get_to_know = document.getElementById("get-to-know").value;
+            get_to_know = document.getElementById("get-to-know").value;
             if(team_no_participants>3  || team_no_participants<1){
                 alert("Invalid number of participants! Please enter a number less than 3.");
                 return;
@@ -94,8 +99,7 @@
         }
 
         function collect_name_data(no_participants){
-
-            var name_list=[];
+            var name_list=[];                               
             for(var i=0;i<no_participants;i++){
                 var temp = document.getElementById("participant-" + (i+1).toString(10)).value;
                 var temp_phone = document.getElementById("phone_number-" + (i+1).toString(10)).value;
@@ -107,7 +111,8 @@
                 }
                 name_list.push(temp);
             }
-            var team_participants_details=name_list;
+
+            team_participants_details=name_list;
             submit_all_info();
         }
 
@@ -274,9 +279,8 @@ Functions:
                             </div>
 					</form>
                 </div>
-
                 <div>
-                    <input type="button" class="btn btn--radius-2 btn--red" id="submit-button" onclick="collect_name_data(team_no_participants)" value="Submit">
+                    <input type="button" class="btn btn--radius-2 btn--red" id="submit-button" onclick="collect_name_data(team_no_participants_details)" value="Submit">
                 </div>
 			           </div>
             </div>
