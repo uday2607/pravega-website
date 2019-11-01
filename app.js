@@ -33,6 +33,17 @@ db.on('error', (e) => { console.log('Mongoose connection error: No Mongo Instanc
 // Run the rest of the program only if db connection is succesful
 db.once('open', (e) => {
 
+
+    // Node mailer create transport
+
+    var transporter = nodemailer.createTransport({
+        service: "Gmail",
+        auth: {
+            user: "pravega.website@gmail.com",
+            pass: "#123@qwerty!"
+        }
+    });
+
     /*
     Initializing models
         Registered poeple will be alloted a team id,
@@ -46,8 +57,8 @@ db.once('open', (e) => {
         "noi": String,
         "teamName": String,
         "event": String,
-        "phone":mongoose.Schema.Types.Mixed,
-        "email":String,
+        "phone": mongoose.Schema.Types.Mixed,
+        "email": String,
         "meta": mongoose.Schema.Types.Mixed
     })
 
@@ -94,12 +105,30 @@ db.once('open', (e) => {
             */
             team.find((err, data) => {
                 temp.save((err, data) => {
-                    if(err) throw err;
+                    if (err) throw err;
+
+                    // Send mail 
+
+                    var mailOptions = {
+                        from: '"Team Pravega"<pravega.website@gmail.com>',
+                        to: data.email,
+                        subject: 'Pravega Registration',
+                        html: '<div style=" text-align:center;background-color:lightblue;"><img src="https://www.pravega.org/img/blue_light_trans-01.png" style="height: 6em;">&nbsp;&nbsp;<img src="https://www.pravega.org/img/footer.png" style="height: 4em;"><h2 style="background-color: blue;"><br></h2><p>Your team has been successfully registered</p><p>Event :  ' + data.event + '</p><p>Contact : ' + data.phone + '</p><p>Institute : ' + data.noi + '</p><p>Stay tuned to <a href="https://www.pravega.org/">the website</a> for updates !</p><br><br><h5 style="font-weight: 200;">If the above details are incorrect, you can contact us ! Contact details on the website</h5></div><style>    #main{width:100%;height:auto;background-color:coral;padding: 20px;font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Oxygen, Ubuntu, Cantarell, \'Open Sans\', \'Helvetica Neue\', sans-serif;}</style>'
+                    }
+
+                    transporter.sendMail(mailOptions, function (error, response) {
+                        if (error) {
+                            console.log(error);
+                        } else {
+                            res.redirect('/');
+                        }
+                    });
+
                     res.send(data);
                 });
             })
 
-        //FIXME: Should I send error to front end ?
+            //FIXME: Should I send error to front end ?
         } catch (e) {
             console.log(e);
             res.send(e);
@@ -140,7 +169,7 @@ db.once('open', (e) => {
     });
 
     app.listen(process.env.PORT || 5000, (e) => {
-		console.log("The Server is running on port number " + 5000)
-	})
+        console.log("The Server is running on port number " + 5000)
+    })
 
 });
