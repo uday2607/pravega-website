@@ -63,22 +63,22 @@ ul {
           transform: scale(1);
 }
 .project__bg-item:nth-child(1) {
-  background: url("../img/science_background.jpg") center/cover;
+  background: url("../img/science_background-min.jpg") center/cover;
 }
 .project__bg-item:nth-child(2) {
-  background: url("../img/cultural_background.jpg") center/cover;
+  background: url("../img/cultural_background-min.jpg") center/cover;
 }
 .project__bg-item:nth-child(3) {
-  background: url("../img/technical_background.jpg") center/cover;
+  background: url("../img/technical_background-min.jpg") center/cover;
 }
 .project__bg-item:nth-child(4) {
-  background: url("../img/workshop_background.jpg") center/cover;
+  background: url("../img/workshop_background-min.jpg") center/cover;
 }
 .project__bg-item:nth-child(5) {
-  background: url("../img/bands_background.jpg") center/cover;
+  background: url("../img/bands_background-min.jpg") center/cover;
 }
 .project__bg-item:nth-child(6) {
-  background: url("../img/pis_background.jpg") center/cover;
+  background: url("../img/pis_background-min.jpg") center/cover;
 }
 
 /* demo */
