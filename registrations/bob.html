@@ -103,7 +103,6 @@ Functions:
             </div>
         </div>
         <!--header end-->
-    </div>
 
     <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
         <div class="wrapper wrapper--w790">
@@ -274,7 +273,7 @@ Functions:
 
 
             function postData(bod) {
-                window.location.replace('https://www.pravega.org/');
+                window.location.replace('https://www.pravega.org/events/bob/bob.html');
                 var xhr = new XMLHttpRequest();
                 var theUrl = "https://www.pravega.org/api/register";
                 xhr.open("POST", theUrl);
@@ -291,43 +290,8 @@ Functions:
 
         <footer id="footer">&nbsp;</footer>
       </div>
-  </div>
-        <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-        <script src="../js/bootstrap.min.js"></script>
-        <script src="../js/menuzord.js"></script>
-        <script src="../js/jquery.flexslider-min.js"></script>
-        <script src="../js/owl.carousel.min.js"></script>
-        <script src="../js/jquery.isotope.js"></script>
-        <script src="../js/jquery.magnific-popup.min.js"></script>
-        <script src="../js/jquery.countTo.js"></script>
-        <script src="../js/visible.js"></script>
-        <script src="../js/smooth.js"></script>
-        <script src="../js/wow.min.js"></script>
-        <script src="../js/imagesloaded.js"></script>
-        <!--common scripts-->
-        <script src="../js/scripts.js?6"></script>
-        <script src="../js/modernizr.js"></script>
+	</div>	
         <!-- partial -->
-        <script>
-            jQuery(document).ready(function ($) {
-                var isLateralNavAnimating = false;
-
-                //open/close lateral navigation
-                $('.cd-nav-trigger').on('click', function (event) {
-                    event.preventDefault();
-                    //stop if nav animation is running
-                    if (!isLateralNavAnimating) {
-                        if ($(this).parents('.csstransitions').length > 0) isLateralNavAnimating = true;
-
-                        $('body').toggleClass('navigation-is-open');
-                        $('.cd-navigation-wrapper').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function () {
-                            //animation is over
-                            isLateralNavAnimating = false;
-                        });
-                    }
-                });
-            });
-        </script>
         <!-- partial -->
         <!-- <script src="events.js"></script> -->
         <!--    footer is for extra space at the bottom. weird glitch occurs with the background gradient if removed-->
@@ -359,6 +323,26 @@ Functions:
 
     <!-- Main JS-->
     <script src="js/global.js"></script>
+	<script>
+            jQuery(document).ready(function ($) {
+                var isLateralNavAnimating = false;
+
+                //open/close lateral navigation
+                $('.cd-nav-trigger').on('click', function (event) {
+                    event.preventDefault();
+                    //stop if nav animation is running
+                    if (!isLateralNavAnimating) {
+                        if ($(this).parents('.csstransitions').length > 0) isLateralNavAnimating = true;
+
+                        $('body').toggleClass('navigation-is-open');
+                        $('.cd-navigation-wrapper').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function () {
+                            //animation is over
+                            isLateralNavAnimating = false;
+                        });
+                    }
+                });
+            });
+     </script>
 </body>
 
 </html>
