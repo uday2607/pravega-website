@@ -66,7 +66,7 @@
             var pone = document.getElementById('phone1').value;
             var em = document.getElementById('email1').value;
             var ins = document.getElementById('noi').value;
-   
+
             if (team_no_participants > 3 || team_no_participants < 1) {
                 alert("Invalid number of participants! Please enter a number less than 3.");
                 return;
@@ -94,7 +94,7 @@
             document.getElementById("number-of-participants").value = team_no_participants_details;
             document.getElementById("footer").style.display = "hidden";
             document.getElementById("buttonA").disabled = true;
-            document.getElementById("buttonA").visibility = 'hidden'; 
+            document.getElementById("buttonA").visibility = 'hidden';
             document.getElementById('phone1').value = pone;
             document.getElementById('email1').value = em;
             document.getElementById('noi').value = ins;
@@ -111,7 +111,7 @@
                 name_list.push(temp);
             }
 
-            
+
 
             team_participants_details = name_list;
             submit_all_info();
@@ -121,15 +121,15 @@
             alert("working");
 
             var body = {
-                "noi":document.getElementById('noi').value,
-                "teamName":document.getElementById('team-name').value,
-                "members":team_participants_details,
-                "email":document.getElementById('email1').value,
-                "phone":document.getElementById('phone1').value,
-                "event":"chemenigma",
-                "meta":{
-                    "info":document.getElementById('get-to-know').value,
-                    "category":document.getElementById('team-category').value,
+                "noi": document.getElementById('noi').value,
+                "teamName": document.getElementById('team-name').value,
+                "members": team_participants_details,
+                "email": document.getElementById('email1').value,
+                "phone": document.getElementById('phone1').value,
+                "event": "chemenigma",
+                "meta": {
+                    "info": document.getElementById('get-to-know').value,
+                    "category": document.getElementById('team-category').value,
                 }
             }
 
@@ -145,7 +145,12 @@
             xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
             console.log(bod);
             xhr.send(JSON.stringify(bod));
-            window.location.replace('success.html');
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    window.location.replace('success.html');
+                }
+            }
+            // 
         }
 
     </script>
