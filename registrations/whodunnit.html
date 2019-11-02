@@ -46,12 +46,12 @@
         function create_name_fields(){
             var data = document.getElementById("team-regis-box").innerHTML;
             data= data.split('<div class="input-element-text">Participant ')[0];
-            var leader_name = document.getElementById("leader-name").value;
-            var college_name = document.getElementById("institute").value;
-            var year_of_study = document.getElementById("year-study").value;
-            var team_email = document.getElementById("email").value;
-            var team_phone_no = document.getElementById("mobnum").value;
-            var team_no_participants = document.getElementById("number-of-participants").value;
+            leader_name = document.getElementById("leader-name").value;
+            college_name = document.getElementById("institute").value;
+            year_of_study = document.getElementById("year-study").value;
+            team_email = document.getElementById("email").value;
+            team_phone_no = document.getElementById("mobnum").value;
+            team_no_participants = document.getElementById("number-of-participants").value;
 
             if(team_no_participants>5){
                 alert("Invalid number of participants! Maximum number of members in a team is 5.");
@@ -68,20 +68,20 @@
 
             team_no_participants_details=team_no_participants;
             var input_section_code_1 = '<div class="form-row"><div class="name">Participant ';
-            var input_section_code_2 = ' name </div> <div class="value"><div class="input-group"><input class="input--style-5" type="text" id="participant-';
-            var input_section_code_3 = ' "></div></div></div>';
+            var input_section_code_2 = 'name </div> <div class="value"><div class="input-group"><input class="input--style-5" type="text" id="participant-';
+            var input_section_code_3 = '"></div></div></div>';
             var input_section_code_4 = '<div class="form-row"><div class="name">Institute</div> <div class="value"><div class="input-group"><input class="input--style-5" type="number" id="institute-';
-            var input_section_code_5 = ' "></div></div></div>';
+            var input_section_code_5 = '"></div></div></div>';
             var input_section_code_6 = '<div class="form-row"><div class="name">Class/Year of study</div> <div class="value"><div class="input-group"><input class="input--style-5" type="text" id="year-study-';
-            var input_section_code_7 = ' "></div></div></div>';
+            var input_section_code_7 = '"></div></div></div>';
             var input_section_code_8 = '<div class="form-row"><div class="name">Email ID</div> <div class="value"><div class="input-group"><input class="input--style-5" type="email" id="email-';
-            var input_section_code_9 = ' "></div></div></div>';
+            var input_section_code_9 = '"></div></div></div>';
             var input_section_code_10 = '<div class="form-row"><div class="name">Mobile Number</div> <div class="value"><div class="input-group"><input class="input--style-5" type="number" id="mobnum-';
-            var input_section_code_11 = ' "></div></div></div>';
+            var input_section_code_11 = '"></div></div></div>';
 
 
             for(var i = 1; i<team_no_participants;i++){
-                var x = (i+1).toString(10);
+                var x = (i+1);
                 data += input_section_code_1 + x + input_section_code_2+x+input_section_code_3+input_section_code_4 + x+ input_section_code_5+input_section_code_6+x+ input_section_code_7 + input_section_code_8+x+input_section_code_9+input_section_code_10 +x+ input_section_code_11;
             }
 
@@ -109,12 +109,12 @@
         function collect_name_data(no_participants){
 
             var name_list=[];
-            for(var i=0;i<no_participants;i++){
-                var temp = document.getElementById("participant-" + (i+1).toString(10)).value;
-                var temp_phone = document.getElementById("phone_number-" + (i+1).toString(10)).value;
-                var temp_email = document.getElementById("email-" + (i+1).toString(10)).value;
+            for(var i=1;i<no_participants;i++){
+                var temp = document.getElementById('participant-' + (i+1)).value;
+                var temp_phone = document.getElementById('mobnum-' + (i+1)).value;
+                var temp_email = document.getElementById( 'email-' + (i+1) ).value;
 
-                if(!(temp && i)){ //BUG BUG BUG: checking if temp is empty and killing the code if it is. problem is that it's killing the code even if its non empty. problem possibly lies with the initiating statement. Please fix it.
+                if(!(temp && (i+1))){ //BUG BUG BUG: checking if temp is empty and killing the code if it is. problem is that it's killing the code even if its non empty. problem possibly lies with the initiating statement. Please fix it.
                     return;
                 }
                 name_list.push(temp);
@@ -124,19 +124,19 @@
         }
 
         function submit_all_info(){
-            var body = {
-              "noi" : college_name,
-              "event" : "Whodunnit",
-              "members": team_participants_details,
-              "phone": team_phone_no,
-              "email": team_email,
-              "year": year_of_study,
-              "name": leader_name,
-              "meta": {
-                  "teamSize": team_no_participants
-              }
+            alert("working");
 
+            var body = {
+                "noi":collect_name_data,
+                "event":"whodunnit",
+                "members":team_participants_details,
+                "phone":team_phone_no,
+                "email":team_email,
+                "teamName":leader_name
             }
+
+            postData(body);
+
             //submit team name, email, phone numbers, participant count, whatever
             //the global vars team_..._details.
             //End of registration page.
@@ -158,6 +158,22 @@
             }
             //
         }
+
+        function postData(bod) {
+            var xhr = new XMLHttpRequest();
+            var theUrl = "https://www.pravega.org/api/register";
+            xhr.open("POST", theUrl);
+            xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+            console.log(bod);
+            xhr.send(JSON.stringify(bod));
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    window.location.replace('success.html');
+                }
+            }
+            // 
+        }
+
     </script>
 
 </head>
