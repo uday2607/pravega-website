@@ -507,10 +507,10 @@
 									var addedyt=0;
 									var addedvim=0;
 									var addedvid=0;
-									var httpprefix = "http";
+									var httpsprefix = "https";
 
 									if (location.protocol === 'https:') {
-											httpprefix = "https";
+											httpsprefix = "https";
 									}
 									container.find('.tp-caption').each(function(i) {
 										// IF SRC EXIST, RESET SRC'S since WE DONT NEED THEM !!
@@ -520,13 +520,13 @@
 												if ((jQuery(this).data('ytid')!=undefined  || jQuery(this).find('iframe').attr('src').toLowerCase().indexOf('youtube')>0) && addedyt==0) {
 													addedyt=1;
 													var s = document.createElement("script");
-													var httpprefix2 = "https";
-													s.src = httpprefix2+"://www.youtube.com/iframe_api"; /* Load Player API*/
+													var httpsprefix2 = "https";
+													s.src = httpsprefix2+"://www.youtube.com/iframe_api"; /* Load Player API*/
 
 													var before = document.getElementsByTagName("script")[0];
 													var loadit = true;
 													jQuery('head').find('*').each(function(){
-														if (jQuery(this).attr('src') == httpprefix2+"://www.youtube.com/iframe_api")
+														if (jQuery(this).attr('src') == httpsprefix2+"://www.youtube.com/iframe_api")
 														   loadit = false;
 													});
 													if (loadit) {
@@ -541,12 +541,12 @@
 											   if ((jQuery(this).data('vimeoid')!=undefined || jQuery(this).find('iframe').attr('src').toLowerCase().indexOf('vimeo')>0) && addedvim==0) {
 													addedvim=1;
 													var f = document.createElement("script");
-													f.src = httpprefix+"://a.vimeocdn.com/js/froogaloop2.min.js"; /* Load Player API*/
+													f.src = httpsprefix+"://a.vimeocdn.com/js/froogaloop2.min.js"; /* Load Player API*/
 													var before = document.getElementsByTagName("script")[0];
 
 													var loadit = true;
 													jQuery('head').find('*').each(function(){
-														if (jQuery(this).attr('src') == httpprefix+"://a.vimeocdn.com/js/froogaloop2.min.js")
+														if (jQuery(this).attr('src') == httpsprefix+"://a.vimeocdn.com/js/froogaloop2.min.js")
 														   loadit = false;
 													});
 													if (loadit)
@@ -3893,7 +3893,7 @@
 											videowebm = nextcaption.data('videowebm'),
 											videoogv = nextcaption.data('videoogv'),
 											videocontrols = nextcaption.data('videocontrols'),
-											httpprefix = "http",
+											httpsprefix = "https",
 											videoloop = nextcaption.data('videoloop')=="loop" ? "loop" : nextcaption.data('videoloop')=="loopandnoslidestop" ? "loop" : "";
 
 										if (nextcaption.data('thumbimage')!=undefined && nextcaption.data('videoposter')==undefined)
@@ -3901,22 +3901,22 @@
 
 										// ADD YOUTUBE IFRAME IF NEEDED
 										if (vidytid!=undefined && String(vidytid).length>1 && nextcaption.find('iframe').length==0) {
-											httpprefix = "https";
+											httpsprefix = "https";
 
 											if (videocontrols=="none") {
 										 		vida = vida.replace("controls=1","controls=0");
 										 		if (vida.toLowerCase().indexOf('controls')==-1)
 										 		  vida = vida+"&controls=0";
 										 	}
-											nextcaption.append('<iframe style="visible:hidden" src="'+httpprefix+'://www.youtube.com/embed/'+vidytid+'?'+vida+'" width="'+vidw+'" height="'+vidh+'" style="width:'+vidw+'px;height:'+vidh+'px"></iframe>');
+											nextcaption.append('<iframe style="visible:hidden" src="'+httpsprefix+'://www.youtube.com/embed/'+vidytid+'?'+vida+'" width="'+vidw+'" height="'+vidh+'" style="width:'+vidw+'px;height:'+vidh+'px"></iframe>');
 										}
 
 										// ADD VIMEO IFRAME IF NEEDED
 										if (vimeoid!=undefined && String(vimeoid).length>1 && nextcaption.find('iframe').length==0) {
 											if (location.protocol === 'https:')
-												httpprefix = "https";
+												httpsprefix = "https";
 
-											nextcaption.append('<iframe style="visible:hidden" src="'+httpprefix+'://player.vimeo.com/video/'+vimeoid+'?'+vida+'" width="'+vidw+'" height="'+vidh+'" style="width:'+vidw+'px;height:'+vidh+'px"></iframe>');
+											nextcaption.append('<iframe style="visible:hidden" src="'+httpsprefix+'://player.vimeo.com/video/'+vimeoid+'?'+vida+'" width="'+vidw+'" height="'+vidh+'" style="width:'+vidw+'px;height:'+vidh+'px"></iframe>');
 										}
 
 										// ADD HTML5 VIDEO IF NEEDED
