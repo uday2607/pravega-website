@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
 // Initialize mongoose
 
 var url = 'mongodb://localhost/pravega';
-var uri = 'mongodb+srv://pravega_developer:vmt@pravega-qebux.mongodb.net/test?retryWrites=true&w=majority'
+var uri = 'mongodb+srv://pravega_developer:123qwerty@pravega-qebux.mongodb.net/test?retryWrites=true&w=majority'
 
 mongoose.connect(uri, { useNewUrlParser: true });
 var db = mongoose.connection;
@@ -107,7 +107,7 @@ db.once('open', (e) => {
                 temp.save((err, data) => {
                     if (err) throw err;
 
-                    // Send mail 
+                    // Send mail
 
                     var mailOptions = {
                         from: '"Team Pravega"<pravega.website@gmail.com>',
