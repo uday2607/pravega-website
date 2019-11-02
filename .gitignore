@@ -25,3 +25,4 @@ node_modules
 # virtual machine crash logs, see https://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 .DS_Store
+img/black_bg.svg
