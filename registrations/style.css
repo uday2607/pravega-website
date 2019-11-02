@@ -36,8 +36,8 @@ a {
   font-size: 50px;
   color: black;
   -webkit-text-stroke: 2px white;
-  margin: 0;
-  height: 120px;
+  margin-bottom: 27px;
+  height: 100px;
 } 
 .event-link:hover {
   color: white;
