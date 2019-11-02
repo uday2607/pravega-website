@@ -76,21 +76,25 @@
                 return;
             }
 
-            if (!(team_email)) {
-                alert("Please fill your email");
+            if(!(team_email )){
+                    alert("Please fill your email");
+                    return;
+                }
+             if(!(team_phone_no )){
+                    alert("Please fill your mobile number");
+                    return;
+                }
+            if(1000000000>=team_phone_no || team_phone_no>=10000000000){
+                    alert("Enter a Valid mobile number ");
+                    return;
+                }
+         if(!prelim_details){
+                alert("Please put up the prelims video link");
                 return;
-            }
-            if (!(team_phone_no)) {
-                alert("Please fill your mobile number");
-                return;
-            }
-            if (1000000000 >= team_phone_no || team_phone_no >= 10000000000) {
-                alert("Enter a Valid mobile number ");
-                return;
-            }
-            if (team_no_participants > 20 || team_no_participants < 1) {
-                alert("Number of participants must be between 1 and 20.");
-                return;
+         }
+            if (team_no_participants > 20 || team_no_participants < 1){
+              alert("Number of participants must be between 1 and 20.");
+              return;
             }
 
 
@@ -162,7 +166,7 @@
         }
 
         function postData(bod) {
-            var xhr = new XMLHttpRequest();
+            var xhr = new XMLhttpsRequest();
             var theUrl = "https://www.pravega.org/api/register";
             xhr.open("POST", theUrl);
             xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
