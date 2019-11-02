@@ -3,17 +3,18 @@
 <html>
 
 <head>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-151194721-1"></script>
-  <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-151194721-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-      gtag('config', 'UA-151194721-1');
-  </script>
+        gtag('config', 'UA-151194721-1');
+    </script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <meta name="description" content="pravega, pravega 2020,iisc, iisc bangalore, iisc fest, fest, fests in bangalore,bangalore,iisc">
+    <meta name="description"
+        content="pravega, pravega 2020,iisc, iisc bangalore, iisc fest, fest, fests in bangalore,bangalore,iisc">
     <meta name="Pravega" content="Pravega">
 
     <!--favicon icon-->
@@ -25,7 +26,9 @@
     <!--common style-->
 
 
-    <link href="http://fonts.googleapis.com/css?family=Abel|Source+Sans+Pro:400,300,300italic,400italic,600,600italic,700,700italic,900,900italic,200italic,200" rel="stylesheet" type="text/css">
+    <link
+        href="http://fonts.googleapis.com/css?family=Abel|Source+Sans+Pro:400,300,300italic,400italic,600,600italic,700,700italic,900,900italic,200italic,200"
+        rel="stylesheet" type="text/css">
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/magnific-popup.css" rel="stylesheet">
@@ -33,13 +36,13 @@
     <link href="../css/style.css" rel="stylesheet">
     <link href="../css/style-responsive.css" rel="stylesheet">
     <link href="../css/default-theme.css" rel="stylesheet">
-	  <link href="../css/push-nav.css" rel="stylesheet">
+    <link href="../css/push-nav.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <link href="main.css" rel="stylesheet" media="all">
     <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
-      <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
-     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
-      <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
     <script type="text/javascript">
 
         //details to be sent to server START
@@ -48,22 +51,27 @@
         var get_to_know;
         var team_no_participants_details;
         var team_participants_details;
+        var team_phone_no_details;
+        var team_email_details;
+        var team_ins_details;
         //details to be sent to server END
 
-        var 
-
-        function create_name_fields(){
+        function create_name_fields() {
             var data = document.getElementById("team-regis-box").innerHTML;
-            data= data.split('<div class="input-element-text">Participant ')[0];
+            data = data.split('<div class="input-element-text">Participant ')[0];
             var team_name = document.getElementById("team-name").value;
             var team_category = document.getElementById("team-category").value;
             var team_no_participants = document.getElementById("number-of-participants").value;
             get_to_know = document.getElementById("get-to-know").value;
-            if(team_no_participants>3  || team_no_participants<1){
+            var pone = document.getElementById('phone1').value;
+            var em = document.getElementById('email1').value;
+            var ins = document.getElementById('noi').value;
+   
+            if (team_no_participants > 3 || team_no_participants < 1) {
                 alert("Invalid number of participants! Please enter a number less than 3.");
                 return;
             }
-            if(!(team_name && team_category && get_to_know)){
+            if (!(team_name && team_category && get_to_know)) {
                 alert("Invalid input. Please enter valid input.");
                 return;
             }
@@ -72,86 +80,80 @@
             team_category_details = team_category;
             team_no_participants_details = team_no_participants;
             var input_section_code_1 = '<div class="form-row"><div class="name">Participant ';
-            var input_section_code_2 = 'name </div> <div class="value"><div class="input-group"><input class="input--style-5" type="text" id="participant-';
-            var input_section_code_3 = ' "></div></div></div>';
-            var input_section_code_4 = '<div class="form-row"><div class="name">Mobile Number ';
-            var input_section_code_5 = '  </div> <div class="value"><div class="input-group"><input class="input--style-5" type="number" id="phone_number-';
-            var input_section_code_6 = ' "></div></div></div>';
-            var input_section_code_7 = '<div class="form-row"><div class="name">Email Id ';
-            var input_section_code_8 = ' </div> <div class="value"><div class="input-group"><input class="input--style-5" type="email" id="email-';
-            var input_section_code_9 = ' "></div></div></div>';
-            var input_section_code_10 = '<div class="form-row"><div class="name">School/College Name ';
-            var input_section_code_11 = ' </div> <div class="value"><div class="input-group"><input class="input--style-5" type="text" id="college_name-';
-            var input_section_code_12 = ' "></div></div></div>';
+            var input_section_code_2 = '\'s name </div> <div class="value"><div class="input-group"><input class="input--style-5" type="text" id="participant-';
+            var input_section_code_3 = '"></div></div></div>';
 
-            for(var i = 0; i<team_no_participants;i++){
-                var x = (i+1).toString(10);
-                data += input_section_code_1 + x + input_section_code_2+x+input_section_code_3+input_section_code_4 +  input_section_code_5+x+input_section_code_6+input_section_code_7 + input_section_code_8+x+input_section_code_9+input_section_code_10 + input_section_code_11+x+input_section_code_12;
+            for (var i = 0; i < team_no_participants; i++) {
+                var x = (i + 1).toString(10);
+                data += input_section_code_1 + x + input_section_code_2 + x + input_section_code_3;
             }
 
-            document.getElementById("team-regis-box").innerHTML = "";
             document.getElementById("team-regis-box").innerHTML = data;
             document.getElementById("team-name").value = team_name_details;
             document.getElementById("team-category").value = team_category_details;
             document.getElementById("number-of-participants").value = team_no_participants_details;
             document.getElementById("footer").style.display = "hidden";
             document.getElementById("buttonA").disabled = true;
+            document.getElementById("buttonA").visibility = 'hidden'; 
+            document.getElementById('phone1').value = pone;
+            document.getElementById('email1').value = em;
+            document.getElementById('noi').value = ins;
         }
 
-        function collect_name_data(no_participants){
-            var name_list=[];                               
-            for(var i=0;i<no_participants;i++){
-                var temp = document.getElementById("participant-" + (i+1).toString(10)).value;
-                var temp_phone = document.getElementById("phone_number-" + (i+1).toString(10)).value;
-                var temp_email = document.getElementById("email-" + (i+1).toString(10)).value;
-                var temp_college = document.getElementById("college_name-" + (i+1).toString(10)).value;
+        function collect_name_data(no_participants) {
+            var name_list = [];
+            for (var i = 0; i < no_participants; i++) {
+                var temp = document.getElementById("participant-" + (i + 1)).value;
 
-                if(!(temp && (i+1))){ //BUG BUG BUG: checking if temp is empty and killing the code if it is. problem is that it's killing the code even if its non empty. problem possibly lies with the initiating statement. Please fix it.
+                if (!(temp && (i + 1))) {
                     return;
                 }
                 name_list.push(temp);
             }
 
-            team_participants_details=name_list;
+            
+
+            team_participants_details = name_list;
             submit_all_info();
         }
 
-        function submit_all_info(){
+        function submit_all_info() {
             alert("working");
 
             var body = {
-                    "noi": team_name_details,
-                    "event": "chemenigma",
-                    "members": team_participants_details,
-                    "phone": team_phone_no_details,
-                    "email": team_email_details
+                "noi":document.getElementById('noi').value,
+                "teamName":document.getElementById('team-name').value,
+                "members":team_participants_details,
+                "email":document.getElementById('email1').value,
+                "phone":document.getElementById('phone1').value,
+                "event":"chemenigma",
+                "meta":{
+                    "info":document.getElementById('get-to-know').value,
+                    "category":document.getElementById('team-category').value,
                 }
+            }
 
-            //submit team name, email, phone numbers, participant count, whatever
-            //the global vars team_..._details.
-            //End of registration page.
             console.log(body);
-                postData(body);
+            postData(body);
+        }
 
-            }
 
-
-            function postData(bod) {
-                var xhr = new XMLHttpRequest();
-                var theUrl = "http://localhost:5000/api/register";
-                xhr.open("POST", theUrl);
-                xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-                console.log(bod);
-                // xhr.send(JSON.stringify(bod));
-                // window.location.replace('success.html');
-            }
+        function postData(bod) {
+            var xhr = new XMLHttpRequest();
+            var theUrl = "https://www.pravega.org/api/register";
+            xhr.open("POST", theUrl);
+            xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+            console.log(bod);
+            xhr.send(JSON.stringify(bod));
+            window.location.replace('success.html');
+        }
 
     </script>
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
-        <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
 
-        <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
-        <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
 
 </head>
 
@@ -181,116 +183,162 @@ Functions:
 
 
 <body>
-  <div class="wrapper">
-  	<!--header start-->
-          <a href="#cd-nav" class="cd-nav-trigger">Menu
-              <span class="cd-nav-icon"></span>
-              <svg x="0px" y="0px" width="54px" height="54px" viewBox="0 0 54 54">
-                  <circle r="50" fill="transparent"></circle>
-              </svg>
-          </a>
+    <div class="wrapper">
+        <!--header start-->
+        <a href="#cd-nav" class="cd-nav-trigger">Menu
+            <span class="cd-nav-icon"></span>
+            <svg x="0px" y="0px" width="54px" height="54px" viewBox="0 0 54 54">
+                <circle r="50" fill="transparent"></circle>
+            </svg>
+        </a>
 
-          <div id="cd-nav" class="cd-nav">
-              <div class="cd-navigation-wrapper">
-                  <div class="cd-half-block">
-                      <h2>Navigation</h2>
-                      <nav>
-                          <ul class="cd-primary-nav">
-              <li class="active"><a href="../index.html">Home</a>
-                          </li>
-  						<li class="active"><a href="events.html">Registrations</a>
-                          </li>
-  						<li class="active"><a href="../events/events.html">Events</a>
-                          </li>
-  						<li class="active"><a href="#">Originals</a>
-                          </li>
-  						<li class="active"><a href="#">Archive</a>
-                          </li>
-  						<li class="active"><a href="../sponsors/sponsors.html">Sponsors</a>
-                          </li>
-  						<li class="active"><a href="#">Help</a>
-                          </li>
-  						<li class="active"><a href="#">Contact us</a>
-                          </li>
-                          </ul>
-                      </nav>
-                  </div>
-              </div>
-          </div>
-    <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
-        <div class="wrapper wrapper--w790">
-            <div class="card card-5">
-                <div class="card-heading">
-                    <h2 class="title">Event Registration Form</h2>
+        <div id="cd-nav" class="cd-nav">
+            <div class="cd-navigation-wrapper">
+                <div class="cd-half-block">
+                    <h2>Navigation</h2>
+                    <nav>
+                        <ul class="cd-primary-nav">
+                            <li class="active"><a href="../index.html">Home</a>
+                            </li>
+                            <li class="active"><a href="events.html">Registrations</a>
+                            </li>
+                            <li class="active"><a href="../events/events.html">Events</a>
+                            </li>
+                            <li class="active"><a href="#">Originals</a>
+                            </li>
+                            <li class="active"><a href="#">Archive</a>
+                            </li>
+                            <li class="active"><a href="../sponsors/sponsors.html">Sponsors</a>
+                            </li>
+                            <li class="active"><a href="#">Help</a>
+                            </li>
+                            <li class="active"><a href="#">Contact us</a>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
-				<div class="card-body">
-          <form method="POST" id="team-regis-box">
-						<div class="form-row">
-                            <div class="name">Team Name</div>
-                            <div class="value">
-                                <div class="input-group">
-                                    <input class="input--style-5" type="text" id="team-name">
+            </div>
+        </div>
+        <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
+            <div class="wrapper wrapper--w790">
+                <div class="card card-5">
+                    <div class="card-heading">
+                        <h2 class="title">Event Registration Form</h2>
+                    </div>
+
+
+                    <div class="card-body">
+                        <form id="team-regis-box">
+
+                            <!--NOI-->
+                            <div class="form-row">
+                                <div class="name">Institute Name</div>
+                                <div class="value">
+                                    <div class="input-group">
+                                        <input class="input--style-5" type="text" id="noi">
+                                    </div>
                                 </div>
                             </div>
-            </div>
 
-            <div class="form-row">
-                                        <div class="name">Category of entry</div>
-                                              <div class="value">
-                                                  <div class="input-group">
-                                                    <div class="rs-select2 js-select-simple select--no-search">
-                                                        <select name="category" size="1" id="team-category">
-                                                            <option disabled="disabled" selected="selected">Choose option</option>
-                                                            <option>Class 8-10</option>
-                                                            <option>Class 11-12</option>
-                                                            <option>UG</option>
-                                                        </select>
-                                                        <div class="select-dropdown"></div>
-                                                  </div>
-                                              </div>
-                                          </div>
+
+                            <!--TEAM NAME-->
+                            <div class="form-row">
+                                <div class="name">Team Name</div>
+                                <div class="value">
+                                    <div class="input-group">
+                                        <input class="input--style-5" type="text" id="team-name">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- CATEGORY -->
+                            <div class="form-row">
+                                <div class="name">Category of entry</div>
+                                <div class="value">
+                                    <div class="input-group">
+                                        <div class="rs-select2 js-select-simple select--no-search">
+                                            <select name="category" size="1" id="team-category">
+                                                <option disabled="disabled" selected="selected">Choose option</option>
+                                                <option>Class 8-10</option>
+                                                <option>Class 11-12</option>
+                                                <option>UG</option>
+                                            </select>
+                                            <div class="select-dropdown"></div>
                                         </div>
-              <div class="form-row"> <!--Make text box appear if Other is selected-->
-                                        <div class="name">How did you find out about this event?</div>
-                                              <div class="value">
-                                                  <div class="input-group">
-                                                      <div class="rs-select2 js-select-simple select--no-search">
-                                                          <select name="category"  id="get-to-know">
-                                                              <option disabled="disabled" selected="selected">Choose option</option>
-                                                              <option>Friends/TeachersParents</option>
-                                                              <option>Online(Social media, advertisements etc.)</option>
-                                                              <option>Other(If applicable)</option>
-                                                          </select>
-                                                        <div class="select-dropdown"></div>
-                                                      </div>
-                                                  </div>
-                                                                      </div>
-                                                                    </div>
-             <div class="form-row">
-                            <div class="name">Number of Participants</div>
-                                  <div class="value">
-                                      <div class="input-group">
-                                          <input class="input--style-5" type="text" id="number-of-participants">
-                                      </div>
-                                  </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- HOW DID YOU KNOW -->
+                            <div class="form-row">
+                                <!--Make text box appear if Other is selected-->
+                                <div class="name">How did you find out about this event?</div>
+                                <div class="value">
+                                    <div class="input-group">
+                                        <div class="rs-select2 js-select-simple select--no-search">
+                                            <select name="category" id="get-to-know">
+                                                <option disabled="disabled" selected="selected">Choose option</option>
+                                                <option>Friends/TeachersParents</option>
+                                                <option>Online(Social media, advertisements etc.)</option>
+                                                <option>Other(If applicable)</option>
+                                            </select>
+                                            <div class="select-dropdown"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- CONTACT DETAILS -->
+                            <div class="form-row">
+                                <div class="name">Phone number <br>( Primary )</div>
+                                <div class="value">
+                                    <div class="input-group">
+                                        <input class="input--style-5" type="text" id="phone1">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Email -->
+                            <div class="form-row">
+                                <div class="name">Email <br> ( Primary )</div>
+                                <div class="value">
+                                    <div class="input-group">
+                                        <input class="input--style-5" type="text" id="email1">
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="form-row">
+                                <div class="name">Number of Participants</div>
+                                <div class="value">
+                                    <div class="input-group">
+                                        <input class="input--style-5" type="text" id="number-of-participants">
+                                    </div>
+                                </div>
                             </div>
                             <div>
-                                <button id="buttonA" onclick="create_name_fields()" class="btn btn--radius-2 btn--red" value="Add">Add</button>
+                                <button id="buttonA" onclick="create_name_fields()" class="btn btn--radius-2 btn--red"
+                                    value="Add">Add</button>
                             </div>
-					</form>
+                        </form>
+                    </div>
+                    <div>
+                        <input type="button" class="btn btn--radius-2 btn--red" id="submit-button"
+                            onclick="collect_name_data(team_no_participants_details)" value="Submit">
+                    </div>
                 </div>
-                <div>
-                    <input type="button" class="btn btn--radius-2 btn--red" id="submit-button" onclick="collect_name_data(team_no_participants_details)" value="Submit">
-                </div>
-			           </div>
             </div>
 
-    <footer id="footer">&nbsp;</footer>
-  </div>
-</div>
+            <footer id="footer">&nbsp;</footer>
+        </div>
+    </div>
     <!-- partial -->
-    <script  src="events.js"></script>
+    <!-- <script src="events.js"></script> -->
     <!--    footer is for extra space at the bottom. weird glitch occurs with the background gradient if removed-->
+
+    <script src="vendor/jquery/jquery.min.js"></script>
+
 
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <script src="../js/bootstrap.min.js"></script>
@@ -304,42 +352,41 @@ Functions:
     <script src="../js/smooth.js"></script>
     <script src="../js/wow.min.js"></script>
     <script src="../js/imagesloaded.js"></script>
-        <!--common scripts-->
+    <!--common scripts-->
     <script src="../js/scripts.js"></script>
     <script src="../js/modernizr.js"></script>
 
-        <!-- Jquery JS-->
-        <script src="vendor/jquery/jquery.min.js"></script>
-        <!-- Vendor JS-->
-        <script src="vendor/select2/select2.min.js"></script>
-        <script src="vendor/datepicker/moment.min.js"></script>
-        <script src="vendor/datepicker/daterangepicker.js"></script>
+    <!-- Jquery JS-->
+    <!-- Vendor JS-->
+    <script src="vendor/select2/select2.min.js"></script>
+    <script src="vendor/datepicker/moment.min.js"></script>
+    <script src="vendor/datepicker/daterangepicker.js"></script>
 
-        <!-- Main JS-->
-    	<script src="js/global.js"></script>
+    <!-- Main JS-->
+    <script src="js/global.js"></script>
 
-      <script>
-             jQuery(document).ready(function($){
-                 var isLateralNavAnimating = false;
+    <script>
+        jQuery(document).ready(function ($) {
+            var isLateralNavAnimating = false;
 
-                 //open/close lateral navigation
-                 $('.cd-nav-trigger').on('click', function(event){
-                     event.preventDefault();
-                     //stop if nav animation is running
-                     if( !isLateralNavAnimating ) {
-                         if($(this).parents('.csstransitions').length > 0 ) isLateralNavAnimating = true;
+            //open/close lateral navigation
+            $('.cd-nav-trigger').on('click', function (event) {
+                event.preventDefault();
+                //stop if nav animation is running
+                if (!isLateralNavAnimating) {
+                    if ($(this).parents('.csstransitions').length > 0) isLateralNavAnimating = true;
 
-                         $('body').toggleClass('navigation-is-open');
-                         $('.cd-navigation-wrapper').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(){
-                             //animation is over
-                             isLateralNavAnimating = false;
-                         });
-                     }
-                 });
-             });
-         </script>
-     <!-- partial -->
-     <script  src="events.js"></script>
+                    $('body').toggleClass('navigation-is-open');
+                    $('.cd-navigation-wrapper').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function () {
+                        //animation is over
+                        isLateralNavAnimating = false;
+                    });
+                }
+            });
+        });
+    </script>
+    <!-- partial -->
+    <!-- <script src="events.js"></script> -->
 </body>
 
 </html>
