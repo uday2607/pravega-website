@@ -115,7 +115,7 @@
 }
 
 #clients-1 .item img{
-    display: block;
+    display:inline-block;
     width: 100%;
     height: auto;
 }
