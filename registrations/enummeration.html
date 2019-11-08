@@ -94,7 +94,7 @@
 
                     return;
                 }
-                
+
                 submit_all_info();
             }
 
@@ -120,7 +120,7 @@
         }
 
         function postData(bod) {
-            var xhr = new XMLhttpsRequest();
+            var xhr = new XMLHttpRequest();
             var theUrl = "https://www.pravega.org/api/register";
             xhr.open("POST", theUrl);
             xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
