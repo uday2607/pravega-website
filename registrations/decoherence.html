@@ -57,8 +57,10 @@
         var number_1, number_2;
         var email_1, email_2;
         //details to be sent to server END
+        var flag;
 
         function submitAllInfo() {
+            flag = 0;
             college_name = document.getElementById("college-name").value;
             // address_1 = document.getElementById("address-1").value;
             // address_2 = document.getElementById("address-2").value;
@@ -116,12 +118,14 @@
                 }
             }
 
+            flag = 1;
             console.log(body);
             postData(body);
 
         }
 
         function postData(bod) {
+          if (flag == 1){
             var xhr = new XMLHttpRequest();
             var theUrl = "https://www.pravega.org/api/register";
             xhr.open("POST", theUrl);
@@ -133,6 +137,7 @@
                     window.location.replace('success.html');
                 }
             }
+          }
             //
         }
     </script>
