@@ -55,6 +55,7 @@
         var team_no_participants;
         var prelim_details;
         var team_participants_details;
+        var flag = 0;
         //details to be sent to server END
 
 
@@ -154,12 +155,14 @@
                 }
             }
 
+            flag = flag + 1;
             postData(body);
 
         }
 
 
         function postData(bod) {
+          if (flag == 1){
             var xhr = new XMLHttpRequest();
             var theUrl = "https://www.pravega.org/api/register";
             xhr.open("POST", theUrl);
@@ -171,6 +174,7 @@
                     window.location.replace('success.html');
                 }
             }
+          }
             //
         }
     </script>

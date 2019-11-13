@@ -40,6 +40,7 @@
         var team_email;
         var team_phone_no;
         var team_no_participants;
+        var flag = 0;
         //details to be sent to server END
 
 
@@ -135,16 +136,16 @@
                 "teamName":leader_name
             }
 
-            postData(body);
-
             //submit team name, email, phone numbers, participant count, whatever
             //the global vars team_..._details.
             //End of registration page.
+            flag = flag + 1;
             postData(body);
 
         }
 
         function postData(bod) {
+          if (flag == 1){
             var xhr = new XMLHttpRequest();
             var theUrl = "https://www.pravega.org/api/register";
             xhr.open("POST", theUrl);
@@ -156,6 +157,7 @@
                     window.location.replace('success.html');
                 }
             }
+          }
             //
         }
 

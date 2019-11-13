@@ -55,6 +55,7 @@
         var number_1, number_2;
         var college_name;
         var name_2;
+        var flag = 0;
 
         //details to be sent to server END
 
@@ -114,12 +115,16 @@
                 }
             }
 
+            flag = flag + 1;
+            console.log(body);
             postData(body);
             // console.log(body)
+
 
         }
 
         function postData(bod) {
+          if (flag == 1){
             var xhr = new XMLHttpRequest();
             var theUrl = "https://www.pravega.org/api/register";
             xhr.open("POST", theUrl);
@@ -131,6 +136,7 @@
                     window.location.replace('success.html');
                 }
             }
+          }
             //
         }
 

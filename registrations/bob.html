@@ -227,6 +227,7 @@ Functions:
             var no_of_members;
             var team_fb;
             var team_youtube;
+            var flag = 0;
             //details to be sent to server END
 
             function submitAllInfo() {
@@ -264,13 +265,16 @@ Functions:
                 // Check for invalid phone numbers and don't allow blank spaces etc.
 
                 // After all that i want the above list .
+                flag = flag + 1;
                 console.log(body);
                 postData(body);
+
 
             }
 
 
             function postData(bod) {
+              if (flag == 1){
                 var xhr = new XMLHttpRequest();
                 var theUrl = "https://www.pravega.org/api/register";
                 xhr.open("POST", theUrl);
@@ -282,6 +286,7 @@ Functions:
                         window.location.replace('success.html');
                     }
                 }
+              }
                 //
             }
 
