@@ -45,7 +45,7 @@
     <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
 </head>
 
-<body>
+<body oncontextmenu="return false;">`
     <div class="wrapper">
         <!--header start-->
         <a href="#cd-nav" class="cd-nav-trigger">Menu
@@ -151,6 +151,25 @@
 
         <!-- Main JS-->
         <script src="js/global.js"></script>
+        <script>
+        document.onkeydown = function(e) {
+  if(event.keyCode == 123) {
+     return false;
+  }
+  if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+     return false;
+  }
+  if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
+     return false;
+  }
+  if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+     return false;
+  }
+  if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+     return false;
+  }
+}
+        </script>
     </body>
 
     </html>
