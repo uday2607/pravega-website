@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Login Form</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+    <title>Login</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700">
+
+</head>
+    <div id="login">
+      <form name='form-login'>
+        <span class="fontawesome-user"></span>
+          <input type="text" id="user" placeholder="Username">
+
+        <span class="fontawesome-lock"></span>
+          <input type="password" id"pass" placeholder="Password">
+
+        <input type="submit" onclick="submit()"  value="Login">
+
+</form>
+<script type="text/javascript">
+
+    function submit() {
+
+    var email = document.getElementById('user').value;
+    var pword = document.getElementById('pass').value;
+
+    console.log(email);
+    var bod = {
+        "email":email,
+        "pword":pword
+    }
+
+    var xhr = new XMLHttpRequest();
+    var theUrl = "https://www.pravega.org/auth";
+    var testUrl = "http://localhost:5000/auth";
+    xhr.open("POST", theUrl);
+    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    console.log(bod);
+    xhr.send(JSON.stringify(bod));
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+            alert(xhr.response);
+            /*
+
+            TODO: DO SOMETHING HERE !!!!
+            UDAY : here you can put any redirects etc after data has been sent
+            */
+            window.location.replace('https://www.pravega.org/decoherence/quiz.html');
+        }
+    }
+
+
+    }
+</script>
+<!-- partial -->
+
+</body>
+</html>
