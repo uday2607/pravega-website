@@ -59,7 +59,8 @@ db.once('open', (e) => {
         "event": String,
         "phone": mongoose.Schema.Types.Mixed,
         "email": String,
-        "meta": mongoose.Schema.Types.Mixed
+        "meta": mongoose.Schema.Types.Mixed,
+        "pword": mongoose.Schema.Types.Mixed
     })
 
     // Construct team as mongoose object
@@ -87,6 +88,7 @@ db.once('open', (e) => {
 
             // Defining a data object to make it easy to refer to.
             var data = req.body;
+            data.pword = Math.floor(Math.random() * 10000);
             console.log(data);
 
             // Setting a teamName if not provided
@@ -167,6 +169,108 @@ db.once('open', (e) => {
             }
         })
     });
+
+
+    // Password Generation
+
+    // app.get('/pword/gen',(req,res)=>{
+    //     try{
+    //     team.find((err,data)=>{
+    //         if(err) throw err;
+    //         data.forEach(element => {
+    //             element.pword = Math.floor(Math.random()*10000);
+    //             console.log(element);
+    //             team.findOneAndUpdate({_id:element._id},element,(e,d)=>{
+    //                 if(e) throw e;
+    //                 console.log(d);   
+    //             })
+    //         });
+    //         res.send(data.length+"");
+    //     })
+    //     } catch(e){
+    //         console.log(e);
+    //         res.send(e);
+    //     }
+    // })
+
+    // Login Auth
+    app.post('/auth', (req, res) => {
+        console.log(req.body);
+        try {
+            team.findOne({ email: req.body.email }, (err, data) => {
+                console.log(data)
+                if (err) {
+                    res.send('Error on database, Contact Team pravega if problem persists');
+                }
+                if (data) {
+                    if (req.body.pword == data.pword) {
+                        res.send('Success');
+                        console.log('Auth Success');
+                    } else {
+                        res.send('Auth failed: Wrong Password');
+                        console.log('Auth Failed: Wrong Password')
+                    }
+                } else {
+                    res.send('Auth failed: No such email exists !')
+                }
+            })
+        } catch (error) {
+            console.log(error);
+        }
+    })
+
+    app.get('/api/registrations/email/:email', (req, res) => {
+        console.log(req.params.email)
+        team.find({ email: req.params.email }, (e, data) => {
+            if (e) throw e;
+            res.send(data);
+        })
+    })
+
+    app.get('/api/registrations/event/:event', (req, res) => {
+        console.log(req.params.event)
+        team.find({ event: req.params.event }, (e, data) => {
+            if (e) throw e;
+            res.send(data);
+        })
+    })
+
+    // app.get('/sendMail', (req, res) => {
+    //     res.send('Sending');
+    //     sendMail();
+    // })
+
+    var count = 0;
+
+    function sendMail() {
+        team.find({ "event": "decoherence" }, (err, data) => {
+
+                var postMan = data[count];
+
+                var htmlString = '<div style="text-align:center;background-color:lightblue;"><img src="https://www.pravega.org/img/blue_light_trans-01.png" style="height: 6em;">&nbsp;&nbsp;<img src="https://www.pravega.org/img/footer.png" style="height: 4em;"><h2 style="background-color: blue;"><br></h2><p>Your Decoherence Credentials are as follows</p><p>Email :  ' + postMan.email + ' (The recipient of this Email)</p><p>Password : ' + postMan.pword + '</p><p>Stay tuned to <a href="https://www.pravega.org/">the website</a> for updates !</p><br><p>Please ignore this mail if you have already recieved it.</p><br><h5 style="font-weight: 200;">If the above details are incorrect, you can contact us ! Contact details on the website</h5></div><style>    #main{width:100%;height:auto;background-color:coral;padding: 20px;font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Oxygen, Ubuntu, Cantarell, \'Open Sans\', \'Helvetica Neue\', sans-serif;}</style>'
+
+                var mailOptions = {
+                    from: '"Team Pravega"<pravega.website@gmail.com>',
+                    to: postMan.email,
+                    subject: 'Decoherence Login Details | Pravega 2020',
+                    html: htmlString
+                }
+
+                transporter.sendMail(mailOptions, function (error, response) {
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        count++;
+                        console.log(count);
+                        if (count == 98) {
+                            console.log('done');
+                        } else {
+                            sendMail();
+                        }
+                    }
+                });
+        })
+    }
 
     app.listen(process.env.PORT || 5000, (e) => {
         console.log("The Server is running on port number " + 5000)
