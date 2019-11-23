@@ -1,32 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" >
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Login | Pravega 2020</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-151194721-1"></script>
+	<script>
+  		window.dataLayer = window.dataLayer || [];
+  		function gtag(){dataLayer.push(arguments);}
+  		gtag('js', new Date());
+
+  		gtag('config', 'UA-151194721-1');
+	</script>
+      <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="pravega, pravega 2020,iisc, iisc bangalore, iisc fest, fest, fests in bangalore,bangalore,iisc">
+    <meta name="Pravega" content="Pravega">
+
+    <!--favicon icon-->
+     <link rel="icon" type="image/png" href="../img/blue_dark_trans-01.png"> <!-- take a favicon.img for favicon -->
+
+    <title>Login | Pravega 2020, IISc Bangalore</title>
+
+    <!--common style-->
+
+
+<link href='http://fonts.googleapis.com/css?family=Abel|Source+Sans+Pro:400,300,300italic,400italic,600,600italic,700,700italic,900,900italic,200italic,200' rel='stylesheet' type='text/css'>
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/all.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
 </head>
 
-<body style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center;">
-    <h1>Login</h1>
-    
-        <h2>Enter email</h2>
-        <br><br>
-        <input type="email" id="email" required>
-        <br><br>
-        <h2>Enter password</h2>
-        <input type="password" id="pword" required>
-        <br><br>
-        <button type="submit" onclick="submit();">Submit</button>
+<body >
+<!--  preloader start -->
+<div id="tb-preloader">
+    <div class="tb-preloader-wave"></div>
+</div>
+<!-- preloader end -->
 
 
+    <div class="login login-bg">
+
+        <div class="container">
+            <div class="login-logo text-center">
+                <a href="#"> <img class="retina" src="" alt=""/></a>
+            </div>
+            <div class="login-box btn-rounded login-bg-input border-less-input">
+                <form id="login-form" name="login-form" class=" " action="#" method="post">
+
+                    <div class="text-center"><h3>LOGIN</h3></div>
+
+                    <div class="form-group">
+                        <input type="text" id="login-form-username" name="login-form-username" value="" class="form-control" placeholder="Login ID" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="password" id="login-form-password" name="login-form-password" value="" class="form-control " placeholder="Password" required>
+                    </div>
+
+                    <div class="form-group">
+                        <button class="btn btn-small btn-dark-solid full-width btn-rounded" onclick="submit();" id="login-form-submit" name="login-form-submit" value="login">Login</button>
+					</div>
+
+
+                </form>
+            </div>
+        </div>
+
+    </div>
     <script type="text/javascript">
 
         function submit() {
-            
-        var email = document.getElementById('email').value;
-        var pword = document.getElementById('pword').value;
+
+        var email = document.getElementById('login-form-username').value;
+        var pword = document.getElementById('login-form-password').value;
 
         console.log(email);
         var bod = {
@@ -37,17 +86,19 @@
         var xhr = new XMLHttpRequest();
         var theUrl = "https://www.pravega.org/auth";
         var testUrl = "http://localhost:5000/auth";
-        xhr.open("POST", testUrl);
+        xhr.open("POST", theUrl);
         xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
         console.log(bod);
         xhr.send(JSON.stringify(bod));
         xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4) {
+            if (xhr.readyState ``=== 4) {
                 alert(xhr.response);
                 /*
+
                 TODO: DO SOMETHING HERE !!!!
                 UDAY : here you can put any redirects etc after data has been sent
                 */
+                window.location.replace('https://www.pravega.org/test/test.html');
             }
         }
 
@@ -55,6 +106,20 @@
         }
     </script>
 
-</body>
 
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="../js/jquery-1.10.2.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/menuzord.js"></script>
+<script src="../js/jquery.flexslider-min.js"></script>
+<script src="../js/owl.carousel.min.js"></script>
+<script src="../js/jquery.isotope.js"></script>
+<script src="../js/jquery.magnific-popup.min.js"></script>
+<script src="../js/smooth.js"></script>
+<script src="../js/wow.min.js"></script>
+<script src="../js/imagesloaded.js"></script>
+    <!--common scripts-->
+<script src="../js/scripts.js?6"></script>
+
+</body>
 </html>
