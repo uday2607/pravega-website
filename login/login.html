@@ -48,12 +48,12 @@
                 <a href="#"> <img class="retina" src="" alt=""/></a>
             </div>
             <div class="login-box btn-rounded login-bg-input border-less-input">
-                <form onsubmit="submit();" id="form">
+                <form id="form">
 
                     <div class="text-center"><h3>LOGIN</h3></div>
                         <input type="text" id="login-form-username" class="form-control" placeholder="Login ID" required>
                         <input type="password" id="login-form-password"  class="form-control" placeholder="Password" required>
-                        <button class="btn btn-small btn-dark-solid full-width btn-rounded" value="login">Login</button>
+                        <button class="btn btn-small btn-dark-solid full-width btn-rounded" onclick="submit();" value="login">Login</button>
 
 
                 </form>
@@ -65,7 +65,7 @@
 
         function submit() {
 
-        var data = document.getElementById("form").innerHTML;  
+        var data = document.getElementById("form").innerHTML;
         var email = document.getElementById('login-form-username').value;
         var pword = document.getElementById('login-form-password').value;
 
