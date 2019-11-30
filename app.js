@@ -231,7 +231,7 @@ db.once('open', (e) => {
         console.log(req.params.event)
         team.find({ event: req.params.event }, (e, data) => {
             if (e) throw e;
-            res.send(data);
+            res.send(data.length+"");
         })
     })
 
@@ -240,37 +240,79 @@ db.once('open', (e) => {
     //     sendMail();
     // })
 
-    var count = 0;
+    // var count = 0;
 
-    function sendMail() {
-        team.find({ "event": "decoherence" }, (err, data) => {
 
-                var postMan = data[count];
 
-                var htmlString = '<div style="text-align:center;background-color:lightblue;"><img src="https://www.pravega.org/img/blue_light_trans-01.png" style="height: 6em;">&nbsp;&nbsp;<img src="https://www.pravega.org/img/footer.png" style="height: 4em;"><h2 style="background-color: blue;"><br></h2><p>Your Decoherence Credentials are as follows</p><p>Email :  ' + postMan.email + ' (The recipient of this Email)</p><p>Password : ' + postMan.pword + '</p><p>Stay tuned to <a href="https://www.pravega.org/">the website</a> for updates !</p><br><p>Please ignore this mail if you have already recieved it.</p><br><h5 style="font-weight: 200;">If the above details are incorrect, you can contact us ! Contact details on the website</h5></div><style>    #main{width:100%;height:auto;background-color:coral;padding: 20px;font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Oxygen, Ubuntu, Cantarell, \'Open Sans\', \'Helvetica Neue\', sans-serif;}</style>'
+    // function sendMail() {
+    //     team.find({ "event": "whodunnit" }, (err, data) => {
 
-                var mailOptions = {
-                    from: '"Team Pravega"<pravega.website@gmail.com>',
-                    to: postMan.email,
-                    subject: 'Decoherence Login Details | Pravega 2020',
-                    html: htmlString
+    //             var postMan = data[count];
+
+    //             var htmlString = '<div style="text-align:center;background-color:lightblue;"><img src="https://www.pravega.org/img/blue_light_trans-01.png" style="height: 6em;">&nbsp;&nbsp;<img src="https://www.pravega.org/img/footer.png" style="height: 4em;"><h2 style="background-color: blue;"><br></h2><p>Your Whodunnit Credentials are as follows</p><p>Email :  ' + postMan.email + ' (The recipient of this Email)</p><p>Password : ' + postMan.pword + '</p><p>Stay tuned to <a href="https://www.pravega.org/">the website</a> for updates !</p><br><p>Please ignore this mail if you have already recieved it.</p><br><h5 style="font-weight: 200;">If the above details are incorrect, you can contact us ! Contact details on the website</h5></div><style>    #main{width:100%;height:auto;background-color:coral;padding: 20px;font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Oxygen, Ubuntu, Cantarell, \'Open Sans\', \'Helvetica Neue\', sans-serif;}</style>'
+
+    //             var mailOptions = {
+    //                 from: '"Team Pravega"<pravega.website@gmail.com>',
+    //                 to: postMan.email,
+    //                 subject: 'Whodunnit Login Details | Pravega 2020',
+    //                 html: htmlString
+    //             }
+
+    //             try {
+                    
+    //             } catch (error) {
+                    
+    //             }
+    //             transporter.sendMail(mailOptions, function (error, response) {
+    //                 if (error) {
+    //                     console.log(error);
+    //                 } else {
+    //                     count++;
+    //                     console.log(count);
+    //                     if (count == 58) {
+    //                         console.log('done');
+    //                     } else {
+    //                         sendMail();
+    //                     }
+    //                 }
+    //             });
+                
+    //     })
+    // }
+    
+
+
+
+    app.get('/dupes/:event', (req, res) => {
+        var dupes = 0;
+        var seen = [];
+        var duplicates = []
+        team.find({ "event": req.params.event }, (err, data) => {
+            if (err) { throw err }
+            data.forEach(element => {
+                if (seen.indexOf(element.email) != -1) {
+                    dupes++;
+                    team.find({"event":req.params.event,"email":element.email},(e,d)=>{
+                        if(e) throw e;
+                        console.log(d);
+                        duplicates.concat(d);
+                    })
+                } else {
+                    seen.push(element.email);
                 }
-
-                transporter.sendMail(mailOptions, function (error, response) {
-                    if (error) {
-                        console.log(error);
-                    } else {
-                        count++;
-                        console.log(count);
-                        if (count == 98) {
-                            console.log('done');
-                        } else {
-                            sendMail();
-                        }
-                    }
-                });
+            });
+            console.log(duplicates.length);
+            console.log(dupes);
+            res.send(dupes+"");
         })
-    }
+    })
+
+    app.get('/api/delete/id/:id',(req,res)=>{
+        team.deleteOne({"_id":req.params.id},(err)=>{
+            if(err) {throw err};
+            res.send('deleted');
+        })
+    })
 
     app.listen(process.env.PORT || 5000, (e) => {
         console.log("The Server is running on port number " + 5000)
