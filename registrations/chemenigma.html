@@ -122,15 +122,13 @@
                     return;
                 }
 
-                name_list.push(temp);
-                clg_list.push(temp1);
+                name_list.push(temp,temp1);
             }
 
 
 
 
             team_participants_details = name_list;
-            team_clg_details = clg_list;
             submit_all_info();
         }
 
@@ -140,7 +138,6 @@
                 "noi": document.getElementById('noi').value,
                 "teamName": document.getElementById('team-name').value,
                 "members": team_participants_details,
-                "college-details": team_clg_details,
                 "email": document.getElementById('email1').value,
                 "phone": document.getElementById('phone1').value,
                 "event": "chemenigma",
