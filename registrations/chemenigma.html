@@ -67,6 +67,7 @@
             var pone = document.getElementById('phone1').value;
             var em = document.getElementById('email1').value;
             var ins = document.getElementById('noi').value;
+            var name = document.getElementById('name').value;
 
             if (team_no_participants > 3 || team_no_participants < 1) {
                 alert("Invalid number of participants! Please enter a number less than 3.");
@@ -81,7 +82,7 @@
             team_category_details = team_category;
             team_no_participants_details = team_no_participants;
             var input_section_code_1 = '<div class="form-row"><div class="name">Participant ';
-            var input_section_code_2 = '\'s name </div> <div class="value"><div class="input-group"><input class="input--style-5" type="text" id="participant-';
+            var input_section_code_2 = '\'s name (optional) </div> <div class="value"><div class="input-group"><input class="input--style-5" type="text" id="participant-';
             var input_section_code_3 = '"></div></div></div>';
 
             for (var i = 0; i < team_no_participants; i++) {
@@ -99,6 +100,7 @@
             document.getElementById('phone1').value = pone;
             document.getElementById('email1').value = em;
             document.getElementById('noi').value = ins;
+            document.getElementById('name').value = name;
         }
 
         function collect_name_data(no_participants) {
@@ -127,6 +129,7 @@
                 "email": document.getElementById('email1').value,
                 "phone": document.getElementById('phone1').value,
                 "event": "chemenigma",
+                "name": document.getElementById('name').value,
                 "meta": {
                     "info": document.getElementById('get-to-know').value,
                     "category": document.getElementById('team-category').value,
@@ -237,6 +240,7 @@ Functions:
 
                     <div class="card-body">
                         <form id="team-regis-box">
+                          <p>*Please click on "Add" button to fill in details of more participants. It is optional </p>  
 
                             <!--NOI-->
                             <div class="form-row">
@@ -316,9 +320,18 @@ Functions:
                                 </div>
                             </div>
 
+                            <div class="form-row">
+                                <div class="name">Name of the Participant</div>
+                                <div class="value">
+                                    <div class="input-group">
+                                        <input class="input--style-5" type="text" id="name">
+                                    </div>
+                                </div>
+                            </div>
+
 
                             <div class="form-row">
-                                <div class="name">Number of Participants</div>
+                                <div class="name">Number of Participants*</div>
                                 <div class="value">
                                     <div class="input-group">
                                         <input class="input--style-5" type="text" id="number-of-participants">
