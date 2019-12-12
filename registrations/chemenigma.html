@@ -68,7 +68,7 @@
             var em = document.getElementById('email1').value;
             var ins = document.getElementById('noi').value;
             var name = document.getElementById('name').value;
-            var clg = document.getElementById('clg').value;
+         
 
             if (team_no_participants > 3 || team_no_participants < 1) {
                 alert("Invalid number of participants! Please enter a number less than 3.");
@@ -105,7 +105,6 @@
             document.getElementById('email1').value = em;
             document.getElementById('noi').value = ins;
             document.getElementById('name').value = name;
-            document.getElementById('clg').value = clg;
         }
 
         function collect_name_data(no_participants) {
@@ -342,14 +341,7 @@ Functions:
                                 </div>
                             </div>
 
-                            <div class="form-row">
-                                <div class="name">College of the Participant</div>
-                                <div class="value">
-                                    <div class="input-group">
-                                        <input class="input--style-5" type="text" id="clg">
-                                    </div>
-                                </div>
-                            </div>
+                         
 
 
                             <div class="form-row">
