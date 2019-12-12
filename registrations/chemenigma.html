@@ -68,6 +68,7 @@
             var em = document.getElementById('email1').value;
             var ins = document.getElementById('noi').value;
             var name = document.getElementById('name').value;
+            var clg = document.getElementById('clg').value;
 
             if (team_no_participants > 3 || team_no_participants < 1) {
                 alert("Invalid number of participants! Please enter a number less than 3.");
@@ -84,10 +85,13 @@
             var input_section_code_1 = '<div class="form-row"><div class="name">Participant ';
             var input_section_code_2 = '\'s name (optional) </div> <div class="value"><div class="input-group"><input class="input--style-5" type="text" id="participant-';
             var input_section_code_3 = '"></div></div></div>';
+            var input_section_code_4 = '<div class="form-row"><div class="name">Participant- ';
+            var input_section_code_5 = '\'s college name (optional) </div> <div class="value"><div class="input-group"><input class="input--style-5" type="text" id="college-';
+            var input_section_code_6 = '"></div></div></div>';
 
             for (var i = 1; i < team_no_participants; i++) {
                 var x = (i + 1).toString(10);
-                data += input_section_code_1 + x + input_section_code_2 + x + input_section_code_3;
+                data += input_section_code_1 + x + input_section_code_2 + x + input_section_code_3 + input_section_code_4 + x+ input_section_code_5 + x + input_section_code_6 ;
             }
 
             document.getElementById("team-regis-box").innerHTML = data;
@@ -101,22 +105,32 @@
             document.getElementById('email1').value = em;
             document.getElementById('noi').value = ins;
             document.getElementById('name').value = name;
+            document.getElementById('clg').value = clg;
         }
 
         function collect_name_data(no_participants) {
             var name_list = [];
             for (var i = 0; i < no_participants; i++) {
                 var temp = document.getElementById("participant-" + (i + 1)).value;
+                var temp1 = document.getElementById("college-" + (i + 1)).value;
 
                 if (!(temp && (i + 1))) {
                     return;
                 }
+
+                if (!(temp1 && (i + 1))) {
+                    return;
+                }
+
                 name_list.push(temp);
+                clg_list.push(temp1);
             }
 
 
 
+
             team_participants_details = name_list;
+            team_clg_details = clg_list;
             submit_all_info();
         }
 
@@ -126,10 +140,12 @@
                 "noi": document.getElementById('noi').value,
                 "teamName": document.getElementById('team-name').value,
                 "members": team_participants_details,
+                "college-details": team_clg_details,
                 "email": document.getElementById('email1').value,
                 "phone": document.getElementById('phone1').value,
                 "event": "chemenigma",
                 "name": document.getElementById('name').value,
+                "college": document.getElementById('clg').value,
                 "meta": {
                     "info": document.getElementById('get-to-know').value,
                     "category": document.getElementById('team-category').value,
@@ -325,6 +341,15 @@ Functions:
                                 <div class="value">
                                     <div class="input-group">
                                         <input class="input--style-5" type="text" id="name">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="name">College of the Participant</div>
+                                <div class="value">
+                                    <div class="input-group">
+                                        <input class="input--style-5" type="text" id="clg">
                                     </div>
                                 </div>
                             </div>
