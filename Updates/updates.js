@@ -1,10 +1,10 @@
 let timeline = document.querySelector(".timeline"),
 jsonResponse = [{
-  postedDate: "29th Nov, 2019",
-  postedTime: "18:22",
-  postedContent: "blah blah blah",
+  postedDate: "11th Dec, 2019",
+  postedTime: "23:00",
+  postedContent: "Bangalore Regional Finals Over",
   postedLink: "www.pravega.com",
-  postedTitle: "Post One" }];
+  postedTitle: "Battle of Bands" }];
 
 
 jsonResponse.forEach((item, index) => {

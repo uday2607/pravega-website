@@ -112,7 +112,7 @@ src="https://www.facebook.com/tr?id=492248618072887&ev=PageView
             var em = document.getElementById('email1').value;
             var ins = document.getElementById('noi').value;
             var name = document.getElementById('name').value;
-            var clg = document.getElementById('clg').value;
+         
 
             if (team_no_participants > 3 || team_no_participants < 1) {
                 alert("Invalid number of participants! Please enter a number less than 3.");
@@ -149,12 +149,11 @@ src="https://www.facebook.com/tr?id=492248618072887&ev=PageView
             document.getElementById('email1').value = em;
             document.getElementById('noi').value = ins;
             document.getElementById('name').value = name;
-            document.getElementById('clg').value = clg;
         }
 
         function collect_name_data(no_participants) {
             var name_list = [];
-            for (var i = 0; i < no_participants; i++) {
+            for (var i = 1; i < no_participants; i++) {
                 var temp = document.getElementById("participant-" + (i + 1)).value;
                 var temp1 = document.getElementById("college-" + (i + 1)).value;
 
@@ -162,19 +161,15 @@ src="https://www.facebook.com/tr?id=492248618072887&ev=PageView
                     return;
                 }
 
-                if (!(temp1 && (i + 1))) {
-                    return;
-                }
+              
 
                 name_list.push(temp);
-                clg_list.push(temp1);
             }
 
 
 
 
             team_participants_details = name_list;
-            team_clg_details = clg_list;
             submit_all_info();
         }
 
@@ -184,12 +179,10 @@ src="https://www.facebook.com/tr?id=492248618072887&ev=PageView
                 "noi": document.getElementById('noi').value,
                 "teamName": document.getElementById('team-name').value,
                 "members": team_participants_details,
-                "college-details": team_clg_details,
                 "email": document.getElementById('email1').value,
                 "phone": document.getElementById('phone1').value,
                 "event": "chemenigma",
                 "name": document.getElementById('name').value,
-                "college": document.getElementById('clg').value,
                 "meta": {
                     "info": document.getElementById('get-to-know').value,
                     "category": document.getElementById('team-category').value,
@@ -389,14 +382,7 @@ Functions:
                                 </div>
                             </div>
 
-                            <div class="form-row">
-                                <div class="name">College of the Participant</div>
-                                <div class="value">
-                                    <div class="input-group">
-                                        <input class="input--style-5" type="text" id="clg">
-                                    </div>
-                                </div>
-                            </div>
+                         
 
 
                             <div class="form-row">
