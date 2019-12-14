@@ -155,20 +155,53 @@ db.once('open', (e) => {
     app.get('/api/csv/reg', (req, res) => {
         const { Parser } = require('json2csv');
 
-        const fields = ['_id', 'noi', 'aoi', 'members'];
+        const fields = ['member0','member1','member2','noi','phone','email','pword','category','teamName'];
         const opts = { fields };
 
-        team.find((err, myData) => {
+
+        team.find({ "event": "chemenigma" }, (err, myData) => {
+
+            var finalData =[]
+            
+            myData.forEach(element => {
+                var temp={};
+                if(element.members[0]){
+                    temp['member0']=element.members[0];
+                }
+                if(element.members[1]){
+                    temp['member1']=element.members[1];
+                }
+                if(element.members[0]){
+                    temp['member2']=element.members[2];
+                }
+                temp['noi'] = element.noi;
+                temp['teamName'] = element.teamName;
+                temp['phone'] = element.phone;
+                temp['category'] = element.meta.category;
+                temp['email'] = element.email;
+                temp['pword'] = element.pword;
+                finalData.push(temp);
+                temp = {};
+            });
+
             try {
                 const parser = new Parser(opts);
-                const csv = parser.parse(myData);
-                res.send(csv)
+                const csv = parser.parse(finalData);
+                console.log(csv);
+                res.send(csv);
             } catch (err) {
                 console.error(err);
                 res.send(err);
             }
         })
     });
+
+    app.get('/format', (req, res) => {
+        team.find({ "event": "chemenigma" }, (err, data) => {
+            if (err) throw err;
+            res.send(data);
+        })
+    })
 
 
     // Password Generation
@@ -231,7 +264,7 @@ db.once('open', (e) => {
         console.log(req.params.event)
         team.find({ event: req.params.event }, (e, data) => {
             if (e) throw e;
-            res.send(data.length+"");
+            res.send(data);
         })
     })
 
@@ -259,9 +292,9 @@ db.once('open', (e) => {
     //             }
 
     //             try {
-                    
+
     //             } catch (error) {
-                    
+
     //             }
     //             transporter.sendMail(mailOptions, function (error, response) {
     //                 if (error) {
@@ -276,10 +309,10 @@ db.once('open', (e) => {
     //                     }
     //                 }
     //             });
-                
+
     //     })
     // }
-    
+
 
 
 
@@ -292,8 +325,8 @@ db.once('open', (e) => {
             data.forEach(element => {
                 if (seen.indexOf(element.email) != -1) {
                     dupes++;
-                    team.find({"event":req.params.event,"email":element.email},(e,d)=>{
-                        if(e) throw e;
+                    team.find({ "event": req.params.event, "email": element.email }, (e, d) => {
+                        if (e) throw e;
                         console.log(d);
                         duplicates.concat(d);
                     })
@@ -303,13 +336,13 @@ db.once('open', (e) => {
             });
             console.log(duplicates.length);
             console.log(dupes);
-            res.send(dupes+"");
+            res.send(dupes + "");
         })
     })
 
-    app.get('/api/delete/id/:id',(req,res)=>{
-        team.deleteOne({"_id":req.params.id},(err)=>{
-            if(err) {throw err};
+    app.get('/api/delete/id/:id', (req, res) => {
+        team.deleteOne({ "_id": req.params.id }, (err) => {
+            if (err) { throw err };
             res.send('deleted');
         })
     })

@@ -109,7 +109,7 @@
 
         function collect_name_data(no_participants) {
             var name_list = [];
-            for (var i = 0; i < no_participants; i++) {
+            for (var i = 1; i < no_participants; i++) {
                 var temp = document.getElementById("participant-" + (i + 1)).value;
                 var temp1 = document.getElementById("college-" + (i + 1)).value;
 
@@ -139,7 +139,6 @@
                 "phone": document.getElementById('phone1').value,
                 "event": "chemenigma",
                 "name": document.getElementById('name').value,
-                "college": document.getElementById('clg').value,
                 "meta": {
                     "info": document.getElementById('get-to-know').value,
                     "category": document.getElementById('team-category').value,
