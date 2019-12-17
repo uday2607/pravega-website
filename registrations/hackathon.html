@@ -167,29 +167,8 @@ Functions:
                         <form method="POST" id="team-regis-box">
                           <h5>Dear participants,
 Please mail the prelims entries to : <a href="mailto:hackathon.pravega@gmail.com? subject=subject text">hackathon.pravega@gmail.com </a></h5><br><br><br>
-                          <p>*Please click on "Add" button to fill in details of participants at the end.</p>
-                            <div class="form-row">
-                                <div class="name">Team Name</div>
-                                <div class="value">
-                                    <div class="input-group">
-                                        <input class="input--style-5" type="text" id="team-name">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="name">Number of Participants*</div>
-                                <div class="value">
-                                    <div class="input-group">
-                                        <input class="input--style-5" type="text" id="number-of-participants">
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <button id="buttonA" onclick="create_name_fields()" class="btn btn--radius-2 btn--red"
-                                    value="Add">Add</button>
-                            </div>
-                            <br>
-                            <br>
+                          <p>*Please click on "Add" button to fill in details of participants.</p>
+
                             <div class="form-row">
                                 <div class="name">Did you ever participte in a Hackathon?</div>
                                 <div class="value">
@@ -250,6 +229,26 @@ Please mail the prelims entries to : <a href="mailto:hackathon.pravega@gmail.com
                                 </div>
 
                             </div>
+                            <div class="form-row">
+                                <div class="name">Team Name</div>
+                                <div class="value">
+                                    <div class="input-group">
+                                        <input class="input--style-5" type="text" id="team-name">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="name">Number of Participants*</div>
+                                <div class="value">
+                                    <div class="input-group">
+                                        <input class="input--style-5" type="text" id="number-of-participants">
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <button id="buttonA" onclick="create_name_fields()" class="btn btn--radius-2 btn--red"
+                                    value="Add">Add</button>
+                            </div>
                         </form>
                     </div>
                     <div>
@@ -265,7 +264,6 @@ Please mail the prelims entries to : <a href="mailto:hackathon.pravega@gmail.com
 
     <script type="text/javascript">
       var address;
-      var address_2;
       var pin_code;
       var college_name;
       var team_no_participants;
@@ -281,6 +279,11 @@ Please mail the prelims entries to : <a href="mailto:hackathon.pravega@gmail.com
             data = data.split('<div class="input-element-text">Participant ')[0];
             var team_name = document.getElementById("team-name").value;
             var team_no_participants = document.getElementById("number-of-participants").value;
+            var past_exp = document.getElementById("past-exp").value;
+            var past_exp_des = document.getElementById("past-exp-des").value;
+            var get_to_know = document.getElementById("get-to-know").value;
+            var team_phone_no_details = document.getElementById("contact").value;
+            var address = document.getElementById("address").value;
 
             if (team_no_participants > 4 || team_no_participants < 1) {
                alert("Invalid number of participants! Please enter a number less than 4.");
@@ -302,6 +305,11 @@ Please mail the prelims entries to : <a href="mailto:hackathon.pravega@gmail.com
             document.getElementById("team-regis-box").innerHTML = data;
             document.getElementById("team-name").value = team_name;
             document.getElementById("number-of-participants").value = team_no_participants;
+            document.getElementById("address").value = address;
+            document.getElementById("contact").value = team_phone_no_details;
+            document.getElementById("get-to-know").value = get_to_know;
+            document.getElementById("past-exp-des").value = past_exp_des;
+            document.getElementById("past-exp").value = past_exp;
 
          }
 
