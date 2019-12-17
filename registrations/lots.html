@@ -165,44 +165,19 @@ Functions:
                     </div>
                     <div class="card-body">
                         <form method="POST" id="team-regis-box">
-
+                          <div class="form-row">
+                              <div class="name">User ID (create an unique user id)</div>
+                              <div class="value">
+                                  <div class="input-group">
+                                      <input class="input--style-5" type="text" id="userid">
+                                  </div>
+                              </div>
+                          </div>
                             <div class="form-row">
-                                <div class="name">How are you participating?</div>
+                                <div class="name">Name of Participant</div>
                                 <div class="value">
                                     <div class="input-group">
-                                        <div class="rs-select2 js-select-simple select--no-search">
-                                            <select name="category" size="1" id="team-category">
-                                                <option disabled="disabled" selected="selected">Choose option</option>
-                                                <option>Alone</option>
-                                                <option>Team</option>
-                                            </select>
-                                            <div class="select-dropdown"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="name">Number of Members</div>
-                                <div class="value">
-                                    <div class="input-group">
-                                        <input class="input--style-5" type="number" id="members">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="name">Team Leader</div>
-                                <div class="value">
-                                    <div class="input-group">
-                                        <input class="input--style-5" type="text" id="leader">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="name">Name of Participant(s)</div>
-                                <div class="value">
-                                    <div class="input-group">
-                                        <input class="input--style-5" type="text" id="name"
-                                            placeholder="Only for teams">
+                                        <input class="input--style-5" type="text" id="name">
                                     </div>
                                 </div>
                             </div>
@@ -223,17 +198,7 @@ Functions:
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="name">Residential Address (of Team leader in case of Team)</div>
-                                <div class="value">
-                                    <div class="input-group">
-                                        <textarea name="h" id="address" cols="10" rows="5" class="input--style-5"
-                                            style="width: 100%;"></textarea>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="form-row">
-                                <div class="name">Education (Applicable only for individual participants )</div>
+                                <div class="name">Education</div>
                                 <div class="value">
                                     <div class="input-group">
                                         <div class="rs-select2 js-select-simple select--no-search">
@@ -249,7 +214,7 @@ Functions:
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="name">Parental Institution (Optional)</div>
+                                <div class="name">Parental Institution name</div>
                                 <div class="value">
                                     <div class="input-group">
                                         <input class="input--style-5" type="text" id="college-name"
@@ -274,42 +239,19 @@ Functions:
 
     <script type="text/javascript">
 
-        //details to be sent to server START
-        var address;
-        var address_2;
-        var pin_code;
-        var college_name;
-        var team_no_participants;
-        var team_name_details;
-        var team_category_details;
-        var team_email_details;
-        var team_phone_no_details;
-        var team_participants_details = [];
-        //details to be sent to server END
-
-        var meems = [];
 
         function submit_all_info() {
 
-            if (document.getElementById('team-category').value == 'Alone') {
-                document.getElementById('edu').value = 'NA'
-                meems = [document.getElementById('leader').value];
-            } else {
-                console.log(document.getElementById('name').value.split(","));
-                meems = document.getElementById('name').value.split(",");
-            }
 
             var body = {
                 "noi": document.getElementById('college-name').value,
-                "event": "pis",
-                "members": meems,
+                "event": "lots"
+                "name": document.getElementById('name').value,
                 "phone": document.getElementById('contact').value,
                 "email": document.getElementById('email').value,
                 "meta": {
                     "edu": document.getElementById('edu').value,
-                    "teamSize": meems.value,
-                    'address': document.getElementById('address').value,
-                    'category': document.getElementById('team-category').value
+                    "user_id:" document.getElementById('userid').value,
                 }
             }
 
