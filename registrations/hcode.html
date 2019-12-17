@@ -47,7 +47,7 @@ src="https://www.facebook.com/tr?id=492248618072887&ev=PageView
 
 </noscript>
 
-<!-- End Facebook Pixel Code --></script>
+<!-- End Facebook Pixel Code -->
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
@@ -64,7 +64,7 @@ src="https://www.facebook.com/tr?id=492248618072887&ev=PageView
     <!--favicon icon-->
     <link rel="icon" type="image/png" href="../img/blue_dark_trans-01.png"> <!-- take a favicon.img for favicon -->
 
-    <title>Lord of the Strings Registration | Pravega 2020, IISc Bangalore</title>
+    <title>Honour Code Registration | Pravega 2020, IISc Bangalore</title>
 
 
     <!--common style-->
@@ -165,19 +165,53 @@ Functions:
                     </div>
                     <div class="card-body">
                         <form method="POST" id="team-regis-box">
-                          <div class="form-row">
-                              <div class="name">User ID (create an unique user id)</div>
-                              <div class="value">
-                                  <div class="input-group">
-                                      <input class="input--style-5" type="text" id="userid">
-                                  </div>
-                              </div>
-                          </div>
                             <div class="form-row">
                                 <div class="name">Name of Participant</div>
                                 <div class="value">
                                     <div class="input-group">
                                         <input class="input--style-5" type="text" id="name">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="name">Education</div>
+                                <div class="value">
+                                    <div class="input-group">
+                                        <div class="rs-select2 js-select-simple select--no-search">
+                                            <select name="category" size="1" id="edu">
+                                                <option disabled="disabled" selected="selected">Choose option</option>
+                                                <option>Up to Class 12</option>
+                                                <option>Bachelor's</option>
+                                            </select>
+                                            <div class="select-dropdown"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="name">Parental Institution name</div>
+                                <div class="value">
+                                    <div class="input-group">
+                                        <input class="input--style-5" type="text" id="college-name"
+                                            value="Not provided">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- HOW DID YOU KNOW -->
+                            <div class="form-row">
+                                <!--Make text box appear if Other is selected-->
+                                <div class="name">How did you find out about this event?</div>
+                                <div class="value">
+                                    <div class="input-group">
+                                        <div class="rs-select2 js-select-simple select--no-search">
+                                            <select name="category" id="get-to-know">
+                                                <option disabled="disabled" selected="selected">Choose option</option>
+                                                <option>Friends/TeachersParents</option>
+                                                <option>Online(Social media, advertisements etc.)</option>
+                                                <option>Other(If applicable)</option>
+                                            </select>
+                                            <div class="select-dropdown"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -198,30 +232,25 @@ Functions:
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="name">Education</div>
+                                <div class="name">Residential Address (for sending Merchandise)</div>
                                 <div class="value">
                                     <div class="input-group">
-                                        <div class="rs-select2 js-select-simple select--no-search">
-                                            <select name="category" size="1" id="edu">
-                                                <option disabled="disabled" selected="selected">Choose option</option>
-                                                <option>Not Applicable</option>
-                                                <option>Up to Class 12</option>
-                                                <option>Bachelor's/Master's/Ph.D</option>
-                                            </select>
-                                            <div class="select-dropdown"></div>
-                                        </div>
+                                        <textarea name="h" id="address" cols="10" rows="5" class="input--style-5"
+                                            style="width: 100%;"></textarea>
                                     </div>
                                 </div>
+
                             </div>
                             <div class="form-row">
-                                <div class="name">Parental Institution name</div>
+                                <div class="name">School/College ID (Optional can be submitted later , but required to obtain prizes )</div>
                                 <div class="value">
                                     <div class="input-group">
-                                        <input class="input--style-5" type="text" id="college-name"
-                                            value="Not provided">
+                                        <input class="input--style-5" type="text" id="userid">
                                     </div>
                                 </div>
                             </div>
+
+
 
 
                         </form>
@@ -245,38 +274,40 @@ Functions:
 
             var body = {
                 "noi": document.getElementById('college-name').value,
-                "event": "lots"
+                "event": "hcode"
                 "name": document.getElementById('name').value,
                 "phone": document.getElementById('contact').value,
                 "email": document.getElementById('email').value,
                 "meta": {
                     "edu": document.getElementById('edu').value,
+                    "info": document.getElementById('get-to-know').value,
+                    'address': document.getElementById('address').value,
                     "user_id": document.getElementById('userid').value,
                 }
             }
 
             flag = flag + 1;
-            console.log(body);
-            postData(body);
-        }
+                        console.log(body);
+                        postData(body);
+                    }
 
 
-        function postData(bod) {
-            if (flag == 1){
-              var xhr = new XMLHttpRequest();
-              var theUrl = "https://www.pravega.org/api/register";
-              xhr.open("POST", theUrl);
-              xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-              console.log(bod);
-              xhr.send(JSON.stringify(bod));
-              xhr.onreadystatechange = function () {
-                  if (xhr.readyState === 4) {
-                      window.location.replace('success.html');
-                  }
-              }
-            }
-            //
-        }
+                    function postData(bod) {
+                        if (flag == 1){
+                          var xhr = new XMLHttpRequest();
+                          var theUrl = "https://www.pravega.org/api/register";
+                          xhr.open("POST", theUrl);
+                          xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                          console.log(bod);
+                          xhr.send(JSON.stringify(bod));
+                          xhr.onreadystatechange = function () {
+                              if (xhr.readyState === 4) {
+                                  window.location.replace('success.html');
+                              }
+                          }
+                        }
+                        //
+                    }
     </script>
 
     <!--    footer is for extra space at the bottom. weird glitch occurs with the background gradient if removed-->
