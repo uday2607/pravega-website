@@ -188,6 +188,8 @@ Please mail the prelims entries to : <a href="mailto:hackathon.pravega@gmail.com
                                 <button id="buttonA" onclick="create_name_fields()" class="btn btn--radius-2 btn--red"
                                     value="Add">Add</button>
                             </div>
+                            <br>
+                            <br>
                             <div class="form-row">
                                 <div class="name">Did you ever participte in a Hackathon?</div>
                                 <div class="value">
@@ -292,7 +294,7 @@ Please mail the prelims entries to : <a href="mailto:hackathon.pravega@gmail.com
             var input_section_code_5 = '\'s email (optional) </div> <div class="value"><div class="input-group"><input class="input--style-5" type="text" id="email-';
             var input_section_code_6 = '"></div></div></div>';
 
-            for (var i = 1; i < team_no_participants; i++) {
+            for (var i = 0; i < team_no_participants; i++) {
                 var x = (i + 1).toString(10);
                 data += input_section_code_1 + x + input_section_code_2 + x + input_section_code_3 + input_section_code_4 + x+ input_section_code_5 + x + input_section_code_6 ;
             }
