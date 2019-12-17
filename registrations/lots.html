@@ -241,7 +241,6 @@ Functions:
 
         function submit_all_info() {
 
-            var flag = 0;
             var body = {
                 "noi": document.getElementById('college-name').value,
                 "event": "lots",
@@ -254,14 +253,11 @@ Functions:
                 }
             }
 
-            flag = flag + 1;
-            console.log(body);
             postData(body);
         }
 
 
         function postData(bod) {
-            if (flag == 1){
               var xhr = new XMLHttpRequest();
               var theUrl = "https://www.pravega.org/api/register";
               xhr.open("POST", theUrl);
@@ -273,7 +269,6 @@ Functions:
                       window.location.replace('success.html');
                   }
               }
-            }
             //
         }
     </script>
