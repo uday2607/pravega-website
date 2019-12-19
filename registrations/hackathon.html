@@ -124,14 +124,14 @@ src="https://www.facebook.com/tr?id=492248618072887&ev=PageView
                return;
            }
 
-           if (document.getElementById('number-of-participants').value != "1") {
+           if (document.getElementById('number-of-participants').value != 1) {
                meems = [document.getElementById('name').value];
                emails = [document.getElementById('email').value];
            } else {
-               console.log(document.getElementById('name').value.split(","));
-               meems = document.getElementById('name').value.split(",");
-               console.log(document.getElementById('email').value.split(","));
-               emails = document.getElementById('email').value.split(",");
+               console.log(document.getElementById('name').value.split(";"));
+               meems = document.getElementById('name').value.split(";");
+               console.log(document.getElementById('email').value.split(";"));
+               emails = document.getElementById('email').value.split(";");
            }
 
 
@@ -247,7 +247,8 @@ Functions:
                         <form method="POST" id="team-regis-box">
                           <h5>Dear participants,
 Please mail the prelims entries to : <a href="mailto:hackathon.pravega@gmail.com? subject=subject text">hackathon.pravega@gmail.com </a></h5><br><br><br>
-                          <p>*Please click on "Add" button to fill in details of participants.</p>
+                          <p>                            *If there are multiple entries for a certain blank, please separate
+                                                      them with a ';' (semicolon)<br><br><br></p>
 
                             <div class="form-row">
                                 <div class="name">Did you ever participte in a Hackathon?</div>
