@@ -4,50 +4,50 @@
 
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-151194721-1"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-    gtag('config', 'UA-151194721-1');
-</script><!-- Facebook Pixel Code -->
+        gtag('config', 'UA-151194721-1');
+    </script><!-- Facebook Pixel Code -->
 
-<script>
+    <script>
 
-!function(f,b,e,v,n,t,s)
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+                n.callMethod ?
 
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
 
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
 
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue = []; t = b.createElement(e); t.async = !0;
 
-n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src = v; s = b.getElementsByTagName(e)[0];
 
-t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
 
-s.parentNode.insertBefore(t,s)}(window,document,'script',
-
-'https://connect.facebook.net/en_US/fbevents.js');
+            'https://connect.facebook.net/en_US/fbevents.js');
 
 
-fbq('init', '492248618072887');
+        fbq('init', '492248618072887');
 
-fbq('track', 'PageView');
+        fbq('track', 'PageView');
 
-</script>
+    </script>
 
-<noscript>
+    <noscript>
 
-<img height="1" width="1"
+        <img height="1" width="1" src="https://www.facebook.com/tr?id=492248618072887&ev=PageView
 
-src="https://www.facebook.com/tr?id=492248618072887&ev=PageView
+&noscript=1" />
 
-&noscript=1"/>
+    </noscript>
 
-</noscript>
-
-<!-- End Facebook Pixel Code -->
+    <!-- End Facebook Pixel Code -->
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
@@ -165,11 +165,7 @@ Functions:
                     </div>
                     <div class="card-body">
                         <form method="POST" id="team-regis-box">
-                          <h5>Dear participants,
-Please mail the prelims entries to : <a href="mailto:hackathon.pravega@gmail.com? subject=subject text">hackathon.pravega@gmail.com </a></h5><br><br><br>
-                          <p>                            *If there are multiple entries for a certain blank, please separate
-                                                      them with a ';' (semicolon)<br><br><br></p>
-
+                           
                             <div class="form-row">
                                 <div class="name">Did you ever participte in a Hackathon?</div>
                                 <div class="value">
@@ -276,23 +272,23 @@ Please mail the prelims entries to : <a href="mailto:hackathon.pravega@gmail.com
     </div>
 
     <script type="text/javascript">
-      var address;
-      var pin_code;
-      var college_name;
-      var team_no_participants;
-      var team_name_details;
-      var team_category_details;
-      var team_email_details;
-      var team_phone_no_details;
-      var team_participants_details;
+        var address;
+        var pin_code;
+        var college_name;
+        var team_no_participants;
+        var team_name_details;
+        var team_category_details;
+        var team_email_details;
+        var team_phone_no_details;
+        var team_participants_details;
 
-      var memes = [];
-      var emails = [];
-      var flag;
+        var memes = [];
+        var emails = [];
+        var flag;
 
-           function submit_all_info() {
-           var flag = 0;
-           var data = document.getElementById("team-regis-box").innerHTML;
+        function submit_all_info() {
+            var flag = 0;
+            var data = document.getElementById("team-regis-box").innerHTML;
             data = data.split('<div class="input-element-text">Participant ')[0];
             var team_name = document.getElementById("team-name").value;
             var team_no_participants = document.getElementById("number-of-participants").value;
@@ -303,19 +299,19 @@ Please mail the prelims entries to : <a href="mailto:hackathon.pravega@gmail.com
             var address = document.getElementById("address").value;
 
             if (team_no_participants > 5 || team_no_participants < 1) {
-               alert("Invalid number of participants! Please enter a number less than or equal to 4.");
-               return;
-           }
+                alert("Invalid number of participants! Please enter a number less than or equal to 4.");
+                return;
+            }
 
-           if (document.getElementById('number-of-participants').value == 1) {
-               meems = [document.getElementById('name').value];
-               emails = [document.getElementById('email').value];
-           } else {
-               console.log(document.getElementById('name').value.split(";"));
-               meems = document.getElementById('name').value.split(";");
-               console.log(document.getElementById('email').value.split(";"));
-               emails = document.getElementById('email').value.split(";");
-           }
+            if (document.getElementById('number-of-participants').value == 1) {
+                meems = [document.getElementById('name').value];
+                emails = [document.getElementById('email').value];
+            } else {
+                console.log(document.getElementById('name').value.split(";"));
+                meems = document.getElementById('name').value.split(";");
+                console.log(document.getElementById('email').value.split(";"));
+                emails = document.getElementById('email').value.split(";");
+            }
 
 
             var body = {
@@ -323,7 +319,7 @@ Please mail the prelims entries to : <a href="mailto:hackathon.pravega@gmail.com
                 "noi": document.getElementById('team-name').value,
                 "phone": document.getElementById('contact').value,
                 "members": meems,
-                "email":emails[0],
+                "email": emails[0],
                 "emails": emails,
                 "meta": {
                     "past_exp": document.getElementById('past-exp').value,
@@ -340,17 +336,17 @@ Please mail the prelims entries to : <a href="mailto:hackathon.pravega@gmail.com
 
 
         function postData(bod) {
-              var xhr = new XMLHttpRequest();
-              var theUrl = "http://pravega.org/api/register";
-              xhr.open("POST", theUrl);
-              xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-              console.log(bod);
-              xhr.send(JSON.stringify(bod));
-              xhr.onreadystatechange = function () {
-                  if (xhr.readyState === 4) {
-                      window.location.replace('success.html');
-                  }
-              }
+            var xhr = new XMLHttpRequest();
+            var theUrl = "http://www.pravega.org/api/register";
+            xhr.open("POST", theUrl);
+            xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+            console.log(bod);
+            xhr.send(JSON.stringify(bod));
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    window.location.replace('success.html');
+                }
+            }
 
             //
         }
