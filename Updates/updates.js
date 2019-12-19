@@ -5,6 +5,20 @@ jsonResponse = [{
   postedContent: "Bangalore Regional Finals Over",
   postedLink: "www.pravega.com",
   postedTitle: "Battle of Bands" }];
+  jsonResponse = [{
+    postedDate: "17th Dec, 2019",
+    postedTime: "17:00",
+    postedContent: "Technical events are up",
+    postedLink: "www.pravega.com",
+    postedTitle: "Technical Events" }];
+    jsonResponse = [{
+      postedDate: "19th Dec, 2019",
+      postedTime: "11:00",
+      postedContent: "Workshops are up",
+      postedLink: "www.pravega.com",
+      postedTitle: "Workshops" }];  
+
+
 
 
 jsonResponse.forEach((item, index) => {
