@@ -93,6 +93,113 @@ src="https://www.facebook.com/tr?id=492248618072887&ev=PageView
     <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
     <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
 
+    <script type="text/javascript">
+      var address;
+      var pin_code;
+      var college_name;
+      var team_no_participants;
+      var team_name_details;
+      var team_category_details;
+      var team_email_details;
+      var team_phone_no_details;
+      var team_participants_details = [];
+
+         function create_name_fields() {
+           var flag = 0;
+           var data = document.getElementById("team-regis-box").innerHTML;
+            data = data.split('<div class="input-element-text">Participant ')[0];
+            var team_name = document.getElementById("team-name").value;
+            var team_no_participants = document.getElementById("number-of-participants").value;
+            var past_exp = document.getElementById("past-exp").value;
+            var past_exp_des = document.getElementById("past-exp-des").value;
+            var get_to_know = document.getElementById("get-to-know").value;
+            var team_phone_no_details = document.getElementById("contact").value;
+            var address = document.getElementById("address").value;
+
+            if (team_no_participants > 4 || team_no_participants < 1) {
+               alert("Invalid number of participants! Please enter a number less than 4.");
+               return;
+           }
+
+            var input_section_code_1 = '<div class="form-row"><div class="name">Participant ';
+            var input_section_code_2 = '\'s name (optional) </div> <div class="value"><div class="input-group"><input class="input--style-5" type="text" id="participant-';
+            var input_section_code_3 = '"></div></div></div>';
+            var input_section_code_4 = '<div class="form-row"><div class="name">Participant- ';
+            var input_section_code_5 = '\'s email (optional) </div> <div class="value"><div class="input-group"><input class="input--style-5" type="text" id="email-';
+            var input_section_code_6 = '"></div></div></div>';
+
+            for (var i = 0; i < team_no_participants; i++) {
+                var x = (i + 1).toString(10);
+                data += input_section_code_1 + x + input_section_code_2 + x + input_section_code_3 + input_section_code_4 + x+ input_section_code_5 + x + input_section_code_6 ;
+            }
+
+            document.getElementById("team-regis-box").innerHTML = data;
+            document.getElementById("team-name").value = team_name;
+            document.getElementById("number-of-participants").value = team_no_participants;
+            document.getElementById("address").value = address;
+            document.getElementById("contact").value = team_phone_no_details;
+            document.getElementById("get-to-know").value = get_to_know;
+            document.getElementById("past-exp-des").value = past_exp_des;
+            document.getElementById("past-exp").value = past_exp;
+
+         }
+
+         function collect_name_data(no_participants) {
+                    var name_list = [];
+                    for (var i = 0; i < no_participants; i++) {
+                        var temp = document.getElementById("participant-" + (i + 1)).value;
+                        var temp1 = document.getElementById("email-" + (i + 1)).value;
+
+                        if (!(temp && (i + 1))) {
+                            return;
+                        }
+                        name_list.push(temp,temp1);
+                    }
+
+                    team_participants_details = name_list;
+                    submit_all_info();
+                }
+
+        function submit_all_info() {
+
+
+            var body = {
+                "event": "hackathon",
+                "TeamName": document.getElementById('team-name').value,
+                "phone": document.getElementById('contact').value,
+                "meta": {
+                    "past_exp": document.getElementById('past-exp').value,
+                    "info": document.getElementById('get-to-know').value,
+                    'past_exp_des': document.getElementById('past-exp-des').value,
+                    "members": team_participants_details,
+                    'address': document.getElementById('address').value,
+                }
+            }
+
+            flag = flag + 1;
+            console.log(body);
+            postData(body);
+        }
+
+
+        function postData(bod) {
+            if (flag == 1){
+              var xhr = new XMLHttpRequest();
+              var theUrl = "https://www.pravega.org/api/register";
+              xhr.open("POST", theUrl);
+              xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+              console.log(bod);
+              xhr.send(JSON.stringify(bod));
+              xhr.onreadystatechange = function () {
+                  if (xhr.readyState === 4) {
+                      window.location.replace('success.html');
+                  }
+              }
+            }
+            //
+        }
+    </script>
+
 </head>
 
 <!--
