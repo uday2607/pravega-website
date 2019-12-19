@@ -102,7 +102,7 @@ src="https://www.facebook.com/tr?id=492248618072887&ev=PageView
       var team_category_details;
       var team_email_details;
       var team_phone_no_details;
-      var team_participants_details = [];
+      var team_participants_details;
 
          function create_name_fields() {
            var flag = 0;
@@ -116,8 +116,8 @@ src="https://www.facebook.com/tr?id=492248618072887&ev=PageView
             var team_phone_no_details = document.getElementById("contact").value;
             var address = document.getElementById("address").value;
 
-            if (team_no_participants > 4 || team_no_participants < 1) {
-               alert("Invalid number of participants! Please enter a number less than 4.");
+            if (team_no_participants > 5 || team_no_participants < 1) {
+               alert("Invalid number of participants! Please enter a number less than or equal to 4.");
                return;
            }
 
@@ -145,7 +145,7 @@ src="https://www.facebook.com/tr?id=492248618072887&ev=PageView
          }
 
          function collect_name_data(no_participants) {
-                    var name_list = [];
+                    var name_list;
                     for (var i = 0; i < no_participants; i++) {
                         var temp = document.getElementById("participant-" + (i + 1)).value;
                         var temp1 = document.getElementById("email-" + (i + 1)).value;
