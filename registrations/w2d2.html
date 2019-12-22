@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<!-- saved from url=(0060)file:///D:/PRANAV/IISc/Pravega/registrations/chemenigma.html -->
+<html>
+
+<head>
+  <meta https-equiv="Content-Type" content="text/html; charset=windows-1252">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-151194721-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-151194721-1');
+  </script><!-- Facebook Pixel Code -->
+
+  <script>
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () {
+        n.callMethod ?
+        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+      n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '492248618072887');
+    fbq('track', 'PageView');
+  </script>
+
+  <noscript>
+
+    <img height="1" width="1" src="https://www.facebook.com/tr?id=492248618072887&ev=PageView
+&noscript=1" />
+
+  </noscript>
+
+  <!-- End Facebook Pixel Code -->
+  </script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-151194721-1');
+  </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description"
+    content="Pravega is the biggest science fest in India hosted by the U.G community of IISc Bangalore. Click to know more... ">
+  <meta name="Pravega" content="Pravega">
+  <!--favicon icon-->
+  <link rel="icon" type="image/png" href="../img/blue_dark_trans-01.png"> <!-- take a favicon.img for favicon -->
+  <title>Whodunnit Registration | Pravega 2020, IISc Bangalore</title>
+  <!--common style-->
+  <link
+    href="https://fonts.googleapis.com/css?family=Abel|Source+Sans+Pro:400,300,300italic,400italic,600,600italic,700,700italic,900,900italic,200italic,200"
+    rel="stylesheet" type="text/css">
+  <link href="../css/all.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link href="main.css" rel="stylesheet" media="all">
+  <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
+  <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+  <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+  <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+  <script type="text/javascript">
+    //details to be sent to server START
+    var leader_name;
+    var institute;
+    var year_of_study;
+    var team_email;
+    var team_phone_no;
+    var team_no_participants;
+    var flag = 0;
+    //details to be sent to server END
+    function create_name_fields() {
+      var data = document.getElementById("team-regis-box").innerHTML;
+      data = data.split('<div class="input-element-text">Participant ')[0];
+      leader_name = document.getElementById("leader-name").value;
+      college_name = document.getElementById("institute").value;
+      year_of_study = document.getElementById("year-study").value;
+      team_email = document.getElementById("email").value;
+      team_phone_no = document.getElementById("mobnum").value;
+      team_no_participants = document.getElementById("number-of-participants").value;
+      if (team_no_participants > 5) {
+        alert("Invalid number of participants! Maximum number of members in a team is 5.");
+        return;
+      }
+      if (team_no_participants < 2) {
+        alert("Invalid number of participants! Team must have atleast 2 members.")
+        return;
+      }
+      if (!(leader_name && college_name && year_of_study && team_email && team_phone_no)) {
+        alert("Invalid input. Please fill in all the fields");
+        return;
+      }
+      team_no_participants_details = team_no_participants;
+      var input_section_code_1 = '<div class="form-row"><div class="name">Participant ';
+      var input_section_code_2 = 'name </div> <div class="value"><div class="input-group"><input class="input--style-5" type="text" id="participant-';
+      var input_section_code_3 = '"></div></div></div>';
+      var input_section_code_4 = '<div class="form-row"><div class="name">Institute</div> <div class="value"><div class="input-group"><input class="input--style-5" type="text" id="institute-';
+      var input_section_code_5 = '"></div></div></div>';
+      var input_section_code_6 = '<div class="form-row"><div class="name">Class/Year of study</div> <div class="value"><div class="input-group"><input class="input--style-5" type="text" id="year-study-';
+      var input_section_code_7 = '"></div></div></div>';
+      var input_section_code_8 = '<div class="form-row"><div class="name">Email ID</div> <div class="value"><div class="input-group"><input class="input--style-5" type="email" id="email-';
+      var input_section_code_9 = '"></div></div></div>';
+      var input_section_code_10 = '<div class="form-row"><div class="name">Mobile Number</div> <div class="value"><div class="input-group"><input class="input--style-5" type="number" id="mobnum-';
+      var input_section_code_11 = '"></div></div></div>';
+      for (var i = 1; i < team_no_participants; i++) {
+        var x = (i + 1);
+        data += input_section_code_1 + x + input_section_code_2 + x + input_section_code_3 + input_section_code_4 + x + input_section_code_5 + input_section_code_6 + x + input_section_code_7 + input_section_code_8 + x + input_section_code_9 + input_section_code_10 + x + input_section_code_11;
+      }
+      document.getElementById("team-regis-box").innerHTML = "";
+      document.getElementById("team-regis-box").innerHTML = data;
+      document.getElementById("leader-name").value = leader_name;
+      document.getElementById("institute").value = college_name;
+      document.getElementById("year-study").value = year_of_study;
+      document.getElementById("email").value = team_email;
+      document.getElementById("mobnum").value = team_phone_no;
+      document.getElementById("number-of-participants").value = team_no_participants;
+      document.getElementById("footer").style.display = "hidden";
+      // Removes an element from the document
+      var element = document.getElementById("add-button");
+      element.parentNode.removeChild(element);
+    }
+    // Removes an element from the document
+    function collect_name_data(no_participants) {
+      var name_list = [];
+      for (var i = 1; i < no_participants; i++) {
+        var temp = document.getElementById('participant-' + (i + 1)).value;
+        var temp_phone = document.getElementById('mobnum-' + (i + 1)).value;
+        var temp_email = document.getElementById('email-' + (i + 1)).value;
+        if (!(temp && (i + 1))) { //BUG BUG BUG: checking if temp is empty and killing the code if it is. problem is that it's killing the code even if its non empty. problem possibly lies with the initiating statement. Please fix it.
+          return;
+        }
+        name_list.push(temp);
+      }
+      team_participants_details = name_list;
+      submit_all_info();
+    }
+    function submit_all_info() {
+      var body = {
+        "noi": collect_name_data,
+        "event": "w2d2",
+        "members": team_participants_details,
+        "phone": team_phone_no,
+        "email": team_email,
+        "teamName": leader_name
+      }
+      //submit team name, email, phone numbers, participant count, whatever
+      //the global vars team_..._details.
+      //End of registration page.
+      flag = flag + 1;
+      postData(body);
+    }
+    function postData(bod) {
+      if (flag == 1) {
+        var xhr = new XMLHttpRequest();
+        var theUrl = "https://www.pravega.org/api/register";
+        xhr.open("POST", theUrl);
+        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        console.log(bod);
+        xhr.send(JSON.stringify(bod));
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4) {
+            window.location.replace('success.html');
+          }
+        }
+      }
+      //
+    }
+  </script>
+</head>
+
+<body>
+  <div class="wrapper">
+    <!--header start-->
+    <a href="#cd-nav" class="cd-nav-trigger">Menu
+      <span class="cd-nav-icon"></span>
+      <svg x="0px" y="0px" width="54px" height="54px" viewBox="0 0 54 54">
+        <circle r="50" fill="transparent"></circle>
+      </svg>
+    </a>
+    <div id="cd-nav" class="cd-nav">
+      <div class="cd-navigation-wrapper">
+        <div class="cd-half-block">
+          <h2>Navigation</h2>
+          <nav>
+            <ul class="cd-primary-nav">
+              <li class="active"><a href="../index.html">Home</a>
+              </li>
+              <li class="active"><a href="events.html">Registrations</a>
+              </li>
+              <li class="active"><a href="../events/events.html">Events</a>
+              </li>
+              <li class="active"><a href="../comingsoon.html">Originals</a>
+              </li>
+              <li class="active"><a href="../comingsoon.html">Archive</a>
+              </li>
+              <li class="active"><a href="../sponsors/sponsors.html">Sponsors</a>
+              </li>
+              <li class="active"><a href="../comingsoon.html">Help</a>
+              </li>
+              <li class="active"><a href="../comingsoon.html">Contact us</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
+      <div class="wrapper wrapper--w790">
+        <div class="card card-5">
+          <div class="card-heading">
+            <h2 class="title">Event Registration Form</h2>
+          </div>
+          <div class="card-body">
+            <form method="POST" id="team-regis-box">
+              <div class="form-row">
+                <div class="name">Leader's details</div>
+                <!--Make this a bigger font if possible-->
+              </div>
+              <div class="form-row">
+                <div class="name">Name</div>
+                <div class="value">
+                  <div class="input-group">
+                    <input class="input--style-5" type="text" id="leader-name">
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="name">Institute</div>
+                <div class="value">
+                  <div class="input-group">
+                    <input class="input--style-5" type="text" id="institute">
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="name">Class/Year of study</div>
+                <div class="value">
+                  <div class="input-group">
+                    <input class="input--style-5" type="text" id="year-study">
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="name">Email ID</div>
+                <div class="value">
+                  <div class="input-group">
+                    <input class="input--style-5" type="email" id="email">
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="name">Mobile Number</div>
+                <div class="value">
+                  <div class="input-group">
+                    <input class="input--style-5" type="number" id="mobnum">
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="name">Total number of Participants</div>
+                <div class="value">
+                  <div class="input-group">
+                    <input class="input--style-5" type="number" id="number-of-participants">
+                  </div>
+                </div>
+                <div>
+                  <br>
+                  <input type="button" class="btn btn--radius-2 btn--red" id="add-button" onclick="create_name_fields()"
+                    value="Add">
+                  <!--The submit button is not submitting the fields. Instead it requires you to enter the number of participants for a second time. -->
+                </div>
+              </div>
+            </form>
+          </div>
+          <div>
+          
+            <input type="button" class="btn btn--radius-2 btn--red" id="submit-button"
+              onclick="collect_name_data(team_no_participants)" value="Submit">
+            <!--The submit button is not submitting the fields. Instead it requires you to enter the number of participants for a second time. -->
+          </div>
+        </div>
+      </div>
+      <footer id="footer">&nbsp;</footer>
+      <!-- partial -->
+      <!--    footer is for extra space at the bottom. weird glitch occurs with the background gradient if removed-->
+    </div>
+  </div>
+  <!--    footer is for extra space at the bottom. weird glitch occurs with the background gradient if removed-->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script src="../js/bootstrap.min.js"></script>
+  <script src="../js/menuzord.js"></script>
+  <script src="../js/jquery.flexslider-min.js"></script>
+  <script src="../js/owl.carousel.min.js"></script>
+  <script src="../js/jquery.isotope.js"></script>
+  <script src="../js/jquery.magnific-popup.min.js"></script>
+  <script src="../js/jquery.countTo.js"></script>
+  <script src="../js/visible.js"></script>
+  <script src="../js/smooth.js"></script>
+  <script src="../js/wow.min.js"></script>
+  <script src="../js/imagesloaded.js"></script>
+  <!--common scripts-->
+  <script src="../js/scripts.js"></script>
+  <script src="../js/modernizr.js"></script>
+  <!-- Jquery JS-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <!-- Vendor JS-->
+  <script src="vendor/select2/select2.min.js"></script>
+  <script src="vendor/datepicker/moment.min.js"></script>
+  <script src="vendor/datepicker/daterangepicker.js"></script>
+  <!-- Main JS-->
+  <script src="js/global.js"></script>
+  <script>
+    jQuery(document).ready(function ($) {
+      var isLateralNavAnimating = false;
+      //open/close lateral navigation
+      $('.cd-nav-trigger').on('click', function (event) {
+        event.preventDefault();
+        //stop if nav animation is running
+        if (!isLateralNavAnimating) {
+          if ($(this).parents('.csstransitions').length > 0) isLateralNavAnimating = true;
+          $('body').toggleClass('navigation-is-open');
+          $('.cd-navigation-wrapper').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function () {
+            //animation is over
+            isLateralNavAnimating = false;
+          });
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

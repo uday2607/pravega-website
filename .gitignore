@@ -26,3 +26,11 @@ node_modules
 hs_err_pid*
 .DS_Store
 img/black_bg.svg
+.vscode
+dev/
+dev/_.txt
+dev/mail.html
+dev/_.txt
+slider-revolution/js/;'.::≥;.js
+slider-revolution/js/jquery.themepunch.tools.min.js
+slider-revolution/js/jquery.themepunch.tools.min.js
