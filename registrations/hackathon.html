@@ -312,10 +312,14 @@ Please mail the prelims entries to : <a href="mailto:hackathon.pravega@gmail.com
                 meems = [document.getElementById('name').value];
                 emails = [document.getElementById('email').value];
             } else {
-                console.log(document.getElementById('name').value.split(";").join(",").split(";"));
-                meems = document.getElementById('name').value.split(";").join(",").split(";");
-                console.log(document.getElementById('email').value.split(";").join(",").split(";"));
-                emails = document.getElementById('email').value.split(";").join(",").split(";");
+                console.log(document.getElementById('name').value.split(";").join(",").split(",").join(" ").split(" "));
+                meems = document.getElementById('name').value.split(";").join(",").split(",").join(" ").split(" ");
+                console.log(document.getElementById('email').value.split(";").join(",").split(",").join(" ").split(" "));
+                emails = document.getElementById('email').value.split(";").join(",").split(",").join(" ").split(" ");
+				if (emails.length != team_no_participants){
+					alert("Please Enter the emails without space anywhere and split only with ';' or ','. Also, please give email-ids of all the members");
+					return;
+				}
             }
 
 
@@ -391,6 +395,7 @@ Please mail the prelims entries to : <a href="mailto:hackathon.pravega@gmail.com
             var isLateralNavAnimating = false;
 
             //open/close lateral navigation
+            
             $('.cd-nav-trigger').on('click', function (event) {
                 event.preventDefault();
                 //stop if nav animation is running
