@@ -312,10 +312,10 @@ Please mail the prelims entries to : <a href="mailto:hackathon.pravega@gmail.com
                 meems = [document.getElementById('name').value];
                 emails = [document.getElementById('email').value];
             } else {
-                console.log(document.getElementById('name').value.split(";"));
-                meems = document.getElementById('name').value.split(";");
-                console.log(document.getElementById('email').value.split(";"));
-                emails = document.getElementById('email').value.split(";");
+                console.log(document.getElementById('name').value.split(";").join(",").split(";"));
+                meems = document.getElementById('name').value.split(";").join(",").split(";");
+                console.log(document.getElementById('email').value.split(";").join(",").split(";"));
+                emails = document.getElementById('email').value.split(";").join(",").split(";");
             }
 
 
