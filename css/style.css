@@ -1346,6 +1346,15 @@ header.nav-block-left {
     background-position: 50% 50%;
 }
 
+.parallax-pronites {
+    background-image: url("../img/pronites-main.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    padding: 150px 0;
+    background-position: 50% 50%;
+}
+
 .banner-state {
     background-image: url("../img/banner/menu_banner.jpg");
     background-size: cover;
@@ -3779,6 +3788,10 @@ address p {
 
 .banner-bob {
     background-image: url("../img/bob-background-min.jpg")!important;
+}
+
+.banner-pronites {
+    background-image: url("../img/pronites-main.jpg")!important;
 }
 
 .banner-01 {
