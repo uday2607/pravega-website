@@ -20,12 +20,10 @@
       var response = JSON.parse(xhr.response);
       console.log(Object.keys(response).length);
       var data = "";
-
-      for (let index = 0; index < Object.keys(response).length; index++) {
+      var index = 0;
         var string = index+"";
-        data += "<tr><td>"+(index+1)+"</td><td>"+response[Object.keys(response)[index]][0]+"</td><td>"+response[Object.keys(response)[index]][1]+"</td></tr><br>";
+        data += "<li><span>Name</span>"+response[Object.keys(response)[index]][0]+"</li><li><span>Rank</span>"+(index+1)+"</li><li><span>Score</span>"+response[Object.keys(response)[index]][1]+"</li>";
     
-      }
       document.getElementById('tbody').innerHTML = data
     }
   }
@@ -35,18 +33,14 @@
         <div class="wrapper wrapper--w790">
             <div class="card card-5">
                 <div class="card-heading">
-                    <h2 class="title">Your Dashboard</h2>
+                    <h2 class="title">Lord Of The Strings</h2>
                 </div>
                 <div class="card-body">
-                    <table style="width: 100%;">
-                    <tr>
-                      <th>Ranking</th>
-                      <th>User ID</th>
-                      <th>Score</th>
-                    </tr>
-                    <tbody id="tbody">
-                    </tbody>  
-                   </table>
+                    <h3 class="title1">Your Dashboard</h3>
+                    <div class="omom">
+                    <ul class="portfolio-meta m-bot-30"  id="tbody">
+                    </ul>
+                    </div>
                 </div>
             </div>
             </div>
