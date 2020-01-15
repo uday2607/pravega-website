@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Dashboard | LOTS | Pravega'20</title>
+  <link rel="stylesheet" href="main.css">
+</head>
+
+<script>
+  var xhr = new XMLHttpRequest();
+  var theUrl = "http://localhost:2020/ranking.json";
+  xhr.open("GET", theUrl);
+  xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+  xhr.send();
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+      var response = JSON.parse(xhr.response);
+      console.log(Object.keys(response).length);
+      var data = "";
+
+      for (let index = 0; index < Object.keys(response).length; index++) {
+        var string = index+"";
+        data += "<tr><td>"+(index+1)+"</td><td>"+response[Object.keys(response)[index]][0]+"</td><td>"+response[Object.keys(response)[index]][1]+"</td></tr><br>";
+    
+      }
+      document.getElementById('tbody').innerHTML = data
+    }
+  }
+</script>
+<body>
+  <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
+        <div class="wrapper wrapper--w790">
+            <div class="card card-5">
+                <div class="card-heading">
+                    <h2 class="title">Your Dashboard</h2>
+                </div>
+                <div class="card-body">
+                    <table style="width: 100%;">
+                    <tr>
+                      <th>Ranking</th>
+                      <th>User ID</th>
+                      <th>Score</th>
+                    </tr>
+                    <tbody id="tbody">
+                    </tbody>  
+                   </table>
+                </div>
+            </div>
+            </div>
+        </div>
+    
+    <footer id="footer">&nbsp;</footer> 
+<!--    footer is for extra space at the bottom. weird glitch occurs with the background gradient if removed-->
+  
+</body>
+
+</html>

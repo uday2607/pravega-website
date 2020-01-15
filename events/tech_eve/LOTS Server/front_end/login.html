@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>
+        Lord of the Strings
+    </title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+        <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
+        <div class="wrapper wrapper--w790">
+            <div class="card card-5">
+                <div class="card-heading">
+                    <h2 class="title">Lord Of The Strings</h2>
+                </div>
+                <div class="card-body">
+                    <form id="loginForm">
+                        <div class="form-row">
+                            <div class="name">Username</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-5" type="text" name="username">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Password</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-5" type="password" name="password">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        
+                    </form>
+                </div>
+                        <div>
+                            <input type="button" class="btn btn--radius-2 btn--red" onclick="auth();" value="Login">
+                        </div>
+                        
+            </div>
+            </div>
+        </div>
+    
+    <footer id="footer">&nbsp;</footer> 
+<!--    footer is for extra space at the bottom. weird glitch occurs with the background gradient if removed-->
+</body>
+<script>
+    var auth = function (params) {
+
+        var form = document.getElementById('loginForm');
+
+        
+        var bod = {
+            "email":form.elements[0].value,
+            "pword":form.elements[1].value
+        }
+
+        var xhr = new XMLHttpRequest();
+        var theUrl = "https://www.pravega.org/auth";
+        var testUrl = "http://localhost:2020/auth";
+        xhr.open("POST", theUrl);
+        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        console.log(bod);
+        xhr.send(JSON.stringify(bod));
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                alert(xhr.response);
+                if(xhr.response == 'Success'){
+                    sessionStorage.setItem('teamName',bod.email);
+                    // New Request
+                    post('http://localhost:2020/homepage.html',{'email':bod.email},(res)=>{
+                        window.location.replace(res);
+                    })
+                }
+            }
+        }
+
+
+
+    }
+
+    var post = function (url,body,responseCallback ) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", url);
+        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        console.log(body);
+        xhr.send(JSON.stringify(body));
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                responseCallback(xhr.response);
+            }
+        }
+    }
+
+</script>
+
+
+ 
+</body>
+</html>
