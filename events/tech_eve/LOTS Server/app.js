@@ -15,7 +15,7 @@ app.use(express.static(__dirname + '/front_end'));
 
 
 app.get('/', (req, res) => {
-  res.send('LOTS SERVER | Pravega 2020')
+  res.sendFile(__dirname+'/front_end/login.html')
 })
 
 app.get('/submission', (req, res) => {
