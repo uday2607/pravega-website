@@ -52,14 +52,14 @@ app.post('/submission', (req, res) => {
 app.post('/homepage',(req,res)=>{
   var folderName = req.body.email;
   if (fs.existsSync(__dirname + "/public/" + folderName)) {
-    res.send('/'+folderName+'/home.html');
+    res.send('/public'+folderName+'/home.html');
   } else{
     fs.mkdirSync(__dirname+'/public/'+folderName+'/');
     var newpath = __dirname + "/public/"+ folderName+'/home.html'
     fs.readFile(__dirname+'/front_end/home.html',(err,data)=>{
       if(err){ throw err};
       fs.writeFile(__dirname+'/public/'+folderName+'/home.html',data,(e)=>{//Void callback
-        res.send('/'+folderName+'/home.html');
+        res.send('/public/'+folderName+'/home.html');
       })
     })
   }
