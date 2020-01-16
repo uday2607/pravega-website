@@ -162,7 +162,7 @@ db.once('open', (e) => {
         team.find({ "event": "chemenigma" }, (err, myData) => {
 
             var finalData =[]
-            
+
             myData.forEach(element => {
                 var temp={};
                 if(element.members[0]){
@@ -215,7 +215,7 @@ db.once('open', (e) => {
     //             console.log(element);
     //             team.findOneAndUpdate({_id:element._id},element,(e,d)=>{
     //                 if(e) throw e;
-    //                 console.log(d);   
+    //                 console.log(d);
     //             })
     //         });
     //         res.send(data.length+"");
