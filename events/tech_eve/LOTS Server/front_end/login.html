@@ -33,20 +33,20 @@
                                 </div>
                             </div>
                         </div>
-                        
-                        
-                        
+
+
+
                     </form>
                 </div>
                         <div>
                             <input type="button" class="btn btn--radius-2 btn--red" onclick="auth();" value="Login">
                         </div>
-                        
+
             </div>
             </div>
         </div>
-    
-    <footer id="footer">&nbsp;</footer> 
+
+    <footer id="footer">&nbsp;</footer>
 <!--    footer is for extra space at the bottom. weird glitch occurs with the background gradient if removed-->
 </body>
 <script>
@@ -54,7 +54,7 @@
 
         var form = document.getElementById('loginForm');
 
-        
+
         var bod = {
             "email":form.elements[0].value,
             "pword":form.elements[1].value
@@ -73,7 +73,7 @@
                 if(xhr.response == 'Success'){
                     sessionStorage.setItem('teamName',bod.email);
                     // New Request
-                    post('http://localhost:2020/homepage.html',{'email':bod.email},(res)=>{
+                    post('/homepage',{'email':bod.email},(res)=>{
                         window.location.replace(res);
                     })
                 }
@@ -100,6 +100,6 @@
 </script>
 
 
- 
+
 </body>
 </html>
