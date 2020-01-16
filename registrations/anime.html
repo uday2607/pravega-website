@@ -90,12 +90,13 @@ src="https://www.facebook.com/tr?id=492248618072887&ev=PageView
     <script type="text/javascript">
 
         //details to be sent to server START
+        var teamName;
         var name1;
         var class1;
         var name2;
         var class2;
         var team_contact;
-        var email_address;
+        var email;
         var flag = 0;
 
         //details to be sent to server END
@@ -107,13 +108,14 @@ src="https://www.facebook.com/tr?id=492248618072887&ev=PageView
           var name2 = document.getElementById('name2').value;
           var class2 = document.getElementById('class2').value;
           var team_contact = document.getElementById('team_contact').value;
-          var team_email = document.getElementById('email_Address').value;
+          var teamName = document.getElementById('teamName').value;
+          var team_email = document.getElementById('email').value;
 
 
             var body = {
-                "noi": document.getElementById('team').value,
+                "teamName": document.getElementById('teamName').value,
                 "team_email": document.getElementById('team_contact').value,
-                "team_contact": document.getElementById('email_address').value,
+                "team_contact": document.getElementById('email').value,
                 "event": "Animathon",
                 "meta": {
                         "name1": document.getElementById('name1').value,
@@ -234,7 +236,7 @@ Functions:
                                 <div class="name">Email address</div>
                                 <div class="value">
                                     <div class="input-group">
-                                        <input class="input--style-5" type="text" id="email_address">
+                                        <input class="input--style-5" type="text" id="email">
                                     </div>
                                 </div>
                             </div>
@@ -244,7 +246,7 @@ Functions:
                                 <div class="name">Team Name</div>
                                 <div class="value">
                                     <div class="input-group">
-                                        <input class="input--style-5" type="text" id="team">
+                                        <input class="input--style-5" type="text" id="teamName">
                                     </div>
                                 </div>
                             </div>
