@@ -15,6 +15,15 @@ app.use(cors());
 app.use(express.static(__dirname));
 app.use(sslRedirect());
 
+if(process.env.NODE_ENV === 'production') {
+  app.use((req, res, next) => {
+    if (req.header('x-forwarded-proto') !== 'https')
+      res.redirect(`https://${req.header('host')}${req.url}`)
+    else
+      next()
+  })
+}
+
 // Base route
 app.get('/', (req, res) => {
     res.send('<style>body{text-align:center}</style><br><br>Server for Pravega 2020. <br> All rights reserved');
