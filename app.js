@@ -1,7 +1,7 @@
 // Server for Pravega Website 2020
 // Author : Chinmay K Haritas
 // All rights reserved
-var sslRedirect = require('heroku-ssl-redirect');
+const sslRedirect = require('heroku-ssl-redirect');
 const express = require('express');
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
