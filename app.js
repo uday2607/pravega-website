@@ -2,7 +2,6 @@
 // Author : Chinmay K Haritas
 // All rights reserved
 var sslRedirect = require('heroku-ssl-redirect');
-
 const express = require('express');
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
@@ -10,12 +9,11 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const { Parser } = require('json2csv');
 
-app.use(sslRedirect());
-
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 app.use(express.static(__dirname));
+app.use(sslRedirect());
 
 // Base route
 app.get('/', (req, res) => {
