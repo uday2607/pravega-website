@@ -155,11 +155,11 @@ body {
 }
 
 .gaming_events{
-  background: -webkit-gradient(linear, left bottom, right top, from(#B400E0), to(#C62A7C));
-  background: -webkit-linear-gradient(bottom left, #B400E0 0%,#C62A7C 100%);
-  background: -moz-linear-gradient(bottom left, #B400E0 0%,#C62A7C 100%);
-  background: -o-linear-gradient(bottom left, #B400E0 0%,#C62A7C 100%);
-  background: linear-gradient(to top right, #B400E0 0%,#C62A7C 100%);
+  background: -webkit-gradient(linear, left bottom, right top, from(#CE82E0), to(#EF86BD));
+  background: -webkit-linear-gradient(bottom left, #CE82E0 0%,#EF86BD 100%);
+  background: -moz-linear-gradient(bottom left, #CE82E0 0%,#EF86BD 100%);
+  background: -o-linear-gradient(bottom left, #CE82E0 0%,#EF86BD 100%);
+  background: linear-gradient(to top right, #CE82E0 0%,#EF86BD 100%);
 
 }
 
