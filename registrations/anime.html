@@ -227,85 +227,119 @@ Functions:
                         <h2 class="title">Animathon Registration Form</h2>
                     </div>
 
+                    <form action="javascript:submit_all_info();" id="team-regis-box">
 
-                    <div class="card-body">
-                        <form method="POST" id="team-regis-box">
+                        <div class="card-body">
 
-                            <!--NOI-->
-                            <div class="form-row">
-                                <div class="name">Email address</div>
-                                <div class="value">
-                                    <div class="input-group">
-                                        <input class="input--style-5" type="text" id="email">
+                            <p>Hello, and thank you for your interest in the second edition of the Bangalore-wide Anime Quiz! This year, it is co-organized by The Japan Habba Trust and Pravega, the undergraduate fest of IISc Bangalore.</p><br>
+
+                                <!--NOI-->
+                                <div class="form-row">
+                                    <div class="name">Email address*</div>
+                                    <div class="value">
+                                        <div class="input-group">
+                                            <input class="input--style-5" type="email" id="email" required>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+
+                            <p>
+                                <b>Venue:</b> J.N. Tata Auditorium, Indian Institute of Science<br>
+                                <b>Date:</b> 1 February (during Pravega, week before Japan Habba)
+                            </p>
+
+                            <p>
+                                <b>Time:</b><br>
+                                <ul style="margin-left: 2em;">
+                                    <li>Registration from 1:30 PM</li>
+                                    <li>Written prelims from 2:30 PM</li>
+                                    <li>Performance by Daisuki Cosplay Band from 3:00 PM</li>
+                                    <li>On-stage finals from 3:30 PM (with audience questions and prizes!)</li>
+                                </ul>
+                            </p>
+
+                            <p>
+                                <b>Prizes:</b><br>
+                                <ul style="margin-left: 2em;">
+                                    <li>Cash prizes of 5K, 4K, 3K for top 3 teams</li>
+                                    <li>Anime keychains for 3 runners up teams</li>
+                                    <li>Prizes for audience questions from Animaniax</li>
+                                </ul>
+                            </p>
+                            <br>
 
 
-                            <div class="form-row">
-                                <div class="name">Team Name</div>
-                                <div class="value">
-                                    <div class="input-group">
-                                        <input class="input--style-5" type="text" id="teamName">
+                                <div class="form-row">
+                                    <div class="name">Team Name*</div>
+                                    <div class="value">
+                                        <div class="input-group">
+                                            <input class="input--style-5" type="text" id="teamName" required>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="form-row">
-                                <div class="name">Name of the Participant 1</div>
-                                <div class="value">
-                                    <div class="input-group">
-                                        <input class="input--style-5" type="text" id="name1">
+                                <div class="form-row">
+                                    <div class="name">Name of the Participant 1*</div>
+                                    <div class="value">
+                                        <div class="input-group">
+                                            <input class="input--style-5" type="text" id="name1" required>
+                                        </div>
+                                    </div>
+    							</div>
+    							<div class="form-row">
+                                    <div class="name">Institute of Participant 1*</div>
+                                    <div class="value">
+                                        <div class="input-group">
+                                            <input class="input--style-5" type="text" id="class1" required>
+                                        </div>
                                     </div>
                                 </div>
-							</div>
-							<div class="form-row">
-                                <div class="name">Institute of Participant 1</div>
-                                <div class="value">
-                                    <div class="input-group">
-                                        <input class="input--style-5" type="text" id="class1">
+
+
+                                <p>
+                                <b>Team composition:</b><br>
+                                Participation is in the form of teams (of 2 participants). You can register solo if you don't have a partner, but you must still provide a Team Name. You will be paired on the day of the quiz. If you would like to find a partner ahead of time, join this specially prepared WhatsApp group:<br>
+                                <a href="https://chat.whatsapp.com/LHhvpaVQBHT7mpZ2httzrj">https://chat.whatsapp.com/LHhvpaVQBHT7mpZ2httzrj</a></p><br>
+
+                                <div class="form-row">
+                                    <div class="name">Name of the Participant 2</div>
+                                    <div class="value">
+                                        <div class="input-group">
+                                            <input class="input--style-5" type="text" id="name2">
+                                        </div>
+                                    </div>
+    							</div>
+    							<div class="form-row">
+                                    <div class="name"> Institute of Participant 2</div>
+                                    <div class="value">
+                                        <div class="input-group">
+                                            <input class="input--style-5" type="text" id="class2">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
 
-                            <div class="form-row">
-                                <div class="name">Name of the Participant 2</div>
-                                <div class="value">
-                                    <div class="input-group">
-                                        <input class="input--style-5" type="text" id="name2">
+                                <!-- CONTACT DETAILS -->
+                                <div class="form-row">
+                                    <div class="name">Phone number (Primary)*</div>
+                                    <div class="value">
+                                        <div class="input-group">
+                                            <input class="input--style-5" type="number" id="team_contact" required>
+                                        </div>
                                     </div>
                                 </div>
-							</div>
-							<div class="form-row">
-                                <div class="name"> Institute of Participant 2</div>
-                                <div class="value">
-                                    <div class="input-group">
-                                        <input class="input--style-5" type="text" id="class2">
-                                    </div>
-                                </div>
-                            </div>
 
+                                <!-- Email -->
+                                <p>
+                                <b>Contact information:</b><br>
+                                Email &amp; phone number: <a href="mailto:animaniaxclub@gmail.com">animaniaxclub@gmail.com</a>, <a href="tel:8296762422">8296762422</a><br>
 
-                            <!-- CONTACT DETAILS -->
-                            <div class="form-row">
-                                <div class="name">Phone number <br>( Primary )</div>
-                                <div class="value">
-                                    <div class="input-group">
-                                        <input class="input--style-5" type="text" id="team_contact">
-                                    </div>
-                                </div>
-                            </div>
+                        </div>
+                        <div>
+                            <input type="submit" class="btn btn--radius-2 btn--red" id="submit-button" value="Submit">
+                        </div>
 
-                            <!-- Email -->
-
-
-                        </form>
-                    </div>
-                    <div>
-                        <input type="button" class="btn btn--radius-2 btn--red" id="submit-button"
-                            onclick="submit_all_info()" value="Submit">
-                    </div>
+                    </form>
                 </div>
             </div>
 
