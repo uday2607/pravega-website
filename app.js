@@ -9,7 +9,6 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const { Parser } = require('json2csv');
 const forceDomain = require('forcedomain');
-var router = require('express').Router();
 
 const app = express();
 app.use(bodyParser.json());
@@ -17,30 +16,7 @@ app.use(cors());
 app.use(express.static(__dirname));
 app.use(sslRedirect());
 
-app.set('sslPort', 443);
 
-//For redirecting to https
-app.use(function (req, res, next) {
-    // Checking for secure connection or not
-    // If not secure redirect to the secure connection
-    if (!req.secure) {
-        //This should work for local development as well
-        var host = req.get('host');
-
-        // replace the port in the host
-        host = host.replace(/:\d+$/, ":" + app.get('sslPort'));
-
-        // determine the redirect destination
-        var destination = ['https://', host, req.url].join('');
-
-        return res.redirect(destination);
-    }
-    next();
-});
-
-router.post('/signup', app.signup);
-
-app.use('/', router);
 
 if(process.env.NODE_ENV === 'production') {
   app.use((req, res, next) => {
