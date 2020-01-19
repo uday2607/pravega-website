@@ -34,6 +34,19 @@ app.use (function (req, res, next) {
         }
 });
 
+app.use(function(req, res, next) {
+      if ((req.get('X-Forwarded-Proto') !== 'https')) {
+        res.redirect('https://' + req.get('Host') + req.url);
+      } else
+        next();
+    });
+
+app.use(forceDomain({
+      hostname: 'www.pravega.com',
+      protocol: 'https'
+    }));
+
+
 // Base route
 app.get('/', (req, res) => {
     res.send('<style>body{text-align:center}</style><br><br>Server for Pravega 2020. <br> All rights reserved');
