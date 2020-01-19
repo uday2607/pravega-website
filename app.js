@@ -9,14 +9,13 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const { Parser } = require('json2csv');
 const forceDomain = require('forcedomain');
+var router = require('express').Router();
 
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 app.use(express.static(__dirname));
 app.use(sslRedirect());
-
-var router = require('express').Router();
 
 app.set('sslPort', 443);
 
