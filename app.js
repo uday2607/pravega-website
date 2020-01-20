@@ -1,54 +1,20 @@
 // Server for Pravega Website 2020
 // Author : Chinmay K Haritas
 // All rights reserved
-const sslRedirect = require('heroku-ssl-redirect');
 const express = require('express');
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const { Parser } = require('json2csv');
-const forceDomain = require('forcedomain');
 
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 app.use(express.static(__dirname));
-app.use(sslRedirect());
-
-app.use(forceDomain({
-      hostname: 'www.pravega.com',
-      protocol: 'https'
-    }));
 
 
-if(process.env.NODE_ENV === 'production') {
-  app.use((req, res, next) => {
-    if (req.header('x-forwarded-proto') !== 'https')
-      res.redirect(`https://${req.header('host')}${req.url}`)
-    else
-      next()
-  })
-}
 
-app.use (function (req, res, next) {
-        if (req.secure) {
-                // request was via https, so do no special handling
-                next();
-        } else {
-                // request was via http, so redirect to https
-                res.redirect('https://' + req.headers.host + req.url);
-        }
-});
-
-app.use(function(req, res, next) {
-      if ((req.get('X-Forwarded-Proto') !== 'https')) {
-        res.redirect('https://' + req.get('Host') + req.url);
-      } else
-        next();
-    });
-
-     
 
 
 
