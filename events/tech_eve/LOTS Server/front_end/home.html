@@ -19,7 +19,7 @@
   </form>
   <script>
     if(!sessionStorage.getItem('teamName')){
-      window.location.replace('/login.html');
+      window.location.replace('../../front_end/login.html');
     }
     var send = function () {
       document.getElementById('teamName').value = sessionStorage.getItem('teamName');
