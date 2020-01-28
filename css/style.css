@@ -154,6 +154,15 @@ body {
 
 }
 
+.gaming_events{
+  background: -webkit-gradient(linear, left bottom, right top, from(#CE82E0), to(#EF86BD));
+  background: -webkit-linear-gradient(bottom left, #CE82E0 0%,#EF86BD 100%);
+  background: -moz-linear-gradient(bottom left, #CE82E0 0%,#EF86BD 100%);
+  background: -o-linear-gradient(bottom left, #CE82E0 0%,#EF86BD 100%);
+  background: linear-gradient(to top right, #CE82E0 0%,#EF86BD 100%);
+
+}
+
 .cultural_events{
   background: -webkit-gradient(linear, left bottom, right top, from(#ff5f6d), to(#ffc371));
   background: -webkit-linear-gradient(bottom left, #ff5f6d 0%,#ffc371 100%);
@@ -1339,6 +1348,15 @@ header.nav-block-left {
 
 .parallax-bob {
     background-image: url("../img/bob-portfolio-min.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    padding: 150px 0;
+    background-position: 50% 50%;
+}
+
+.parallax-pronites {
+    background-image: url("../img/pronites-main.jpg");
     background-size: cover;
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -3779,6 +3797,10 @@ address p {
 
 .banner-bob {
     background-image: url("../img/bob-background-min.jpg")!important;
+}
+
+.banner-pronites {
+    background-image: url("../img/pronites-main.jpg")!important;
 }
 
 .banner-01 {

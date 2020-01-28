@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Upload images to server using Node JS</title>
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+  <script src="http://malsup.github.com/jquery.form.js"></script>
+
+</head>
+<body>
+
+  <form action="submission" method="post" enctype="multipart/form-data">
+    <input type="file" name="filetoupload"><br>
+    <input type="text" name="teamName" id="teamName">
+    <input type="submit" onclick="send();">
+  </form>
+  <script>
+    if(!sessionStorage.getItem('teamName')){
+      window.location.replace('../../front_end/login.html');
+    }
+    var send = function () {
+      document.getElementById('teamName').value = sessionStorage.getItem('teamName');
+    }
+  </script>
+
+</body>
+</html>

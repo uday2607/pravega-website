@@ -1,0 +1,14 @@
+
+<form action="submission" method="post" enctype="multipart/form-data">
+  <input type="file" name="filetoupload"><br>
+  <input type="text" name="teamName" id="teamName">
+  <input type="submit" onclick="send();">
+</form>
+<script>
+  if(!sessionStorage.getItem('teamName')){
+    window.location.replace('/login.html');
+  }
+  var send = function () {
+    document.getElementById('teamName').value = sessionStorage.getItem('teamName');
+  }
+</script>

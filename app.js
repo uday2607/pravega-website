@@ -1,7 +1,6 @@
 // Server for Pravega Website 2020
 // Author : Chinmay K Haritas
 // All rights reserved
-
 const express = require('express');
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
@@ -16,6 +15,12 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(express.static(__dirname));
 app.use(express.urlencoded({}));
+
+
+
+
+
+
 
 // Base route
 app.get('/', (req, res) => {
@@ -218,7 +223,7 @@ db.once('open', (e) => {
     //             console.log(element);
     //             team.findOneAndUpdate({_id:element._id},element,(e,d)=>{
     //                 if(e) throw e;
-    //                 console.log(d);   
+    //                 console.log(d);
     //             })
     //         });
     //         res.send(data.length+"");

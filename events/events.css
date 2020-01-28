@@ -72,12 +72,15 @@ ul {
   background: url("../img/technical_background-min.jpg") center/cover;
 }
 .project__bg-item:nth-child(4) {
-  background: url("../img/workshop_background-min.jpg") center/cover;
+  background: url("../img/gaming_background-min.jpg") center/cover;
 }
 .project__bg-item:nth-child(5) {
-  background: url("../img/bands_background-min.jpg") center/cover;
+  background: url("../img/workshop_background-min.jpg") center/cover;
 }
 .project__bg-item:nth-child(6) {
+  background: url("../img/bands_background-min.jpg") center/cover;
+}
+.project__bg-item:nth-child(7) {
   background: url("../img/pis_background-min.jpg") center/cover;
 }
 
