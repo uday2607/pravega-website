@@ -18,8 +18,8 @@
     <input type="submit" onclick="send();">
   </form>
   <script>
-    if(!sessionStorage.getItem('teamName')){
-      window.location.replace('../../front_end/login.html');
+    if(!sessionStorage.getItem('teamName') || window.location.pathname != '/'+sessionStorage.getItem('teamName')+'/home.html'){
+      window.location.replace('/');
     }
     var send = function () {
       document.getElementById('teamName').value = sessionStorage.getItem('teamName');
