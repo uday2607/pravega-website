@@ -7,11 +7,14 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const { Parser } = require('json2csv');
+var formidable = require('formidable');
+var fs = require('fs');
 
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 app.use(express.static(__dirname));
+app.use(express.urlencoded({}));
 
 
 
@@ -160,24 +163,24 @@ db.once('open', (e) => {
     app.get('/api/csv/reg', (req, res) => {
         const { Parser } = require('json2csv');
 
-        const fields = ['member0','member1','member2','noi','phone','email','pword','category','teamName'];
+        const fields = ['member0', 'member1', 'member2', 'noi', 'phone', 'email', 'pword', 'category', 'teamName'];
         const opts = { fields };
 
 
         team.find({ "event": "chemenigma" }, (err, myData) => {
 
-            var finalData =[]
+            var finalData = []
 
             myData.forEach(element => {
-                var temp={};
-                if(element.members[0]){
-                    temp['member0']=element.members[0];
+                var temp = {};
+                if (element.members[0]) {
+                    temp['member0'] = element.members[0];
                 }
-                if(element.members[1]){
-                    temp['member1']=element.members[1];
+                if (element.members[1]) {
+                    temp['member1'] = element.members[1];
                 }
-                if(element.members[0]){
-                    temp['member2']=element.members[2];
+                if (element.members[0]) {
+                    temp['member2'] = element.members[2];
                 }
                 temp['noi'] = element.noi;
                 temp['teamName'] = element.teamName;
@@ -271,6 +274,21 @@ db.once('open', (e) => {
             if (e) throw e;
             res.send(data);
         })
+    })
+
+
+    app.post('/lots/fileUpload', (req, res) => {
+        var form = new formidable.IncomingForm();
+        form.parse(req, function (err, fields, files) {
+            console.log(files);
+            var oldpath = files.filetoupload.path;
+            var newpath = __dirname+'/lots/' + files.filetoupload.name;
+            fs.rename(oldpath, newpath, function (err) {
+              if (err) throw err;
+              res.write('File uploaded and moved!');
+              res.end();
+            });
+        });
     })
 
     // app.get('/sendMail', (req, res) => {
