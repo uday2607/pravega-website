@@ -16,11 +16,10 @@ app.use(cors());
 app.use(express.static(__dirname));
 app.use(express.urlencoded({}));
 
-
-
-
-
-
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
 
 // Base route
 app.get('/', (req, res) => {
