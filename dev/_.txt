@@ -32,24 +32,3 @@ finished enummeration.
 lasya done !!!!
 
 pis done TODO: Check that team/alone thing , wht\atsit ?????
-TODO: Generate email for all of them
-
-Login mail - 
-
-
-
-
-sharvesh
-smitesh
-ahmedaraza
-
-
-
-
-
-How to go about doing it ????
-
-After each mail has been sent, call this functio again, with the same parameter data
-but increment the count value;
-
-
