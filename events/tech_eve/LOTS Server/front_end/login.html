@@ -61,9 +61,9 @@
         }
 
         var xhr = new XMLHttpRequest();
-        var theUrl = "https://www.pravega.org/auth";
+        var theUrl = "http://www.pravega.org/auth";
         var testUrl = "http://localhost:2020/auth";
-        xhr.open("POST", theUrl);
+        xhr.open("POST", "http://localhost:5000/auth");
         xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
         console.log(bod);
         xhr.send(JSON.stringify(bod));

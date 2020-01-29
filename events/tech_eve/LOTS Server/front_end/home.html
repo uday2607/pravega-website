@@ -12,14 +12,14 @@
 </head>
 <body>
 
-  <form action="submission" method="post" enctype="multipart/form-data">
+  <form action="http://localhost:2020/submission" method="post" enctype="multipart/form-data">
     <input type="file" name="filetoupload"><br>
     <input type="text" name="teamName" id="teamName">
     <input type="submit" onclick="send();">
   </form>
   <script>
-    if(!sessionStorage.getItem('teamName')){
-      window.location.replace('../../front_end/login.html');
+    if(!sessionStorage.getItem('teamName') || window.location.pathname != '/'+sessionStorage.getItem('teamName')+'/home.html'){
+      window.location.replace('/');
     }
     var send = function () {
       document.getElementById('teamName').value = sessionStorage.getItem('teamName');
