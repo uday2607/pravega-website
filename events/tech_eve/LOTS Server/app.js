@@ -10,6 +10,8 @@ app.use(bodyParser.json());
 
 const formidable = require('formidable');
 
+const fs = require('fs')
+
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/front_end'));
 app.use(function(req, res, next) {
@@ -66,6 +68,14 @@ app.post('/homepage',(req,res)=>{
       })
     })
   }
+})
+
+fs.readFile('./customer.json', 'utf8', (err, jsonString) => {
+    if (err) {
+        console.log("File read failed:", err)
+        return
+    }
+    console.log('File data:', jsonString)
 })
 
 app.listen(2020, () => {
