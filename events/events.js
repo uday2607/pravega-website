@@ -1,3 +1,5 @@
+alert("These events were a part of Pravega '20. Stay tuned for upcoming events of Pravega '21")
+
 var project = $('.project');
 var pLink = project.find('.project__link');
 var pBg = project.find('.project__bg-item');
