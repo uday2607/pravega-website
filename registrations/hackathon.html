@@ -10,44 +10,7 @@
         gtag('js', new Date());
 
         gtag('config', 'UA-151194721-1');
-    </script><!-- Facebook Pixel Code -->
-
-    <script>
-
-        !function (f, b, e, v, n, t, s) {
-            if (f.fbq) return; n = f.fbq = function () {
-                n.callMethod ?
-
-                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-            };
-
-            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
-
-            n.queue = []; t = b.createElement(e); t.async = !0;
-
-            t.src = v; s = b.getElementsByTagName(e)[0];
-
-            s.parentNode.insertBefore(t, s)
-        }(window, document, 'script',
-
-            'https://connect.facebook.net/en_US/fbevents.js');
-
-
-        fbq('init', '492248618072887');
-
-        fbq('track', 'PageView');
-
     </script>
-
-    <noscript>
-
-        <img height="1" width="1" src="https://www.facebook.com/tr?id=492248618072887&ev=PageView
-
-&noscript=1" />
-
-    </noscript>
-
-    <!-- End Facebook Pixel Code -->
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
@@ -64,7 +27,7 @@
     <!--favicon icon-->
     <link rel="icon" type="image/png" href="../img/blue_dark_trans-01.png"> <!-- take a favicon.img for favicon -->
 
-    <title>Pravega Hackathon Registration | Pravega 2020, IISc Bangalore</title>
+    <title>Pravega Hackathon Registration | Pravega 2021, IISc Bangalore</title>
 
 
     <!--common style-->
@@ -73,7 +36,7 @@
     <link
         href="https://fonts.googleapis.com/css?family=Abel|Source+Sans+Pro:400,300,300italic,400italic,600,600italic,700,700italic,900,900italic,200italic,200"
         rel="stylesheet" type="text/css">
-      
+
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/magnific-popup.css" rel="stylesheet">
     <link href="../css/shortcodes/shortcodes.css" rel="stylesheet">
@@ -138,20 +101,22 @@ Functions:
                         <ul class="cd-primary-nav">
                             <li class="active"><a href="../index.html">Home</a>
                             </li>
-                            <li class="active"><a href="events.html">Registrations</a>
+                            <li class="active"><a href="../about_us.html">About</a>
                             </li>
-                            <li class="active"><a href="../events/events.html">Events</a>
+                            <li class="active"><a href="../contact_us.html">Contact us</a>
                             </li>
-                            <li class="active"><a href="../comingsoon.html">Originals</a>
+                            <!--<li class="active"><a href="registrations/events.html">Registrations</a>
                             </li>
-                            <li class="active"><a href="../comingsoon.html">Archive</a>
+                            <li class="active"><a href="events/events.html">Events</a>
                             </li>
-                            <li class="active"><a href="../sponsors/sponsors.html">Sponsors</a>
+                            <li class="active"><a href="comingsoon.html">Originals</a>
                             </li>
-                            <li class="active"><a href="../comingsoon.html">Help</a>
+                            <li class="active"><a href="comingsoon.html">Archive</a>
                             </li>
-                            <li class="active"><a href="../comingsoon.html">Contact us</a>
+                            <li class="active"><a href="sponsors/sponsors.html">Sponsors</a>
                             </li>
+                            <li class="active"><a href="comingsoon.html">Help</a>
+                            </li>-->
                         </ul>
                     </nav>
                 </div>
@@ -167,10 +132,13 @@ Functions:
                         <form method="POST" id="team-regis-box">
                             <h5>Dear participants,
 
-Please mail the prelims entries to : <a href="mailto:hackathon.pravega@gmail.com? subject=subject text">hackathon.pravega@gmail.com </a></h5><br><br><br>
-                          <p style="color:red;">                            *If there are multiple entries for a certain blank, please separate
-                                                      them with a ';' (semicolon)<br>
-                               *If you don't recieve a confirmation e-mail from our side, please try registering again from a different browser.<br><br></p>
+                                Please mail the prelims entries to : <a
+                                    href="mailto:hackathon.pravega@gmail.com? subject=subject text">hackathon.pravega@gmail.com
+                                </a></h5><br><br><br>
+                            <p style="color:red;"> *If there are multiple entries for a certain blank, please separate
+                                them with a ';' (semicolon)<br>
+                                *If you don't recieve a confirmation e-mail from our side, please try registering again
+                                from a different browser.<br><br></p>
                             <div class="form-row">
                                 <div class="name">Did you ever participte in a Hackathon?</div>
                                 <div class="value">
@@ -316,10 +284,10 @@ Please mail the prelims entries to : <a href="mailto:hackathon.pravega@gmail.com
                 meems = document.getElementById('name').value.split(";").join(",").split(",");
                 console.log(document.getElementById('email').value.split(";").join(",").split(",").join(" ").split(" "));
                 emails = document.getElementById('email').value.split(";").join(",").split(",").join(" ").split(" ");
-				if (emails.length != team_no_participants){
-					alert("Please Enter the emails without space anywhere and split only with ';' or ','. Also, please give email-ids of all the members");
-					return;
-				}
+                if (emails.length != team_no_participants) {
+                    alert("Please Enter the emails without space anywhere and split only with ';' or ','. Also, please give email-ids of all the members");
+                    return;
+                }
             }
 
 
@@ -395,7 +363,7 @@ Please mail the prelims entries to : <a href="mailto:hackathon.pravega@gmail.com
             var isLateralNavAnimating = false;
 
             //open/close lateral navigation
-            
+
             $('.cd-nav-trigger').on('click', function (event) {
                 event.preventDefault();
                 //stop if nav animation is running
