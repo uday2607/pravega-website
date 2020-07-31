@@ -1,10 +1,13 @@
 <!DOCTYPE HTML>
 <html lang="en">
-<head>
-	 <title>Header</title>
 
-	<link href="fonts/Organic-Slab.ttf" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Abel|Source+Sans+Pro:400,300,300italic,400italic,600,600italic,700,700italic,900,900italic,200italic,200' rel='stylesheet' type='text/css'>
+<head>
+    <title>Header</title>
+
+    <link href="fonts/Organic-Slab.ttf" rel="stylesheet" type="text/css">
+    <link
+        href='https://fonts.googleapis.com/css?family=Abel|Source+Sans+Pro:400,300,300italic,400italic,600,600italic,700,700italic,900,900italic,200italic,200'
+        rel='stylesheet' type='text/css'>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/magnific-popup.css" rel="stylesheet">
@@ -14,77 +17,80 @@
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style-responsive.css" rel="stylesheet">
     <link href="css/default-theme.css" rel="stylesheet">
-	<link href="css/push-nav.css" rel="stylesheet">
+    <link href="css/push-nav.css" rel="stylesheet">
 </head>
-	<body>
-		<div class="wrapper">
 
-    <!--header start-->
+<body>
+    <div class="wrapper">
 
-    <a href="#cd-nav" class="cd-nav-trigger">Menu
-              <span class="cd-nav-icon"></span>
-              <svg x="0px" y="0px" width="54px" height="54px" viewBox="0 0 54 54">
-                  <circle r="50" fill="transparent"></circle>
-              </svg>
-          </a>
+        <!--header start-->
 
-          <div id="cd-nav" class="cd-nav">
-              <div class="cd-navigation-wrapper">
-                  <div class="cd-half-block">
-                      <h2>Navigation</h2>
-                      <nav>
-                          <ul class="cd-primary-nav">
-                              <li class="active"><a href="">Home</a>
-                          </li>
-  						<li class="active"><a href="#">Registrations</a>
-                          </li>
-  						<li class="active"><a href="#">Events</a>
-                          </li>
-  						<li class="active"><a href="#">Originals</a>
-                          </li>
-  						<li class="active"><a href="#">Archive</a>
-                          </li>
-  						<li class="active"><a href="sponsors/sponsors.html">Sponsors</a>
-                          </li>
-  						<li class="active"><a href="#">Help</a>
-                          </li>
-  						<li class="active"><a href="#">Contact us</a>
-                          </li>
-                          </ul>
-                      </nav>
-                  </div>
-              </div>
-          </div>
-		</div>
+        <a href="#cd-nav" class="cd-nav-trigger">Menu
+            <span class="cd-nav-icon"></span>
+            <svg x="0px" y="0px" width="54px" height="54px" viewBox="0 0 54 54">
+                <circle r="50" fill="transparent"></circle>
+            </svg>
+        </a>
 
-		<!-- Placed js at the end of the document so the pages load faster -->
-<script src="js/jquery-1.10.2.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/menuzord.js"></script>
-<script src="js/jquery.flexslider-min.js"></script>
-<script src="js/owl.carousel.min.js"></script>
-<script src="js/jquery.isotope.js"></script>
-<script src="js/jquery.magnific-popup.min.js"></script>
-<script src="js/jquery.countTo.js"></script>
-<script src="js/visible.js"></script>
-<script src="js/smooth.js"></script>
-<script src="js/wow.min.js"></script>
-<script src="js/imagesloaded.js"></script>
+        <div id="cd-nav" class="cd-nav">
+            <div class="cd-navigation-wrapper">
+                <div class="cd-half-block">
+                    <h2>Navigation</h2>
+                    <nav>
+                        <ul class="cd-primary-nav">
+                            <li class="active"><a href="index.html">Home</a>
+                            </li>
+                            <li class="active"><a href="about_us.html">About</a>
+                            </li>
+                            <li class="active"><a href="contact_us.html">Contact us</a>
+                            </li>
+                            <!--<li class="active"><a href="registrations/events.html">Registrations</a>
+                            </li>
+                            <li class="active"><a href="events/events.html">Events</a>
+                            </li>
+                            <li class="active"><a href="comingsoon.html">Originals</a>
+                            </li>
+                            <li class="active"><a href="comingsoon.html">Archive</a>
+                            </li>
+                            <li class="active"><a href="sponsors/sponsors.html">Sponsors</a>
+                            </li>
+                            <li class="active"><a href="comingsoon.html">Help</a>
+                            </li>-->
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Placed js at the end of the document so the pages load faster -->
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/menuzord.js"></script>
+    <script src="js/jquery.flexslider-min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.isotope.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/jquery.countTo.js"></script>
+    <script src="js/visible.js"></script>
+    <script src="js/smooth.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/imagesloaded.js"></script>
     <!--common scripts-->
-<script src="js/scripts.js?6"></script>
-<script>
-        jQuery(document).ready(function($){
+    <script src="js/scripts.js?6"></script>
+    <script>
+        jQuery(document).ready(function ($) {
             var isLateralNavAnimating = false;
 
             //open/close lateral navigation
-            $('.cd-nav-trigger').on('click', function(event){
+            $('.cd-nav-trigger').on('click', function (event) {
                 event.preventDefault();
                 //stop if nav animation is running
-                if( !isLateralNavAnimating ) {
-                    if($(this).parents('.csstransitions').length > 0 ) isLateralNavAnimating = true;
+                if (!isLateralNavAnimating) {
+                    if ($(this).parents('.csstransitions').length > 0) isLateralNavAnimating = true;
 
                     $('body').toggleClass('navigation-is-open');
-                    $('.cd-navigation-wrapper').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(){
+                    $('.cd-navigation-wrapper').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function () {
                         //animation is over
                         isLateralNavAnimating = false;
                     });
@@ -92,5 +98,6 @@
             });
         });
     </script>
-	</body>
+</body>
+
 </html>
