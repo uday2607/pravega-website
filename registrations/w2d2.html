@@ -16,7 +16,7 @@
     !function (f, b, e, v, n, t, s) {
       if (f.fbq) return; n = f.fbq = function () {
         n.callMethod ?
-        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
       };
       if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
       n.queue = []; t = b.createElement(e); t.async = !0;
@@ -188,20 +188,22 @@
             <ul class="cd-primary-nav">
               <li class="active"><a href="../index.html">Home</a>
               </li>
-              <li class="active"><a href="events.html">Registrations</a>
-              </li>
-              <li class="active"><a href="../events/events.html">Events</a>
-              </li>
-              <li class="active"><a href="../comingsoon.html">Originals</a>
-              </li>
-              <li class="active"><a href="../comingsoon.html">Archive</a>
-              </li>
-              <li class="active"><a href="../sponsors/sponsors.html">Sponsors</a>
-              </li>
-              <li class="active"><a href="../comingsoon.html">Help</a>
+              <li class="active"><a href="../about_us.html">About</a>
               </li>
               <li class="active"><a href="../comingsoon.html">Contact us</a>
               </li>
+              <!--<li class="active"><a href="registrations/events.html">Registrations</a>
+              </li>
+              <li class="active"><a href="events/events.html">Events</a>
+              </li>
+              <li class="active"><a href="comingsoon.html">Originals</a>
+              </li>
+              <li class="active"><a href="comingsoon.html">Archive</a>
+              </li>
+              <li class="active"><a href="sponsors/sponsors.html">Sponsors</a>
+              </li>
+              <li class="active"><a href="comingsoon.html">Help</a>
+              </li>-->
             </ul>
           </nav>
         </div>
@@ -276,7 +278,7 @@
             </form>
           </div>
           <div>
-          
+
             <input type="button" class="btn btn--radius-2 btn--red" id="submit-button"
               onclick="collect_name_data(team_no_participants)" value="Submit">
             <!--The submit button is not submitting the fields. Instead it requires you to enter the number of participants for a second time. -->
