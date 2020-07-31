@@ -1,27 +1,21 @@
 let timeline = document.querySelector(".timeline"),
-jsonResponse = [{
-  postedDate: "11th Dec, 2019",
-  postedTime: "23:00",
-  postedContent: "Bangalore Regional Finals Over",
-  postedLink: "www.pravega.com",
-  postedTitle: "Battle of Bands",
-  postedIcon: "mobile"},
-    {postedDate: "17th Dec, 2019",
-    postedTime: "17:00",
-    postedContent: "Technical events are up",
-    postedLink: "www.pravega.com",
-    postedTitle: "Technical Events",
-    postedIcon: "lightbulb" },
-{
-      postedDate: "19th Dec, 2019",
-      postedTime: "11:00",
-      postedContent: "Workshops are up",
-      postedLink: "www.pravega.com",
-      postedTitle: "Workshops",
-      postedIcon: "strategy"}];
-
-
-
+  jsonResponse = [{
+    postedDate: "11th and 12th July, 2020",
+    postedTime: "",
+    postedContent: "Technical events",
+    postedLink: "workshops/workshops.html",
+    postedTitle: "Workshops",
+    postedIcon: "lightbulb"
+  },
+  {
+    postedDate: "7th July, 2020",
+    postedTime: "",
+    postedContent: "Art competition",
+    postedLink: "",
+    postedTitle: "Oh Doodles!",
+    postedIcon: "mobile"
+  },
+  ];
 
 jsonResponse.forEach((item, index) => {
   let {
@@ -31,7 +25,7 @@ jsonResponse.forEach((item, index) => {
     postedLink,
     postedTitle,
     postedIcon } =
-  item;
+    item;
 
   let even = index % 2 === 0;
 
