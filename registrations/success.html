@@ -23,7 +23,7 @@
     <link
         href="https://fonts.googleapis.com/css?family=Abel|Source+Sans+Pro:400,300,300italic,400italic,600,600italic,700,700italic,900,900italic,200italic,200"
         rel="stylesheet" type="text/css">
-      
+
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/magnific-popup.css" rel="stylesheet">
     <link href="../css/shortcodes/shortcodes.css" rel="stylesheet">
@@ -78,20 +78,22 @@ Functions:
                         <ul class="cd-primary-nav">
                             <li class="active"><a href="../index.html">Home</a>
                             </li>
-                            <li class="active"><a href="events.html">Registrations</a>
-                            </li>
-                            <li class="active"><a href="../events/events.html">Events</a>
-                            </li>
-                            <li class="active"><a href="../comingsoon.html">Originals</a>
-                            </li>
-                            <li class="active"><a href="../comingsoon.html">Archive</a>
-                            </li>
-                            <li class="active"><a href="../sponsors/sponsors.html">Sponsors</a>
-                            </li>
-                            <li class="active"><a href="../comingsoon.html">Help</a>
+                            <li class="active"><a href="../about_us.html">About</a>
                             </li>
                             <li class="active"><a href="../comingsoon.html">Contact us</a>
                             </li>
+                            <!--<li class="active"><a href="registrations/events.html">Registrations</a>
+                            </li>
+                            <li class="active"><a href="events/events.html">Events</a>
+                            </li>
+                            <li class="active"><a href="comingsoon.html">Originals</a>
+                            </li>
+                            <li class="active"><a href="comingsoon.html">Archive</a>
+                            </li>
+                            <li class="active"><a href="sponsors/sponsors.html">Sponsors</a>
+                            </li>
+                            <li class="active"><a href="comingsoon.html">Help</a>
+                            </li>-->
                         </ul>
                     </nav>
                 </div>
@@ -104,16 +106,16 @@ Functions:
                         <h2>You have successfully registered for the event.</h2>
 
                         <p>You will be redirected to the event page in 3 seconds</p>
-                      </div>
-                  </div>
-              </div>
+                    </div>
+                </div>
+            </div>
         </section>
-	</div>
+    </div>
 
-        <!-- partial -->
-        <!-- partial -->
-        <!-- <script src="events.js"></script> -->
-        <!--    footer is for extra space at the bottom. weird glitch occurs with the background gradient if removed-->
+    <!-- partial -->
+    <!-- partial -->
+    <!-- <script src="events.js"></script> -->
+    <!--    footer is for extra space at the bottom. weird glitch occurs with the background gradient if removed-->
 
 
 
@@ -132,26 +134,26 @@ Functions:
     <!--common scripts-->
     <script src="../js/scripts.js"></script>
     <script src="../js/modernizr.js"></script>
-	<script>
-            jQuery(document).ready(function ($) {
-                var isLateralNavAnimating = false;
+    <script>
+        jQuery(document).ready(function ($) {
+            var isLateralNavAnimating = false;
 
-                //open/close lateral navigation
-                $('.cd-nav-trigger').on('click', function (event) {
-                    event.preventDefault();
-                    //stop if nav animation is running
-                    if (!isLateralNavAnimating) {
-                        if ($(this).parents('.csstransitions').length > 0) isLateralNavAnimating = true;
+            //open/close lateral navigation
+            $('.cd-nav-trigger').on('click', function (event) {
+                event.preventDefault();
+                //stop if nav animation is running
+                if (!isLateralNavAnimating) {
+                    if ($(this).parents('.csstransitions').length > 0) isLateralNavAnimating = true;
 
-                        $('body').toggleClass('navigation-is-open');
-                        $('.cd-navigation-wrapper').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function () {
-                            //animation is over
-                            isLateralNavAnimating = false;
-                        });
-                    }
-                });
+                    $('body').toggleClass('navigation-is-open');
+                    $('.cd-navigation-wrapper').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function () {
+                        //animation is over
+                        isLateralNavAnimating = false;
+                    });
+                }
             });
-     </script>
+        });
+    </script>
 </body>
 
 </html>
