@@ -7,16 +7,17 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const { Parser } = require('json2csv');
+const https = require('https')
 
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 app.use(express.static(__dirname));
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
-  });
+});
 
 // Base route
 app.get('/', (req, res) => {
@@ -159,24 +160,24 @@ db.once('open', (e) => {
     app.get('/api/csv/reg', (req, res) => {
         const { Parser } = require('json2csv');
 
-        const fields = ['member0','member1','member2','noi','phone','email','pword','category','teamName'];
+        const fields = ['member0', 'member1', 'member2', 'noi', 'phone', 'email', 'pword', 'category', 'teamName'];
         const opts = { fields };
 
 
         team.find({ "event": "chemenigma" }, (err, myData) => {
 
-            var finalData =[]
+            var finalData = []
 
             myData.forEach(element => {
-                var temp={};
-                if(element.members[0]){
-                    temp['member0']=element.members[0];
+                var temp = {};
+                if (element.members[0]) {
+                    temp['member0'] = element.members[0];
                 }
-                if(element.members[1]){
-                    temp['member1']=element.members[1];
+                if (element.members[1]) {
+                    temp['member1'] = element.members[1];
                 }
-                if(element.members[0]){
-                    temp['member2']=element.members[2];
+                if (element.members[0]) {
+                    temp['member2'] = element.members[2];
                 }
                 temp['noi'] = element.noi;
                 temp['teamName'] = element.teamName;
@@ -350,6 +351,33 @@ db.once('open', (e) => {
             res.send('deleted');
         })
     })
+
+    app.get('/keepAlive', (req, res) => {
+        res.send('OK')
+        setTimeout((e) => { keepAlive() }, (1000 * 60 * 2))
+    })
+
+    function keepAlive() {
+        console.log('Glitch Just pinged !')
+
+        https.get('https://pravega.glitch.me/stayinalive', (resp) => {
+            let data = '';
+
+            // A chunk of data has been recieved.
+            resp.on('data', (chunk) => {
+                data += chunk;
+            });
+
+            // The whole response has been received. Print out the result.
+            resp.on('end', () => {
+                console.log(JSON.parse(data).explanation);
+            });
+
+        }).on("error", (err) => {
+            console.log("Error: " + err.message);
+        });
+
+    }
 
     app.listen(process.env.PORT || 5000, (e) => {
         console.log("The Server is running on port number " + 5000)
