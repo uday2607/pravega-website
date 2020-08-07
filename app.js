@@ -273,7 +273,7 @@ db.once('open', (e) => {
         })
     })
 
-    app.get('/webinars',(req,res)=>{
+    app.get('/paradigms',(req,res)=>{
         res.sendFile(__dirname+'/webinars.html')
     })
     // app.get('/sendMail', (req, res) => {
