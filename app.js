@@ -273,6 +273,9 @@ db.once('open', (e) => {
         })
     })
 
+    app.get('/webinars',(req,res)=>{
+        res.sendFile(__dirname+'/webinars.html')
+    })
     // app.get('/sendMail', (req, res) => {
     //     res.send('Sending');
     //     sendMail();
